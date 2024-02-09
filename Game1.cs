@@ -85,7 +85,7 @@ namespace Monsterfall_01
             // Initialize the player class
             player = new Player();
             // Set a constant player move speed
-            playerMoveSpeed = 8.0f;
+            playerMoveSpeed = 3.0f;
 
             // Initialize the enemies list
             enemies = new List<Enemy>();
@@ -121,13 +121,34 @@ namespace Monsterfall_01
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            // Load the player resources   
-            Animation playerAnimation = new Animation();
-            Texture2D playerTexture = Content.Load<Texture2D>("Graphics\\HeroFemale\\Run_Unarmed\\Run_Unarmed_Body_000");
-            playerAnimation.Initialize(playerTexture, Vector2.Zero, 320, 320, 20, 30, Color.White, 1f, true, 5);
+            // Load the player resources
+            // Create a list of player's animations
+            List<Animation> playerAnimations = new List<Animation>();
+            const float PLAYER_SCALE = 0.6f;
+            for (int i = 0; i < 8; i++)
+            {
+                Animation playerAnimation = new Animation();
+                int degree = i * 45;
+                String degreePath;
+                if(degree / 10 < 1) { degreePath = "000"; }
+                else if(degree / 100 < 1) { degreePath = "0" + degree.ToString(); }
+                else { degreePath = degree.ToString(); }
+                String path = "Graphics\\HeroFemale\\Run_Unarmed\\Run_Unarmed_Body_" + degreePath;
+
+                Texture2D playerTexture = Content.Load<Texture2D>(path);
+                playerAnimation.Initialize(playerTexture, Vector2.Zero, 320, 320, 20, 17, Color.White, PLAYER_SCALE, true, 5);
+                playerAnimations.Add(playerAnimation);
+
+            }
+            //Animation playerAnimation = new Animation();
+            //Texture2D playerTexture = Content.Load<Texture2D>("Graphics\\HeroFemale\\Run_Unarmed\\Run_Unarmed_Body_000");
+            //playerAnimation.Initialize(playerTexture, Vector2.Zero, 320, 320, 20, 30, Color.White, 1f, true, 5);
+            //playerAnimations.Add(playerAnimation);
+
+
             Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X,
             GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
-            player.Initialize(playerAnimation, playerPosition);
+            player.Initialize(ref playerAnimations, playerPosition, PLAYER_SCALE);
 
             // Load the enemy animation  
             enemyTexture = Content.Load<Texture2D>("Graphics/mineAnimation");
@@ -162,7 +183,7 @@ namespace Monsterfall_01
 
         protected override void Update(GameTime gameTime)
         {
-            player.Update(gameTime);
+            
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
@@ -179,6 +200,7 @@ namespace Monsterfall_01
 
             //Update the player   
             UpdatePlayer(gameTime);
+            player.Update(gameTime);
 
             // Update the enemies  
             UpdateEnemies(gameTime);
@@ -203,39 +225,81 @@ namespace Monsterfall_01
         {
             // Get Mouse State then Capture the Button type and Respond Button Press
             // TODO: fix mouse input on reaching the mouse position 
-            Vector2 mousePosition = new Vector2(currentMouseState.X, currentMouseState.Y);
-            if (currentMouseState.LeftButton == ButtonState.Pressed)
-            {
-                Vector2 posDelta = mousePosition - player.position;
-                posDelta.Normalize();
-                posDelta = posDelta * playerMoveSpeed;
-                player.position = player.position + posDelta;
-            }
+            //Vector2 mousePosition = new Vector2(currentMouseState.X, currentMouseState.Y);
+            //if (currentMouseState.LeftButton == ButtonState.Pressed)
+            //{
+            //    Vector2 posDelta = mousePosition - player.position;
+            //    posDelta.Normalize();
+            //    posDelta = posDelta * playerMoveSpeed;
+            //    player.position = player.position + posDelta;
+            //}
 
             // Get Thumbstick Controls   
             player.position.X += currentGamePadState.ThumbSticks.Left.X * playerMoveSpeed;
             player.position.Y -= currentGamePadState.ThumbSticks.Left.Y * playerMoveSpeed;
-            // Use the Keyboard / Dpad   
-            if (currentKeyboardState.IsKeyDown(Keys.Left) || currentGamePadState.DPad.Left == ButtonState.Pressed)
-            { player.position.X -= playerMoveSpeed; }
-            if (currentKeyboardState.IsKeyDown(Keys.Right) || currentGamePadState.DPad.Right == ButtonState.Pressed)
-            { player.position.X += playerMoveSpeed; }
-            if (currentKeyboardState.IsKeyDown(Keys.Up) || currentGamePadState.DPad.Up == ButtonState.Pressed)
-            { player.position.Y -= playerMoveSpeed; }
-            if (currentKeyboardState.IsKeyDown(Keys.Down) || currentGamePadState.DPad.Down == ButtonState.Pressed)
-            { player.position.Y += playerMoveSpeed; }
+            // Use the Keyboard / Dpad
+            Keys[] currentPressedKeys = currentKeyboardState.GetPressedKeys();
+            if (currentPressedKeys.Length != 0)
+            {
+                String KeyNames = "";
+                foreach(Keys key in currentPressedKeys)
+                {
+                    KeyNames += key.ToString();
+                }
+                switch (KeyNames)
+                {
+                    case "UpRight": case "RightUp":
+                        player.position.Y -= playerMoveSpeed; 
+                        player.position.X += playerMoveSpeed; 
+                        player.currentAnimation = 1;
+                        break; 
+                    case "UpLeft": case "LeftUp":
+                        player.position.Y -= playerMoveSpeed; 
+                        player.position.X -= playerMoveSpeed; 
+                        player.currentAnimation = 7;
+                        break;
+
+                    case "DownRight": case "RightDown":
+                        player.position.Y += playerMoveSpeed; 
+                        player.position.X += playerMoveSpeed; 
+                        player.currentAnimation = 3;
+                        break;
+                    case "DownLeft": case "LeftDown":
+                        player.position.Y += playerMoveSpeed; 
+                        player.position.X -= playerMoveSpeed; 
+                        player.currentAnimation = 5;
+                        break;
+                    case "Left":
+                        player.position.X -= playerMoveSpeed; player.currentAnimation = 6;
+                        break;
+                    case "Up":
+                        player.position.Y -= playerMoveSpeed; player.currentAnimation = 0;
+                        break;
+                    case "Right":
+                        player.position.X += playerMoveSpeed; player.currentAnimation = 2;
+                        break;
+                    case "Down":
+                        player.position.Y += playerMoveSpeed; player.currentAnimation = 4;
+                        break;
+                    default:
+                        break;
+                }
+
+                // This code is here to be an example for the gamePadState
+                //    if (currentKeyboardState.IsKeyDown(Keys.Left) || currentGamePadState.DPad.Left == ButtonState.Pressed)
+                //    { player.position.X -= playerMoveSpeed; player.currentAnimation = 6; }
+            }
+            else
+            {
+                player.currentAnimation = 5;
+            }
+            //Debug.WriteLine(currentKeyboardState.GetPressedKeys().Length);
 
             // Make sure that the player does not go out of bounds   
             player.position.X = MathHelper.Clamp(player.position.X, player.Width / 2,
             GraphicsDevice.Viewport.Width - player.Width / 2);
             player.position.Y = MathHelper.Clamp(player.position.Y, player.Height / 2,
             GraphicsDevice.Viewport.Height - player.Height / 2);
-
-            // Fire Laser
-            if (currentKeyboardState.IsKeyDown(Keys.Space) || currentGamePadState.Buttons.X == ButtonState.Pressed)
-            {
-                //FireLaser(gameTime);
-            }
 
             // reset score if player health goes to zero  
             if (player.Health <= 0)
