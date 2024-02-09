@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -13,38 +14,46 @@ namespace Monsterfall_01
     internal class Player
     {
         public Animation playerAnimation;
+        List<Animation> playerAnimations;
         public float movementSpeed;
+        public float scale;
        
         public Vector2 position;
         public bool isActive;
         public int Health;
 
-        public int Width
-        { get { return playerAnimation.frameWidth; } }
-        public int Height
-        { get { return playerAnimation.frameHeight; } }
+        public int currentAnimation;
 
-        public void Initialize(Animation playerAnimation, Vector2 position)
+        public int Width
+        { get { return (int)((float)playerAnimation.frameWidth * scale); } }
+        public int Height
+        { get { return (int)((float)playerAnimation.frameHeight * scale); } }
+
+        public void Initialize(ref List<Animation> playerAnimations, Vector2 position, float scale = 1.0f)
         {
             movementSpeed = 1.0f;
 
             this.position = position;
-            this.playerAnimation = playerAnimation;
+            this.playerAnimations = playerAnimations;
+
+            currentAnimation = 0;
+            playerAnimation = playerAnimations[currentAnimation];
 
             Health = 100;
+            this.scale = scale;
 
             isActive = true;
         }
         
         public void Update(GameTime gameTime)
         {
-            playerAnimation.Position = position;
-            playerAnimation.Update(gameTime);
+            playerAnimations[currentAnimation].Position = position;
+            playerAnimations[currentAnimation].Update(gameTime);
         }
         
         public void Draw(SpriteBatch spriteBatch)
         {
-            playerAnimation.Draw(spriteBatch);
+            playerAnimations[currentAnimation].Draw(spriteBatch);
         }
 
     }
