@@ -49,7 +49,7 @@ namespace Monsterfall_01
             {
                 using (StreamReader reader = new StreamReader(filename))
                 {
-                    //GameInfo.Instance = (GameInfo)new XmlSerializer(typeof(GameInfo)).Deserialize(reader.BaseStream);
+                    GameInfo.Instance = (GameInfo)new XmlSerializer(typeof(GameInfo)).Deserialize(reader.BaseStream);
                 }
             }
             catch (Exception e)

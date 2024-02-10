@@ -202,6 +202,9 @@ namespace Monsterfall_01
             Point MAP_SIZE = new Point(width, height);
             map01.Initialize(MAP_SIZE, Content, decorations);
 
+            //
+            loader.ReadXML("Content\\XML\\GameInfo.xml");
+
 
             Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X,
             GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);

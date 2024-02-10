@@ -1,4 +1,4 @@
-Width: 2
+Width: 3
 Height: 2
 Decorations
 Barrel_E1: 0,1

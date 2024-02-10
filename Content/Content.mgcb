@@ -4451,3 +4451,6 @@
 /processorParam:Quality=Best
 /build:Sound/menuMusic.mp3
 
+#begin XML/GameInfo.xml
+/copy:XML/GameInfo.xml
+

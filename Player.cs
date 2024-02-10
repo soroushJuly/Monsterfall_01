@@ -39,7 +39,7 @@ namespace Monsterfall_01
             currentAnimation = 0;
             playerAnimation = playerAnimations[currentAnimation];
 
-            Health = 100;
+            Health = GameInfo.Instance.PlayerInfo.health;
             this.scale = scale;
 
             isActive = true;
