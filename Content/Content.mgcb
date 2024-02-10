@@ -61,6 +61,18 @@
 /processorParam:TextureFormat=Color
 /build:Graphics/Env/Dungeon/barrel_E.png
 
+#begin Graphics/Env/Dungeon/barrel_E1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/Env/Dungeon/barrel_E1.png
+
 #begin Graphics/Env/Dungeon/barrel_N.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -156,6 +168,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Graphics/Env/Dungeon/barrelsStacked_E.png
+
+#begin Graphics/Env/Dungeon/barrelsStacked_E1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/Env/Dungeon/barrelsStacked_E1.png
 
 #begin Graphics/Env/Dungeon/barrelsStacked_N.png
 /importer:TextureImporter
@@ -4399,6 +4423,9 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Graphics/shipAnimation.png
+
+#begin Maps/0.txt
+/copy:Maps/0.txt
 
 #begin Sound/explosion.wav
 /importer:WavImporter

@@ -1,0 +1,8 @@
+Width: 2
+Height: 2
+Decorations
+Barrel_E1: 0,1
+Barrel_E1: 0,0
+barrelsStacked_N: 1,0
+barrelsStacked_E1: 0,1
+Decorations
