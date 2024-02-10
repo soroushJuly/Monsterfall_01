@@ -16,7 +16,7 @@ namespace Monsterfall_01
         public void Initialize(Point mapSize, ContentManager content)
         {
             this.mapSize = mapSize;
-            mapOffset = new Point(120, -100);
+            mapOffset = new Point(220, -100);
             tiles = new Tile[mapSize.X, mapSize.Y];
 
             Texture2D tileTexture = content.Load<Texture2D>("Graphics\\Env\\Dungeon\\stone_E1");
