@@ -1177,6 +1177,18 @@
 /processorParam:TextureFormat=Color
 /build:Graphics/Env/Dungeon/stoneMissingTiles_E.png
 
+#begin Graphics/Env/Dungeon/stoneMissingTiles_E1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/Env/Dungeon/stoneMissingTiles_E1.png
+
 #begin Graphics/Env/Dungeon/stoneMissingTiles_N.png
 /importer:TextureImporter
 /processor:TextureProcessor
