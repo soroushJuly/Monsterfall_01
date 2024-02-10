@@ -72,6 +72,9 @@ namespace Monsterfall_01
         //Number that holds the player score  
         int score;
 
+        // Tile map for the first level
+        Map map01;
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -95,6 +98,11 @@ namespace Monsterfall_01
             enemySpawnTime = TimeSpan.FromSeconds(1.0f);
             // Initialize our random number generator  
             random = new Random();
+
+            // Initialize map
+            map01 = new Map();
+            Point MAP_SIZE = new Point(12, 8);
+            map01.Initialize(MAP_SIZE, Content);
 
             // init our laser
             //laserBeams = new List<Laser>();
@@ -463,6 +471,9 @@ namespace Monsterfall_01
             // Draw the moving background  
             bgLayer1.Draw(_spriteBatch);
             bgLayer2.Draw(_spriteBatch);
+
+            // Draw map
+            map01.Draw(_spriteBatch);
 
             // Draw the Player  
             player.Draw(_spriteBatch);
