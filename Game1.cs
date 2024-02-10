@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using Monsterfall_01;
+using System.IO;
 
 namespace Monsterfall_01
 {
@@ -75,6 +76,7 @@ namespace Monsterfall_01
         // Tile map for the first level
         Map map01;
 
+        private Loader loader;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -98,11 +100,6 @@ namespace Monsterfall_01
             enemySpawnTime = TimeSpan.FromSeconds(1.0f);
             // Initialize our random number generator  
             random = new Random();
-
-            // Initialize map
-            map01 = new Map();
-            Point MAP_SIZE = new Point(12, 8);
-            map01.Initialize(MAP_SIZE, Content);
 
             // init our laser
             //laserBeams = new List<Laser>();
@@ -152,6 +149,58 @@ namespace Monsterfall_01
             //Texture2D playerTexture = Content.Load<Texture2D>("Graphics\\HeroFemale\\Run_Unarmed\\Run_Unarmed_Body_000");
             //playerAnimation.Initialize(playerTexture, Vector2.Zero, 320, 320, 20, 30, Color.White, 1f, true, 5);
             //playerAnimations.Add(playerAnimation);
+
+            // Load level details
+            List<string> lines = new List<string>();
+            List<Decoration> decorations = new List<Decoration>();
+            int levelIndex = 0;
+            string levelPath = string.Format("Content\\Maps\\{0}.txt", levelIndex);
+            int width = 0;
+            int height = 0;
+            using (Stream fileStream = TitleContainer.OpenStream(levelPath))
+            {
+                bool isDecoraitons = false;
+                loader = new Loader(fileStream);
+                lines = loader.ReadLinesFromTextFile();
+                foreach (string line in lines)
+                {
+                    if (isDecoraitons)
+                    {
+                        if(line == "Decorations")
+                        {
+                            break;
+                        }
+                        string[] widthLine = line.Split(":");
+                        String title = widthLine[0];
+                        String point = widthLine[1];
+                        string[] coords = point.Split(",");
+                        Point location = new Point(int.Parse(coords[0]), int.Parse(coords[1]));
+                        //Point location = new Point(coords[0],coords[1]);
+                        decorations.Add(new Decoration(location, title));
+                        continue;
+                    }
+                    if (line.Contains("Width:"))
+                    {
+                        string[] widthLine = line.Split(":");
+                        width = int.Parse(widthLine[1]);
+                    }
+                    if (line.Contains("Height:"))
+                    {
+                        string[] heightLine = line.Split(":");
+                        height = int.Parse(heightLine[1]);
+                    }
+                    if (line.Contains("Decorations"))
+                    {
+                        isDecoraitons = true;
+                    }
+                }
+            }
+
+
+            // Initialize map
+            map01 = new Map();
+            Point MAP_SIZE = new Point(width, height);
+            map01.Initialize(MAP_SIZE, Content, decorations);
 
 
             Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X,
