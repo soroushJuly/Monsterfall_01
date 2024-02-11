@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using Monsterfall_01;
+using Monsterfall_01.Input;
 using SharpDX.Direct2D1.Effects;
 using SharpDX.Direct3D9;
 using SharpDX.MediaFoundation;
@@ -47,13 +48,45 @@ namespace Monsterfall_01
         
         public void Update(GameTime gameTime)
         {
+            UpdateAnimation(gameTime);
+        }
+        private void UpdateAnimation(GameTime gameTime)
+        { 
             playerAnimations[currentAnimation].Position = position;
             playerAnimations[currentAnimation].Update(gameTime);
         }
-        
         public void Draw(SpriteBatch spriteBatch)
         {
             playerAnimations[currentAnimation].Draw(spriteBatch);
+        }
+
+        public void moveNorth(eButtonState buttonState, Vector2 amount)
+        {
+            if (buttonState == eButtonState.DOWN)
+            {
+                this.position.Y -= movementSpeed;
+            }
+        }
+        public void moveEast(eButtonState buttonState, Vector2 amount)
+        {
+            if (buttonState == eButtonState.DOWN)
+            {
+                this.position.X += movementSpeed;
+            }
+        }
+        public void moveSouth(eButtonState buttonState, Vector2 amount)
+        {
+            if (buttonState == eButtonState.DOWN)
+            {
+                this.position.Y += movementSpeed;
+            }
+        }
+        public void moveWest(eButtonState buttonState, Vector2 amount)
+        {
+            if (buttonState == eButtonState.DOWN)
+            {
+                this.position.X -= movementSpeed;
+            }
         }
 
     }
