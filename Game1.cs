@@ -73,6 +73,9 @@ namespace Monsterfall_01
         // Input manager
         InputCommandManager inputCommandManager;
 
+        // Translation of the view when player reaches the boundries
+        Vector3 viewTranslate;
+
         private Loader loader;
         public Game1()
         {
@@ -114,6 +117,8 @@ namespace Monsterfall_01
 
             //Set player's score to zero
             score = 0;
+
+            viewTranslate = Vector3.Zero;
 
             InitializeKeyBindings();
 
@@ -269,7 +274,7 @@ namespace Monsterfall_01
             currentMouseState = Mouse.GetState();
 
             //Update the player   
-            //UpdatePlayer(gameTime);
+            UpdatePlayer(gameTime);
             player.Update(gameTime);
 
             // Update the collisions   
@@ -284,43 +289,45 @@ namespace Monsterfall_01
         // Getting and reacting to the inputs for the player
         private void UpdatePlayer(GameTime gameTime)
         {
-            // Get Thumbstick Controls   
-            player.position.X += currentGamePadState.ThumbSticks.Left.X * playerMoveSpeed;
-            player.position.Y -= currentGamePadState.ThumbSticks.Left.Y * playerMoveSpeed;
             // Use the Keyboard / Dpad
-            Keys[] currentPressedKeys = currentKeyboardState.GetPressedKeys();
-            if (currentPressedKeys.Length != 0)
-            {
-                String KeyNames = "";
-                foreach(Keys key in currentPressedKeys)
-                {
-                    KeyNames += key.ToString();
-                }
-                switch (KeyNames)
-                {
-                    case "UpRight": case "RightUp":
-                        player.position.Y -= playerMoveSpeed; 
-                        player.position.X += playerMoveSpeed; 
-                        player.currentAnimation = 1;
-                        break; 
-                    default:
-                        break;
-                }
-                // This code is here to be an example for the gamePadState
-                //    if (currentKeyboardState.IsKeyDown(Keys.Left) || currentGamePadState.DPad.Left == ButtonState.Pressed)
-                //    { player.position.X -= playerMoveSpeed; player.currentAnimation = 6; }
-            }
-            else
-            {
-                player.currentAnimation = 5;
-            }
+            // Legacy code for getting keys on keyboard
+            //Keys[] currentPressedKeys = currentKeyboardState.GetPressedKeys();
+            //if (currentPressedKeys.Length != 0)
+            //{
+            //    String KeyNames = "";
+            //    foreach(Keys key in currentPressedKeys)
+            //    {
+            //        KeyNames += key.ToString();
+            //    }
+            //    switch (KeyNames)
+            //    {
+            //        default:
+            //            break;
+            //    }
+            //}
             //Debug.WriteLine(currentKeyboardState.GetPressedKeys().Length);
 
-            // Make sure that the player does not go out of bounds   
-            player.position.X = MathHelper.Clamp(player.position.X, player.Width / 2,
-            GraphicsDevice.Viewport.Width - player.Width / 2);
-            player.position.Y = MathHelper.Clamp(player.position.Y, player.Height / 2,
-            GraphicsDevice.Viewport.Height - player.Height / 2);
+            // Make sure that the player does not go out of bounds
+            if (player.position.X < -viewTranslate.X)
+            {
+                viewTranslate += new Vector3(player.movementSpeed * 100, 0, 0);
+            }
+            if (player.position.X > (GraphicsDevice.Viewport.Width - viewTranslate.X))
+            {
+                viewTranslate -= new Vector3(player.movementSpeed * 100, 0, 0);
+            }
+            // 120 will be starting position later
+            // which can be data driven
+            if (player.position.Y < -viewTranslate.Y + 120)
+            {
+                viewTranslate += new Vector3(0, player.movementSpeed * 100, 0);
+            }
+            if (player.position.Y > (GraphicsDevice.Viewport.Height - viewTranslate.Y - 80))
+            {
+                viewTranslate -= new Vector3(0, player.movementSpeed * 100, 0);
+            }
+            //player.position.X = MathHelper.Clamp(player.position.X, player.Width / 2,
+            //GraphicsDevice.Viewport.Width - player.Width / 2)
 
             // reset score if player health goes to zero  
             if (player.Health <= 0)
@@ -336,14 +343,16 @@ namespace Monsterfall_01
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            // Start drawing  
-            _spriteBatch.Begin();
+            // Start drawing 
+            // Transform Matrix to move in around the map
+            _spriteBatch.Begin(SpriteSortMode.Deferred,null, null, null, null, null,
+                Matrix.CreateTranslation(viewTranslate));
 
             //Draw the Main Background Texture  
-            _spriteBatch.Draw(mainBackground, Vector2.Zero, Color.White);
+            _spriteBatch.Draw(mainBackground, Vector2.Zero + new Vector2(-viewTranslate.X,-viewTranslate.Y), Color.White);
             // Draw the moving background  
-            bgLayer1.Draw(_spriteBatch);
-            bgLayer2.Draw(_spriteBatch);
+            bgLayer1.Draw(_spriteBatch, new Vector2(-viewTranslate.X, -viewTranslate.Y));
+            bgLayer2.Draw(_spriteBatch, new Vector2(-viewTranslate.X, -viewTranslate.Y));
 
             // Draw map
             map01.Draw(_spriteBatch);
@@ -351,12 +360,17 @@ namespace Monsterfall_01
             // Draw the Player  
             player.Draw(_spriteBatch);
 
+            int fixedYPosition = GraphicsDevice.Viewport.TitleSafeArea.Y - (int)viewTranslate.Y;
+            int fixedXPosition = GraphicsDevice.Viewport.TitleSafeArea.X - (int)viewTranslate.X;
+
             // Draw the score  
-            _spriteBatch.DrawString(font, "score: " + score, new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X,
-            GraphicsDevice.Viewport.TitleSafeArea.Y), Color.White);
+            _spriteBatch.DrawString(font, "score: " + score, 
+                new Vector2(fixedXPosition, fixedYPosition), Color.White);
             // Draw the player health  
-            _spriteBatch.DrawString(font, "health: " + player.Health, new
-            Vector2(GraphicsDevice.Viewport.TitleSafeArea.X, GraphicsDevice.Viewport.TitleSafeArea.Y + 30), Color.White);
+            _spriteBatch.DrawString(font, "health: " + player.Health, 
+                new Vector2(fixedXPosition, fixedYPosition + 30), Color.White);
+            _spriteBatch.DrawString(font, "Anima: " + player.position.Y,
+                new Vector2(fixedXPosition, fixedYPosition + 180), Color.White);
 
 
             // Stop drawing  

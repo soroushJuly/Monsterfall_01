@@ -80,11 +80,11 @@ namespace Monsterfall_01
                 nextTexture = 0;
             positions[index].X = positions[nextTexture].X - texture.Width + 2;
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Vector2 offset)
         {
             for (int i = 0; i < positions.Length; i++)
             {
-                Rectangle rectBg = new Rectangle((int)positions[i].X, (int)positions[i].Y, bgWidth, bgHeight);
+                Rectangle rectBg = new Rectangle((int)(positions[i].X + offset.X), (int)(positions[i].Y + offset.Y), bgWidth, bgHeight);
                 spriteBatch.Draw(texture, rectBg, Color.White);
             }
         }
