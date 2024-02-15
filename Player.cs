@@ -14,6 +14,8 @@ namespace Monsterfall_01
 {
     internal class Player
     {
+        const float MOVEMENT_RESET_TIME = 0.1F;
+
         public Animation playerAnimation;
         List<Animation> playerAnimations;
         public float movementSpeed;
@@ -22,6 +24,11 @@ namespace Monsterfall_01
         public Vector2 position;
         public bool isActive;
         public int Health;
+
+        private float xtimer;
+        private float ytimer;
+
+        private List<String> directions;
 
         public int currentAnimation;
 
@@ -32,12 +39,18 @@ namespace Monsterfall_01
 
         public void Initialize(ref List<Animation> playerAnimations, Vector2 position, float scale = 1.0f)
         {
-            movementSpeed = 1.0f;
+            movementSpeed = 4.0f;
 
             this.position = position;
             this.playerAnimations = playerAnimations;
+            this.directions = new List<String>();
+            String direction = "";
+            directions.Add(direction);
+            directions.Add(direction);
 
             currentAnimation = 0;
+            this.xtimer = 0;
+            this.ytimer = 0;
             playerAnimation = playerAnimations[currentAnimation];
 
             Health = GameInfo.Instance.PlayerInfo.health;
@@ -48,15 +61,50 @@ namespace Monsterfall_01
         
         public void Update(GameTime gameTime)
         {
+            xtimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            ytimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             UpdateAnimation(gameTime);
         }
         private void UpdateAnimation(GameTime gameTime)
-        { 
+        {
+            // Switch current animation based on latest direction
+            switch (getDirection())
+            {
+                case "North":
+                    currentAnimation = 0;
+                    break;
+                case "EastNorth":
+                    currentAnimation = 1;
+                    break;
+                case "East":
+                    currentAnimation = 2;
+                    break;
+                case "EastSouth":
+                    currentAnimation = 3;
+                    break;
+                case "South":
+                    currentAnimation = 4;
+                    break;
+                case "WestSouth":
+                    currentAnimation = 5;
+                    break;
+                case "West":
+                    currentAnimation = 6;
+                    break;
+                case "WestNorth":
+                    currentAnimation = 7;
+                    break;
+                default:
+                    currentAnimation = 8;
+                    break;
+            }
+
             playerAnimations[currentAnimation].Position = position;
             playerAnimations[currentAnimation].Update(gameTime);
         }
         public void Draw(SpriteBatch spriteBatch)
         {
+            checkTimers();
             playerAnimations[currentAnimation].Draw(spriteBatch);
         }
 
@@ -64,6 +112,7 @@ namespace Monsterfall_01
         {
             if (buttonState == eButtonState.DOWN)
             {
+                setYTimer("North");
                 this.position.Y -= movementSpeed;
             }
         }
@@ -71,6 +120,7 @@ namespace Monsterfall_01
         {
             if (buttonState == eButtonState.DOWN)
             {
+                setXTimer("East");
                 this.position.X += movementSpeed;
             }
         }
@@ -78,6 +128,7 @@ namespace Monsterfall_01
         {
             if (buttonState == eButtonState.DOWN)
             {
+                setYTimer("South");
                 this.position.Y += movementSpeed;
             }
         }
@@ -85,9 +136,31 @@ namespace Monsterfall_01
         {
             if (buttonState == eButtonState.DOWN)
             {
+                setXTimer("West");
                 this.position.X -= movementSpeed;
             }
         }
+        private void checkTimers()
+        {
+            if (xtimer < 0)
+                directions[0] = "";
+            if (ytimer < 0)
+                directions[1] = "";
+        }
 
+        private void setXTimer(String direction)
+        {
+            directions[0] = direction;
+            xtimer = MOVEMENT_RESET_TIME;
+        }
+        private void setYTimer(String direction)
+        {
+            directions[1] = direction;
+            ytimer = MOVEMENT_RESET_TIME;
+        }
+        public String getDirection()
+        {
+            return directions[0] + directions[1]; 
+        }
     }
 }
