@@ -177,10 +177,7 @@ namespace Monsterfall_01
             Enemy enemy = obj as Enemy;
             if (enemy != null)
             {
-                Vector2 collisionNormal = Vector2.Normalize(enemy.Position - position);
-                //position -= collisionNormal * 2f;
-                //    //AddPosition(-collisionNormal * 200.0f);
-                //    //CollisionColor = Color.Red;
+                Health -= 10;
             }
         }
     }

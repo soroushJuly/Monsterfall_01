@@ -47,11 +47,6 @@ namespace Monsterfall_01
         TimeSpan laserSpawnTime;
         TimeSpan previousLaserSpawnTime;
 
-        // Collections of explosions  
-        //List<Explosion> explosions;
-        //Texture to hold explosion animation.  
-        Texture2D explosionTexture;
-
         //Our Laser Sound and Instance  
         private SoundEffect laserSound;
         private SoundEffectInstance laserSoundInstance;
@@ -286,9 +281,6 @@ namespace Monsterfall_01
                 enemy.Update(gameTime);
             }
 
-            // Update the collisions   
-            UpdateCollision();
-
             // Update the parallaxing background    
             bgLayer1.Update(gameTime);
 
@@ -307,8 +299,6 @@ namespace Monsterfall_01
                 score = 0;
             }
         }
-        private void UpdateCollision() { }
-
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
