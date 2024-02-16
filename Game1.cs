@@ -178,11 +178,6 @@ namespace Monsterfall_01
                 monsterTextures.Add(monsterTexture);                
             }
 
-            //Animation playerAnimation = new Animation();
-            //Texture2D playerTexture = Content.Load<Texture2D>("Graphics\\HeroFemale\\Run_Unarmed\\Run_Unarmed_Body_000");
-            //playerAnimation.Initialize(playerTexture, Vector2.Zero, 320, 320, 20, 30, Color.White, 1f, true, 5);
-            //playerAnimations.Add(playerAnimation);
-
             // Load level details
             List<string> lines = new List<string>();
             List<Decoration> decorations = new List<Decoration>();
@@ -245,6 +240,7 @@ namespace Monsterfall_01
             for (int i = 0; i < enemies.Count; i++)
             {
                 List<Animation> monsterIceAnimations = new List<Animation>();
+                // Each texture is an animation
                 foreach (Texture2D texture in monsterTextures)
                 {
                     Animation monsterIceAnimation = new Animation();
@@ -323,45 +319,6 @@ namespace Monsterfall_01
         // Getting and reacting to the inputs for the player
         private void UpdatePlayer(GameTime gameTime)
         {
-            // Use the Keyboard / Dpad
-            // Legacy code for getting keys on keyboard
-            //Keys[] currentPressedKeys = currentKeyboardState.GetPressedKeys();
-            //if (currentPressedKeys.Length != 0)
-            //{
-            //    String KeyNames = "";
-            //    foreach(Keys key in currentPressedKeys)
-            //    {
-            //        KeyNames += key.ToString();
-            //    }
-            //    switch (KeyNames)
-            //    {
-            //        default:
-            //            break;
-            //    }
-            //}
-            //Debug.WriteLine(currentKeyboardState.GetPressedKeys().Length);
-
-            // Lagecy code for moving in the scene
-            // Make sure that the player does not go out of bounds
-            //if (player.position.X < -viewTranslate.X)
-            //{
-            //    viewTranslate += new Vector3(player.movementSpeed * 100, 0, 0);
-            //}
-            //if (player.position.X > (GraphicsDevice.Viewport.Width - viewTranslate.X))
-            //{
-            //    viewTranslate -= new Vector3(player.movementSpeed * 100, 0, 0);
-            //}
-            // 120 will be starting position later
-            // which can be data driven
-            //if (player.position.Y < -viewTranslate.Y + 120)
-            //{
-            //    viewTranslate += new Vector3(0, player.movementSpeed * 100, 0);
-            //}
-            //if (player.position.Y > (GraphicsDevice.Viewport.Height - viewTranslate.Y - 80))
-            //{
-            //    viewTranslate -= new Vector3(0, player.movementSpeed * 100, 0);
-            //}
-
             viewTranslate = new Vector3(GraphicsDevice.Viewport.Width / 2 - player.position.X,
                 GraphicsDevice.Viewport.Height / 2 - player.position.Y, 0);
 
