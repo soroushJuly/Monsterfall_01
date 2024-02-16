@@ -5,11 +5,6 @@ using Microsoft.Xna.Framework.Graphics;
 
 using Monsterfall_01;
 using Monsterfall_01.Input;
-using SharpDX.Direct2D1.Effects;
-using SharpDX.Direct3D9;
-using SharpDX.MediaFoundation;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
-
 namespace Monsterfall_01
 {
     internal class Player : Collidable
@@ -61,7 +56,8 @@ namespace Monsterfall_01
         
         public void Update(GameTime gameTime)
         {
-            this.box = new Rectangle((int)position.X, (int)position.Y, Width, Height);
+            // Draw the box to screen for debugging purposes
+            this.box = new Rectangle((int)position.X, (int)position.Y, Width / 2, Height);
             xtimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             ytimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             UpdateAnimation(gameTime);
