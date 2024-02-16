@@ -40,14 +40,14 @@ namespace Monsterfall_01
             // Set the amount of damage the enemy can do  
             Damage = 10;
             // Set how fast the enemy moves  
-            enemyMoveSpeed = 6f;
+            enemyMoveSpeed = 1f;
             // Set the score value of the enemy  
             Value = 100;
         }
         public void Update(GameTime gameTime)
         {
             // The enemy always moves to the left so decrement it's x position  
-            //Position.X -= enemyMoveSpeed;
+            Position.X -= enemyMoveSpeed;
             // Update the position of the Animation  
             enemyAnimations[0].Position = Position;
             // Update Animation  

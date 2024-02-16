@@ -19,7 +19,8 @@ namespace Monsterfall_01
         //Represents the player  
         Player player;
         // One sample enemy
-        Enemy enemy;
+        //Enemy enemy;
+        List<Enemy> enemies;
 
         // Keyboard states used to determine key presses   
         KeyboardState currentKeyboardState;
@@ -30,8 +31,6 @@ namespace Monsterfall_01
         //Mouse states used to track Mouse button press   
         MouseState currentMouseState;
         MouseState previousMouseState;
-        // A movement speed for the layer  
-        float playerMoveSpeed;
 
         // Image used to display the static background   
         Texture2D mainBackground;
@@ -93,9 +92,10 @@ namespace Monsterfall_01
             // Initialize the player class
             player = new Player();
 
-            enemy = new Enemy();
-            // Set a constant player move speed
-            playerMoveSpeed = 3.0f;
+            enemies = new List<Enemy>();
+            enemies.Add(new Enemy());
+            enemies.Add(new Enemy());
+            enemies.Add(new Enemy());
 
             // Set the time keepers to zero  
             previousSpawnTime = TimeSpan.Zero;
@@ -142,12 +142,7 @@ namespace Monsterfall_01
             for (int i = 0; i < 8; i++)
             {
                 Animation playerAnimation = new Animation();
-                int degree = i * 45;
-                String degreePath;
-                if(degree / 10 < 1) { degreePath = "000"; }
-                else if(degree / 100 < 1) { degreePath = "0" + degree.ToString(); }
-                else { degreePath = degree.ToString(); }
-                String path = "Graphics\\HeroFemale\\Run_Unarmed\\Run_Unarmed_Body_" + degreePath;
+                String path = createTexturePath("Graphics\\HeroFemale\\Run_Unarmed\\Run_Unarmed_Body_", i);
 
                 Texture2D playerTexture = Content.Load<Texture2D>(path);
                 playerAnimation.Initialize(playerTexture, Vector2.Zero, 320, 320, 20, 17, Color.White, PLAYER_SCALE, true, 5);
@@ -157,48 +152,27 @@ namespace Monsterfall_01
             for (int i = 0; i < 8; i++)
             {
                 Animation playerAnimation = new Animation();
-                int degree = i * 45;
-                String degreePath;
-                if (degree / 10 < 1) { degreePath = "000"; }
-                else if (degree / 100 < 1) { degreePath = "0" + degree.ToString(); }
-                else { degreePath = degree.ToString(); }
-                String path = "Graphics\\HeroFemale\\Idle_Unarmed\\Idle_Unarmed_Body_" + degreePath;
+                String path = createTexturePath("Graphics\\HeroFemale\\Idle_Unarmed\\Idle_Unarmed_Body_", i);
 
                 Texture2D playerTexture = Content.Load<Texture2D>(path);
                 playerAnimation.Initialize(playerTexture, Vector2.Zero, 320, 320, 16, 25, Color.White, PLAYER_SCALE, true, 4);
                 playerAnimations.Add(playerAnimation);
-            }
+            }    
             // get enemy textures
-            List<Animation> monsterIceAnimations = new List<Animation>();
             const float ENEMY_SCALE = 1.2f;
+            List<Texture2D> monsterTextures = new List<Texture2D>();
             for (int i = 0; i < 8; i++)
             {
-                Animation monsterIceAnimation = new Animation();
-                int degree = i * 45;
-                String degreePath;
-                if (degree / 10 < 1) { degreePath = "000"; }
-                else if (degree / 100 < 1) { degreePath = "0" + degree.ToString(); }
-                else { degreePath = degree.ToString(); }
-                String path = "Graphics\\MonsterIce\\Run\\Run Body " + degreePath;
-
+                String path = createTexturePath("Graphics\\MonsterIce\\Run\\Run Body ", i);
                 Texture2D monsterTexture = Content.Load<Texture2D>(path);
-                monsterIceAnimation.Initialize(monsterTexture, Vector2.Zero, 256, 256, 20, 17, Color.White, ENEMY_SCALE, true, 4);
-                monsterIceAnimations.Add(monsterIceAnimation);
-
+                monsterTextures.Add(monsterTexture);
             }
             for (int i = 0; i < 8; i++)
             {
                 Animation monsterIceAnimation = new Animation();
-                int degree = i * 45;
-                String degreePath;
-                if (degree / 10 < 1) { degreePath = "000"; }
-                else if (degree / 100 < 1) { degreePath = "0" + degree.ToString(); }
-                else { degreePath = degree.ToString(); }
-                String path = "Graphics\\MonsterIce\\Idle\\Idle Body " + degreePath;
-
+                String path = createTexturePath("Graphics\\MonsterIce\\Idle\\Idle Body ", i);
                 Texture2D monsterTexture = Content.Load<Texture2D>(path);
-                monsterIceAnimation.Initialize(monsterTexture, Vector2.Zero, 256, 256, 20, 17, Color.White, PLAYER_SCALE, true, 4);
-                monsterIceAnimations.Add(monsterIceAnimation);
+                monsterTextures.Add(monsterTexture);                
             }
 
             //Animation playerAnimation = new Animation();
@@ -261,12 +235,23 @@ namespace Monsterfall_01
             //
             loader.ReadXML("Content\\XML\\GameInfo.xml");
 
-
             Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X,
-            GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
+                GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
             player.Initialize(ref playerAnimations, playerPosition, PLAYER_SCALE);
 
-            enemy.Initialize(ref monsterIceAnimations, playerPosition);
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                List<Animation> monsterIceAnimations = new List<Animation>();
+                foreach (Texture2D texture in monsterTextures)
+                {
+                    Animation monsterIceAnimation = new Animation();
+                    monsterIceAnimation.Initialize(texture, playerPosition + new Vector2(i * 100, i),
+                        256, 256, 20, 17, Color.White, ENEMY_SCALE, true, 4);
+                    monsterIceAnimations.Add(monsterIceAnimation);
+                }
+
+                enemies[i].Initialize(ref monsterIceAnimations, playerPosition + new Vector2(i * 100, i));
+            }
 
             // Load the parallaxing background   
             bgLayer1.Initialize(Content, "Graphics/bgLayer1", GraphicsDevice.Viewport.Width,
@@ -314,8 +299,11 @@ namespace Monsterfall_01
             //Update the player   
             UpdatePlayer(gameTime);
             player.Update(gameTime);
-
-            enemy.Update(gameTime);
+            
+            foreach(Enemy enemy in enemies)
+            {
+                enemy.Update(gameTime);
+            }
 
             // Update the collisions   
             UpdateCollision();
@@ -402,7 +390,11 @@ namespace Monsterfall_01
             // Draw the Player  
             player.Draw(_spriteBatch);
 
-            enemy.Draw(_spriteBatch);
+            //enemy.Draw(_spriteBatch);
+            foreach(Enemy enemy in enemies)
+            {
+                enemy.Draw(_spriteBatch);
+            }
 
             int fixedYPosition = GraphicsDevice.Viewport.TitleSafeArea.Y - (int)viewTranslate.Y;
             int fixedXPosition = GraphicsDevice.Viewport.TitleSafeArea.X - (int)viewTranslate.X;
@@ -433,6 +425,18 @@ namespace Monsterfall_01
             inputCommandManager.AddKeyboardBinding(Keys.D, player.moveEast);
             inputCommandManager.AddKeyboardBinding(Keys.A, player.moveWest);
             inputCommandManager.AddKeyboardBinding(Keys.S, player.moveSouth);
+        }
+
+        private String createTexturePath(String basePath, int i)
+        {
+            int degree = i * 45;
+            String degreePath;
+            if (degree / 10 < 1) { degreePath = "000"; }
+            else if (degree / 100 < 1) { degreePath = "0" + degree.ToString(); }
+            else { degreePath = degree.ToString(); }
+            String path = basePath + degreePath;
+            return path;
+
         }
     }
 }
