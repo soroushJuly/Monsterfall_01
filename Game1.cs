@@ -25,9 +25,7 @@ namespace Monsterfall_01
         // Keyboard states used to determine key presses   
         KeyboardState currentKeyboardState;
         KeyboardState previousKeyboardState;
-        // Gamepad states used to determine button presses   
-        GamePadState currentGamePadState;
-        GamePadState previousGamePadState;
+
         //Mouse states used to track Mouse button press   
         MouseState currentMouseState;
         MouseState previousMouseState;
@@ -36,9 +34,6 @@ namespace Monsterfall_01
         Texture2D mainBackground;
         // Parallaxing Layers   
         ParallaxingBackground bgLayer1;
-        ParallaxingBackground bgLayer2;
-        ParallaxingBackground bgLayer3;
-        ParallaxingBackground bgLayer4;
 
         //The rate at which the enemies appear  
         TimeSpan enemySpawnTime;
@@ -115,9 +110,6 @@ namespace Monsterfall_01
 
             //Background  
             bgLayer1 = new ParallaxingBackground();
-            bgLayer2 = new ParallaxingBackground();
-            bgLayer3 = new ParallaxingBackground();
-            bgLayer4 = new ParallaxingBackground();
 
             inputCommandManager = new InputCommandManager();
 
@@ -255,12 +247,7 @@ namespace Monsterfall_01
             // Load the parallaxing background   
             bgLayer1.Initialize(Content, "Graphics/bkgd_1", GraphicsDevice.Viewport.Width,
                 GraphicsDevice.Viewport.Height, 1);
-            //bgLayer2.Initialize(Content, "Graphics/bkgd_2", GraphicsDevice.Viewport.Width,
-            //    GraphicsDevice.Viewport.Height, -1);
-            //bgLayer3.Initialize(Content, "Graphics/bkgd_3", GraphicsDevice.Viewport.Width,
-            //    GraphicsDevice.Viewport.Height, -1);
-            //bgLayer4.Initialize(Content, "Graphics/spr_stars02", GraphicsDevice.Viewport.Width,
-            //    GraphicsDevice.Viewport.Height, 2);
+
             mainBackground = Content.Load<Texture2D>("Graphics/bkgd_0");
 
             // Load the laserSound Effect and create the effect Instance  
@@ -285,15 +272,12 @@ namespace Monsterfall_01
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
             // Save the previous state of the keyboard, game pad, and mouse so we can determine single key/button presses  
-            previousGamePadState = currentGamePadState;
             previousKeyboardState = currentKeyboardState;
             previousMouseState = currentMouseState;
 
             // Read the current state of the keyboard, gamepad and mouse and store it  
             currentKeyboardState = Keyboard.GetState();
-            currentGamePadState = GamePad.GetState(PlayerIndex.One);
             currentMouseState = Mouse.GetState();
 
             //Update the player   
@@ -310,9 +294,6 @@ namespace Monsterfall_01
 
             // Update the parallaxing background    
             bgLayer1.Update(gameTime);
-            //bgLayer2.Update(gameTime);
-            //bgLayer3.Update(gameTime);
-            //bgLayer4.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -343,9 +324,6 @@ namespace Monsterfall_01
             _spriteBatch.Draw(mainBackground, Vector2.Zero + new Vector2(-viewTranslate.X, -viewTranslate.Y), Color.White);
             // Draw the moving background  
             bgLayer1.Draw(_spriteBatch, new Vector2(-viewTranslate.X, -viewTranslate.Y));
-            //bgLayer2.Draw(_spriteBatch, new Vector2(-viewTranslate.X, -viewTranslate.Y));
-            //bgLayer3.Draw(_spriteBatch, new Vector2(-viewTranslate.X, -viewTranslate.Y));
-            //bgLayer4.Draw(_spriteBatch, new Vector2(-viewTranslate.X, -viewTranslate.Y));
 
             // Draw map
             map01.Draw(_spriteBatch);
