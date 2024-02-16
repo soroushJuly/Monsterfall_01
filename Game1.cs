@@ -37,6 +37,8 @@ namespace Monsterfall_01
         // Parallaxing Layers   
         ParallaxingBackground bgLayer1;
         ParallaxingBackground bgLayer2;
+        ParallaxingBackground bgLayer3;
+        ParallaxingBackground bgLayer4;
 
         //The rate at which the enemies appear  
         TimeSpan enemySpawnTime;
@@ -114,6 +116,8 @@ namespace Monsterfall_01
             //Background  
             bgLayer1 = new ParallaxingBackground();
             bgLayer2 = new ParallaxingBackground();
+            bgLayer3 = new ParallaxingBackground();
+            bgLayer4 = new ParallaxingBackground();
 
             inputCommandManager = new InputCommandManager();
 
@@ -253,14 +257,15 @@ namespace Monsterfall_01
             }
 
             // Load the parallaxing background   
-            bgLayer1.Initialize(Content, "Graphics/bgLayer1", GraphicsDevice.Viewport.Width,
-                GraphicsDevice.Viewport.Height, -1);
-            bgLayer2.Initialize(Content, "Graphics/bgLayer2", GraphicsDevice.Viewport.Width,
-                GraphicsDevice.Viewport.Height, -2);
-            mainBackground = Content.Load<Texture2D>("Graphics/mainbackground");
-
-            // load the explosion sheet
-            explosionTexture = Content.Load<Texture2D>("Graphics\\explosion");
+            bgLayer1.Initialize(Content, "Graphics/bkgd_1", GraphicsDevice.Viewport.Width,
+                GraphicsDevice.Viewport.Height, 1);
+            //bgLayer2.Initialize(Content, "Graphics/bkgd_2", GraphicsDevice.Viewport.Width,
+            //    GraphicsDevice.Viewport.Height, -1);
+            //bgLayer3.Initialize(Content, "Graphics/bkgd_3", GraphicsDevice.Viewport.Width,
+            //    GraphicsDevice.Viewport.Height, -1);
+            //bgLayer4.Initialize(Content, "Graphics/spr_stars02", GraphicsDevice.Viewport.Width,
+            //    GraphicsDevice.Viewport.Height, 2);
+            mainBackground = Content.Load<Texture2D>("Graphics/bkgd_0");
 
             // Load the laserSound Effect and create the effect Instance  
             laserSound = Content.Load<SoundEffect>("Sound\\laserFire");
@@ -309,7 +314,9 @@ namespace Monsterfall_01
 
             // Update the parallaxing background    
             bgLayer1.Update(gameTime);
-            bgLayer2.Update(gameTime);
+            //bgLayer2.Update(gameTime);
+            //bgLayer3.Update(gameTime);
+            //bgLayer4.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -376,10 +383,12 @@ namespace Monsterfall_01
                 Matrix.CreateTranslation(viewTranslate));
 
             //Draw the Main Background Texture  
-            _spriteBatch.Draw(mainBackground, Vector2.Zero + new Vector2(-viewTranslate.X,-viewTranslate.Y), Color.White);
+            _spriteBatch.Draw(mainBackground, Vector2.Zero + new Vector2(-viewTranslate.X, -viewTranslate.Y), Color.White);
             // Draw the moving background  
             bgLayer1.Draw(_spriteBatch, new Vector2(-viewTranslate.X, -viewTranslate.Y));
-            bgLayer2.Draw(_spriteBatch, new Vector2(-viewTranslate.X, -viewTranslate.Y));
+            //bgLayer2.Draw(_spriteBatch, new Vector2(-viewTranslate.X, -viewTranslate.Y));
+            //bgLayer3.Draw(_spriteBatch, new Vector2(-viewTranslate.X, -viewTranslate.Y));
+            //bgLayer4.Draw(_spriteBatch, new Vector2(-viewTranslate.X, -viewTranslate.Y));
 
             // Draw map
             map01.Draw(_spriteBatch);
