@@ -307,27 +307,29 @@ namespace Monsterfall_01
             //}
             //Debug.WriteLine(currentKeyboardState.GetPressedKeys().Length);
 
+            // Lagecy code for moving in the scene
             // Make sure that the player does not go out of bounds
-            if (player.position.X < -viewTranslate.X)
-            {
-                viewTranslate += new Vector3(player.movementSpeed * 100, 0, 0);
-            }
-            if (player.position.X > (GraphicsDevice.Viewport.Width - viewTranslate.X))
-            {
-                viewTranslate -= new Vector3(player.movementSpeed * 100, 0, 0);
-            }
+            //if (player.position.X < -viewTranslate.X)
+            //{
+            //    viewTranslate += new Vector3(player.movementSpeed * 100, 0, 0);
+            //}
+            //if (player.position.X > (GraphicsDevice.Viewport.Width - viewTranslate.X))
+            //{
+            //    viewTranslate -= new Vector3(player.movementSpeed * 100, 0, 0);
+            //}
             // 120 will be starting position later
             // which can be data driven
-            if (player.position.Y < -viewTranslate.Y + 120)
-            {
-                viewTranslate += new Vector3(0, player.movementSpeed * 100, 0);
-            }
-            if (player.position.Y > (GraphicsDevice.Viewport.Height - viewTranslate.Y - 80))
-            {
-                viewTranslate -= new Vector3(0, player.movementSpeed * 100, 0);
-            }
-            //player.position.X = MathHelper.Clamp(player.position.X, player.Width / 2,
-            //GraphicsDevice.Viewport.Width - player.Width / 2)
+            //if (player.position.Y < -viewTranslate.Y + 120)
+            //{
+            //    viewTranslate += new Vector3(0, player.movementSpeed * 100, 0);
+            //}
+            //if (player.position.Y > (GraphicsDevice.Viewport.Height - viewTranslate.Y - 80))
+            //{
+            //    viewTranslate -= new Vector3(0, player.movementSpeed * 100, 0);
+            //}
+
+            viewTranslate = new Vector3(GraphicsDevice.Viewport.Width / 2 - player.position.X,
+                GraphicsDevice.Viewport.Height / 2 - player.position.Y, 0);
 
             // reset score if player health goes to zero  
             if (player.Health <= 0)
