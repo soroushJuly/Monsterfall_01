@@ -101,20 +101,10 @@ namespace Monsterfall_01
             // Initialize our random number generator  
             random = new Random();
 
-            // init our laser
-            //laserBeams = new List<Laser>();
-            const float SECONDS_IN_MINUTE = 60f;
-            const float RATE_OF_FIRE = 200f;
-            laserSpawnTime = TimeSpan.FromSeconds(SECONDS_IN_MINUTE / RATE_OF_FIRE);
-            previousLaserSpawnTime = TimeSpan.Zero;
-
             //Background  
             bgLayer1 = new ParallaxingBackground();
 
             inputCommandManager = new InputCommandManager();
-
-            // init our collection of explosions.
-            //explosions = new List<Explosion>();
 
             //Set player's score to zero
             score = 0;
@@ -269,7 +259,7 @@ namespace Monsterfall_01
         {
             inputCommandManager.Update();
 
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
             // Save the previous state of the keyboard, game pad, and mouse so we can determine single key/button presses  
