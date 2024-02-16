@@ -134,7 +134,6 @@ namespace Monsterfall_01
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
             // Load the player resources
             // Create a list of player's animations
             List<Animation> playerAnimations = new List<Animation>();
@@ -372,9 +371,7 @@ namespace Monsterfall_01
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
-            // Start drawing 
-            // Transform Matrix to move in around the map
+            // Start drawing translate Matrix to move in around the map
             _spriteBatch.Begin(SpriteSortMode.Deferred,null, null, null, null, null,
                 Matrix.CreateTranslation(viewTranslate));
 
