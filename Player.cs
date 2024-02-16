@@ -12,7 +12,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace Monsterfall_01
 {
-    internal class Player
+    internal class Player : Collidable
     {
         const float MOVEMENT_RESET_TIME = 0.1F;
 
@@ -47,7 +47,7 @@ namespace Monsterfall_01
             String direction = "";
             directions.Add(direction);
             directions.Add(direction);
-
+            
             currentAnimation = 0;
             this.xtimer = 0;
             this.ytimer = 0;
@@ -61,6 +61,7 @@ namespace Monsterfall_01
         
         public void Update(GameTime gameTime)
         {
+            this.box = new Rectangle((int)position.X, (int)position.Y, Width, Height);
             xtimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             ytimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             UpdateAnimation(gameTime);
@@ -147,7 +148,6 @@ namespace Monsterfall_01
             if (ytimer < 0)
                 directions[1] = "";
         }
-
         private void setXTimer(String direction)
         {
             directions[0] = direction;
@@ -161,6 +161,27 @@ namespace Monsterfall_01
         public String getDirection()
         {
             return directions[0] + directions[1]; 
+        }
+
+        public override bool CollisionTest(Collidable obj)
+        {
+            if(this.Intersects(obj))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public override void OnCollision(Collidable obj)
+        {
+            Enemy enemy = obj as Enemy;
+            if (enemy != null)
+            {
+                Vector2 collisionNormal = Vector2.Normalize(enemy.Position - position);
+                //position -= collisionNormal * 2f;
+                //    //AddPosition(-collisionNormal * 200.0f);
+                //    //CollisionColor = Color.Red;
+            }
         }
     }
 }

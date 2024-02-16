@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Monsterfall_01
 {
-    internal class Enemy
+    internal class Enemy : Collidable
     {
         // Animation list for the enemy  
         private List<Animation> enemyAnimations;
@@ -46,6 +46,7 @@ namespace Monsterfall_01
         }
         public void Update(GameTime gameTime)
         {
+            this.box = new Rectangle((int)Position.X, (int)Position.Y, Width, Height);
             // The enemy always moves to the left so decrement it's x position  
             Position.X -= enemyMoveSpeed;
             // Update the position of the Animation  

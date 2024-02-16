@@ -22,6 +22,8 @@ namespace Monsterfall_01
         //Enemy enemy;
         List<Enemy> enemies;
 
+        CollisionManager collisionManager;
+
         // Keyboard states used to determine key presses   
         KeyboardState currentKeyboardState;
         KeyboardState previousKeyboardState;
@@ -93,6 +95,11 @@ namespace Monsterfall_01
             enemies.Add(new Enemy());
             enemies.Add(new Enemy());
             enemies.Add(new Enemy());
+
+            collisionManager = new CollisionManager();
+            collisionManager.AddCollidable(player);
+            foreach(Enemy enemy in enemies) 
+                collisionManager.AddCollidable(enemy); 
 
             // Set the time keepers to zero  
             previousSpawnTime = TimeSpan.Zero;
@@ -226,12 +233,12 @@ namespace Monsterfall_01
                 foreach (Texture2D texture in monsterTextures)
                 {
                     Animation monsterIceAnimation = new Animation();
-                    monsterIceAnimation.Initialize(texture, playerPosition + new Vector2(i * 100, i),
+                    monsterIceAnimation.Initialize(texture, playerPosition + new Vector2(i * 150 + 500, i),
                         256, 256, 20, 17, Color.White, ENEMY_SCALE, true, 4);
                     monsterIceAnimations.Add(monsterIceAnimation);
                 }
 
-                enemies[i].Initialize(ref monsterIceAnimations, playerPosition + new Vector2(i * 100, i));
+                enemies[i].Initialize(ref monsterIceAnimations, playerPosition + new Vector2(i * 150 + 500, i));
             }
 
             // Load the parallaxing background   
@@ -258,7 +265,7 @@ namespace Monsterfall_01
         protected override void Update(GameTime gameTime)
         {
             inputCommandManager.Update();
-
+            collisionManager.Update();
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
@@ -336,8 +343,8 @@ namespace Monsterfall_01
             // Draw the player health  
             _spriteBatch.DrawString(font, "health: " + player.Health, 
                 new Vector2(fixedXPosition, fixedYPosition + 30), Color.White);
-            _spriteBatch.DrawString(font, "Anima: " + player.position.Y,
-                new Vector2(fixedXPosition, fixedYPosition + 180), Color.White);
+            //_spriteBatch.DrawString(font, "Anima: " + player.cNorm,
+            //    new Vector2(fixedXPosition, fixedYPosition + 180), Color.White);
 
 
             // Stop drawing  
