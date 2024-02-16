@@ -18,6 +18,9 @@ namespace Monsterfall_01
 
         //Represents the player  
         Player player;
+        // One sample enemy
+        Enemy enemy;
+
         // Keyboard states used to determine key presses   
         KeyboardState currentKeyboardState;
         KeyboardState previousKeyboardState;
@@ -89,6 +92,8 @@ namespace Monsterfall_01
             // TODO: Add your initialization logic here
             // Initialize the player class
             player = new Player();
+
+            enemy = new Enemy();
             // Set a constant player move speed
             playerMoveSpeed = 3.0f;
 
@@ -162,7 +167,38 @@ namespace Monsterfall_01
                 Texture2D playerTexture = Content.Load<Texture2D>(path);
                 playerAnimation.Initialize(playerTexture, Vector2.Zero, 320, 320, 16, 25, Color.White, PLAYER_SCALE, true, 4);
                 playerAnimations.Add(playerAnimation);
+            }
+            // get enemy textures
+            List<Animation> monsterIceAnimations = new List<Animation>();
+            const float ENEMY_SCALE = 1.2f;
+            for (int i = 0; i < 8; i++)
+            {
+                Animation monsterIceAnimation = new Animation();
+                int degree = i * 45;
+                String degreePath;
+                if (degree / 10 < 1) { degreePath = "000"; }
+                else if (degree / 100 < 1) { degreePath = "0" + degree.ToString(); }
+                else { degreePath = degree.ToString(); }
+                String path = "Graphics\\MonsterIce\\Run\\Run Body " + degreePath;
 
+                Texture2D monsterTexture = Content.Load<Texture2D>(path);
+                monsterIceAnimation.Initialize(monsterTexture, Vector2.Zero, 256, 256, 20, 17, Color.White, ENEMY_SCALE, true, 4);
+                monsterIceAnimations.Add(monsterIceAnimation);
+
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                Animation monsterIceAnimation = new Animation();
+                int degree = i * 45;
+                String degreePath;
+                if (degree / 10 < 1) { degreePath = "000"; }
+                else if (degree / 100 < 1) { degreePath = "0" + degree.ToString(); }
+                else { degreePath = degree.ToString(); }
+                String path = "Graphics\\MonsterIce\\Idle\\Idle Body " + degreePath;
+
+                Texture2D monsterTexture = Content.Load<Texture2D>(path);
+                monsterIceAnimation.Initialize(monsterTexture, Vector2.Zero, 256, 256, 20, 17, Color.White, PLAYER_SCALE, true, 4);
+                monsterIceAnimations.Add(monsterIceAnimation);
             }
 
             //Animation playerAnimation = new Animation();
@@ -230,6 +266,8 @@ namespace Monsterfall_01
             GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
             player.Initialize(ref playerAnimations, playerPosition, PLAYER_SCALE);
 
+            enemy.Initialize(ref monsterIceAnimations, playerPosition);
+
             // Load the parallaxing background   
             bgLayer1.Initialize(Content, "Graphics/bgLayer1", GraphicsDevice.Viewport.Width,
                 GraphicsDevice.Viewport.Height, -1);
@@ -276,6 +314,8 @@ namespace Monsterfall_01
             //Update the player   
             UpdatePlayer(gameTime);
             player.Update(gameTime);
+
+            enemy.Update(gameTime);
 
             // Update the collisions   
             UpdateCollision();
@@ -361,6 +401,8 @@ namespace Monsterfall_01
 
             // Draw the Player  
             player.Draw(_spriteBatch);
+
+            enemy.Draw(_spriteBatch);
 
             int fixedYPosition = GraphicsDevice.Viewport.TitleSafeArea.Y - (int)viewTranslate.Y;
             int fixedXPosition = GraphicsDevice.Viewport.TitleSafeArea.X - (int)viewTranslate.X;
