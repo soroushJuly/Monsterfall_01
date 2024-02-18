@@ -46,7 +46,7 @@ namespace Monsterfall_01
         }
         public void Update(GameTime gameTime)
         {
-            this.box = new Rectangle((int)Position.X, (int)Position.Y, Width, Height);
+            this.box = new Rectangle((int)(Position.X - Width / 4), (int)Position.Y - Height / 2, Width / 2, Height);
             // The enemy always moves to the left so decrement it's x position  
             Position.X -= enemyMoveSpeed;
             // Update the position of the Animation  
@@ -61,9 +61,12 @@ namespace Monsterfall_01
                 Active = false;
             }
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, GraphicsDevice GraphicsDevices)
         {
             // Draw the animation  
+            Texture2D pixel = new Texture2D(GraphicsDevices, 1, 1);
+            pixel.SetData<Color>(new Color[] { Color.White });
+            spriteBatch.Draw(pixel, box, Color.White);
             enemyAnimations[0].Draw(spriteBatch);
         }
     }
