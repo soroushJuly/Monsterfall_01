@@ -92,9 +92,6 @@ namespace Monsterfall_01
             enemies.Add(new Enemy());
 
             collisionManager = new CollisionManager();
-            collisionManager.AddCollidable(player);
-            foreach(Enemy enemy in enemies) 
-                collisionManager.AddCollidable(enemy); 
 
             // Set the time keepers to zero  
             previousSpawnTime = TimeSpan.Zero;
@@ -186,9 +183,11 @@ namespace Monsterfall_01
                         String title = widthLine[0];
                         String point = widthLine[1];
                         string[] coords = point.Split(",");
-                        Point location = new Point(int.Parse(coords[0]), int.Parse(coords[1]));
+                        Vector2 location = new Vector2(int.Parse(coords[0]), int.Parse(coords[1]));
                         //Point location = new Point(coords[0],coords[1]);
-                        decorations.Add(new Decoration(location, title));
+                        string path = string.Format("Graphics\\Env\\Dungeon\\{0}", title);
+                        Texture2D decorTexture = Content.Load<Texture2D>(path);
+                        decorations.Add(new Decoration(location, decorTexture));
                         continue;
                     }
                     if (line.Contains("Width:"))
@@ -217,7 +216,7 @@ namespace Monsterfall_01
             //
             loader.ReadXML("Content\\XML\\GameInfo.xml");
 
-            Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X,
+            Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X - 100,
                 GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
             player.Initialize(ref playerAnimations, playerPosition, PLAYER_SCALE);
 
@@ -235,6 +234,12 @@ namespace Monsterfall_01
 
                 enemies[i].Initialize(ref monsterIceAnimations, playerPosition + new Vector2(i * 150 + 500, i));
             }
+
+            collisionManager.AddCollidable(player);
+            foreach (Enemy enemy in enemies)
+                collisionManager.AddCollidable(enemy);
+            foreach (Tile decoration in map01.DecorTiles)    
+                collisionManager.AddCollidable(decoration);
 
             // Load the parallaxing background   
             bgLayer1.Initialize(Content, "Graphics/bkgd_1", GraphicsDevice.Viewport.Width,
@@ -313,15 +318,15 @@ namespace Monsterfall_01
             bgLayer1.Draw(_spriteBatch, new Vector2(-viewTranslate.X, -viewTranslate.Y));
 
             // Draw map
-            map01.Draw(_spriteBatch);
+            map01.Draw(_spriteBatch, GraphicsDevice);
 
             // Draw the Player  
-            player.Draw(_spriteBatch);
+            player.Draw(_spriteBatch, GraphicsDevice);
 
             //enemy.Draw(_spriteBatch);
             foreach(Enemy enemy in enemies)
             {
-                enemy.Draw(_spriteBatch);
+                enemy.Draw(_spriteBatch, GraphicsDevice);
             }
 
             int fixedYPosition = GraphicsDevice.Viewport.TitleSafeArea.Y - (int)viewTranslate.Y;
@@ -333,6 +338,12 @@ namespace Monsterfall_01
             // Draw the player health  
             _spriteBatch.DrawString(font, "health: " + player.Health, 
                 new Vector2(fixedXPosition, fixedYPosition + 30), Color.White);
+            _spriteBatch.DrawString(font, "health: " + player.position, 
+                new Vector2(fixedXPosition, fixedYPosition + 60), Color.White);
+            _spriteBatch.DrawString(font, "health: " + player.prevPosition, 
+                new Vector2(fixedXPosition, fixedYPosition + 90), Color.White);
+            _spriteBatch.DrawString(font, "health: " + (player.position - player.prevPosition), 
+                new Vector2(fixedXPosition, fixedYPosition + 120), Color.White);
             //_spriteBatch.DrawString(font, "Anima: " + player.cNorm,
             //    new Vector2(fixedXPosition, fixedYPosition + 180), Color.White);
 

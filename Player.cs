@@ -17,11 +17,13 @@ namespace Monsterfall_01
         public float scale;
        
         public Vector2 position;
+        public Vector2 prevPosition;
         public bool isActive;
         public int Health;
 
         private float xtimer;
         private float ytimer;
+        private float blockTimer;
 
         private List<String> directions;
 
@@ -37,6 +39,7 @@ namespace Monsterfall_01
             movementSpeed = 4.0f;
 
             this.position = position;
+            this.prevPosition = this.position;
             this.playerAnimations = playerAnimations;
             this.directions = new List<String>();
             String direction = "";
@@ -45,6 +48,7 @@ namespace Monsterfall_01
             
             currentAnimation = 0;
             this.xtimer = 0;
+            this.blockTimer = 0;
             this.ytimer = 0;
             playerAnimation = playerAnimations[currentAnimation];
 
@@ -57,9 +61,10 @@ namespace Monsterfall_01
         public void Update(GameTime gameTime)
         {
             // Draw the box to screen for debugging purposes
-            this.box = new Rectangle((int)position.X, (int)position.Y, Width / 2, Height);
+            this.box = new Rectangle((int)(position.X - Width / 4), (int)position.Y - Height / 2, Width / 2, Height);
             xtimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             ytimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            blockTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             UpdateAnimation(gameTime);
         }
         private void UpdateAnimation(GameTime gameTime)
@@ -99,9 +104,10 @@ namespace Monsterfall_01
             playerAnimations[currentAnimation].Position = position;
             playerAnimations[currentAnimation].Update(gameTime);
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, GraphicsDevice GraphicsDevices)
         {
             checkTimers();
+            DrawBoundingBox(spriteBatch, GraphicsDevices);
             playerAnimations[currentAnimation].Draw(spriteBatch);
         }
 
@@ -110,6 +116,7 @@ namespace Monsterfall_01
             if (buttonState == eButtonState.DOWN)
             {
                 setYTimer("North");
+                this.prevPosition.Y = position.Y;
                 this.position.Y -= movementSpeed;
             }
         }
@@ -118,6 +125,7 @@ namespace Monsterfall_01
             if (buttonState == eButtonState.DOWN)
             {
                 setXTimer("East");
+                this.prevPosition.X = position.X;
                 this.position.X += movementSpeed;
             }
         }
@@ -126,6 +134,7 @@ namespace Monsterfall_01
             if (buttonState == eButtonState.DOWN)
             {
                 setYTimer("South");
+                this.prevPosition.Y = position.Y;
                 this.position.Y += movementSpeed;
             }
         }
@@ -134,6 +143,7 @@ namespace Monsterfall_01
             if (buttonState == eButtonState.DOWN)
             {
                 setXTimer("West");
+                this.prevPosition.X = position.X;
                 this.position.X -= movementSpeed;
             }
         }
@@ -174,6 +184,35 @@ namespace Monsterfall_01
             if (enemy != null)
             {
                 Health -= 10;
+            }
+            if (blockTimer > 0)
+            {
+                return;
+            }
+            // Only the first decoration collision is working
+            Tile decoration = obj as Tile;
+            if(decoration != null)
+            {
+                Vector2 depth = RectangleExtensions.GetIntersectionDepth(box, decoration.GetBox());
+                Vector2 direction = position - prevPosition;
+                if(direction.X != 0 && direction.Y == 0)
+                {
+                    prevPosition = position;
+                    position = new Vector2(position.X + .5f * depth.X, position.Y);
+
+                }
+                else if(direction.Y != 0 && direction.X == 0)
+                {
+                    prevPosition = position;
+                    position = new Vector2(position.X, position.Y + .5f * depth.Y);
+                }
+                else if (direction.Y != 0 && direction.X != 0)
+                {
+                    prevPosition = position;
+                    position = new Vector2(position.X + .5f * depth.X, position.Y + .5f * depth.Y);
+                }
+
+                blockTimer = 0.01f;
             }
         }
     }
