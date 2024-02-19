@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 
 namespace Monsterfall_01
@@ -7,10 +8,14 @@ namespace Monsterfall_01
     internal class Collidable
     {
         protected Rectangle box = new Rectangle();
-        //public BoundingBox BoundingBox
-        //{
-        //    get { return boundingBox; }
-        //}
+        protected bool isCollidable = true;
+        public Rectangle GetBox() { return box; }
+        protected void DrawBoundingBox(SpriteBatch spriteBatch, GraphicsDevice GraphicsDevices)
+        {
+            Texture2D pixel = new Texture2D(GraphicsDevices, 1, 1);
+            pixel.SetData<Color>(new Color[] { Color.White });
+            spriteBatch.Draw(pixel, box, Color.White);
+        }
 
         protected bool Intersects(Collidable collidable)
         {
