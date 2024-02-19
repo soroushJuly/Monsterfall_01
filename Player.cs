@@ -21,9 +21,12 @@ namespace Monsterfall_01
         public bool isActive;
         public int Health;
 
+        public Vector2 depth;
+
         private float xtimer;
         private float ytimer;
         private float blockTimer;
+        private float takeDamageTimer;
 
         private List<String> directions;
 
@@ -49,6 +52,7 @@ namespace Monsterfall_01
             currentAnimation = 0;
             this.xtimer = 0;
             this.blockTimer = 0;
+            this.takeDamageTimer = 0;
             this.ytimer = 0;
             playerAnimation = playerAnimations[currentAnimation];
 
@@ -61,10 +65,11 @@ namespace Monsterfall_01
         public void Update(GameTime gameTime)
         {
             // Draw the box to screen for debugging purposes
-            this.box = new Rectangle((int)(position.X - Width / 4), (int)position.Y - Height / 2, Width / 2, Height);
+            this.box = new Rectangle((int)(position.X - Width / 4), (int)position.Y - 120 / 2, Width / 2, 120);
             xtimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             ytimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             blockTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            takeDamageTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             UpdateAnimation(gameTime);
         }
         private void UpdateAnimation(GameTime gameTime)
@@ -150,9 +155,15 @@ namespace Monsterfall_01
         private void checkTimers()
         {
             if (xtimer < 0)
+            {
+                prevPosition.X = position.X;
                 directions[0] = "";
+            }
             if (ytimer < 0)
+            {
+                prevPosition.Y = position.Y;
                 directions[1] = "";
+            }
         }
         private void setXTimer(String direction)
         {
@@ -183,7 +194,11 @@ namespace Monsterfall_01
             Enemy enemy = obj as Enemy;
             if (enemy != null)
             {
-                Health -= 10;
+                if (takeDamageTimer < 0)
+                {
+                    Health -= 10;
+                    takeDamageTimer = 1f;
+                }
             }
             if (blockTimer > 0)
             {
@@ -191,9 +206,10 @@ namespace Monsterfall_01
             }
             // Only the first decoration collision is working
             Tile decoration = obj as Tile;
-            if(decoration != null)
+            if (decoration != null)
             {
                 Vector2 depth = RectangleExtensions.GetIntersectionDepth(box, decoration.GetBox());
+                this.depth = depth;
                 Vector2 direction = position - prevPosition;
                 if(direction.X != 0 && direction.Y == 0)
                 {
@@ -209,7 +225,12 @@ namespace Monsterfall_01
                 else if (direction.Y != 0 && direction.X != 0)
                 {
                     prevPosition = position;
-                    position = new Vector2(position.X + .5f * depth.X, position.Y + .5f * depth.Y);
+                    if (depth.X < 2 * movementSpeed)
+                        position = new Vector2(position.X + .5f * depth.X, position.Y);
+                    else if (depth.Y < 2 * movementSpeed)
+                        position = new Vector2(position.X, position.Y + .5f * depth.Y);
+                    else
+                        position = new Vector2(position.X + .5f * depth.X, position.Y + .5f * depth.Y);
                 }
 
                 blockTimer = 0.01f;

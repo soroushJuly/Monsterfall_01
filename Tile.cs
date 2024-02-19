@@ -17,7 +17,7 @@ namespace Monsterfall_01
             if (!isCollidable) { 
                 this.isCollidable = false; 
             }
-            this.box = new Rectangle((int)(position.X + tileTexture.Width / 4), (int)(position.Y), tileTexture.Width / 2, tileTexture.Height);
+            this.box = new Rectangle((int)(position.X), (int)(position.Y), tileTexture.Width, tileTexture.Height);
         }
 
         public Tile Initialize(Texture2D texture, Vector2 position)
@@ -29,12 +29,12 @@ namespace Monsterfall_01
         }
         public void Draw(SpriteBatch spriteBatch, GraphicsDevice GraphicsDevices)
         {
-            if (isCollidable)
-            {
-                Texture2D pixel = new Texture2D(GraphicsDevices, 1, 1);
-                pixel.SetData<Color>(new Color[] { Color.Red });
-                spriteBatch.Draw(pixel, this.box, Color.White);
-            }
+            //if (isCollidable)
+            //{
+            //    Texture2D pixel = new Texture2D(GraphicsDevices, 1, 1);
+            //    pixel.SetData<Color>(new Color[] { Color.Red });
+            //    spriteBatch.Draw(pixel, this.box, Color.White);
+            //}
             spriteBatch.Draw(tileTexture, position, Color.White);
         }
     }

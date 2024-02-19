@@ -42,7 +42,10 @@ namespace Monsterfall_01
         private void ResolveCollisions()
         {
             foreach (Collision collision in m_collisions)
+            {
                 collision.Resolve();
+                m_collisions.Remove(collision);
+            }
         }
     }
 }

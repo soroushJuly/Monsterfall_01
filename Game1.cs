@@ -338,9 +338,7 @@ namespace Monsterfall_01
             // Draw the player health  
             _spriteBatch.DrawString(font, "health: " + player.Health, 
                 new Vector2(fixedXPosition, fixedYPosition + 30), Color.White);
-            _spriteBatch.DrawString(font, "health: " + player.position, 
-                new Vector2(fixedXPosition, fixedYPosition + 60), Color.White);
-            _spriteBatch.DrawString(font, "health: " + player.prevPosition, 
+            _spriteBatch.DrawString(font, "health: " + player.depth, 
                 new Vector2(fixedXPosition, fixedYPosition + 90), Color.White);
             _spriteBatch.DrawString(font, "health: " + (player.position - player.prevPosition), 
                 new Vector2(fixedXPosition, fixedYPosition + 120), Color.White);
