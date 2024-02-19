@@ -15,6 +15,7 @@ namespace Monsterfall_01
         private Point tileSize;
         private Tile[,] tiles;
         private List<Tile> decorTiles;
+        public List<Tile> DecorTiles { get { return decorTiles; } }
         List<Decoration> decorations;
 
         public void Initialize(Point mapSize, ContentManager content, List<Decoration> decorations)
@@ -40,9 +41,7 @@ namespace Monsterfall_01
             }
             foreach (Decoration decoration in decorations)
             {
-                string path = string.Format("Graphics\\Env\\Dungeon\\{0}", decoration.getName());
-                Texture2D decorTexture = content.Load<Texture2D>(path);
-                Tile tile = new Tile(decorTexture, MapToScreen(decoration.location.X, decoration.location.Y));
+                Tile tile = new Tile(decoration.texture, MapToScreen((int)decoration.location.X, (int)decoration.location.Y), true);
                 decorTiles.Add(tile);
             }
         }
@@ -56,18 +55,18 @@ namespace Monsterfall_01
             return new Vector2(screenX, screenY);
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, GraphicsDevice GraphicsDevices)
         {
             for (int j = 0; j < mapSize.Y; j++)
             {
                 for (int i = 0; i < mapSize.X; i++)
                 {
-                    tiles[i, j].Draw(spriteBatch);
+                    tiles[i, j].Draw(spriteBatch, GraphicsDevices);
                 }
             }
             foreach(Tile tile in decorTiles)
             {
-                tile.Draw(spriteBatch);
+                tile.Draw(spriteBatch, GraphicsDevices);
             }
         }
 
