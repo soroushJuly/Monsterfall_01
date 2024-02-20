@@ -76,6 +76,9 @@ namespace Monsterfall_01
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
+            _graphics.PreferredBackBufferWidth = 1920;
+            _graphics.PreferredBackBufferHeight = 1080;
+            _graphics.IsFullScreen = true;
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
@@ -313,7 +316,8 @@ namespace Monsterfall_01
                 Matrix.CreateTranslation(viewTranslate));
 
             //Draw the Main Background Texture  
-            _spriteBatch.Draw(mainBackground, Vector2.Zero + new Vector2(-viewTranslate.X, -viewTranslate.Y), Color.White);
+            _spriteBatch.Draw(mainBackground, new Rectangle((int)-viewTranslate.X, (int)-viewTranslate.Y, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height),
+                new Rectangle(0,0,mainBackground.Width,mainBackground.Height), Color.White);
             // Draw the moving background  
             bgLayer1.Draw(_spriteBatch, new Vector2(-viewTranslate.X, -viewTranslate.Y));
 
