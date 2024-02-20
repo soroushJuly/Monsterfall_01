@@ -23,7 +23,16 @@ namespace Monsterfall_01.State.StatesEnemy
         }
         public override void Execute(object owner, GameTime gameTime)
         {
-            // Play run animation
+            Enemy enemy = owner as Enemy;
+
+            if (enemy == null) { return; }
+            enemy.currentAnimation = 1;
+
+            Vector2 direction = Vector2.Normalize(Game1.player.position - enemy.Position);
+            enemy.Position += direction; 
+            
+            // Play run animation by the direction
+            // Or put the animation logic in the enemy class?
             // Other things that enemy should do in Chase state
         }
     }

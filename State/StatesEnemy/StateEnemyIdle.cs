@@ -23,7 +23,16 @@ namespace Monsterfall_01.State.StatesEnemy
         }
         public override void Execute(object owner, GameTime gameTime)
         {
-            // Play Idle animation
+            Enemy enemy = owner as Enemy;
+
+            if (enemy == null)
+            {
+                return;
+            }
+
+            enemy.currentAnimation = 0;
+            enemy.Position.X -= enemy.enemyMoveSpeed;
+            // Play Idle animation regarding the directon
             // Other things that enemy should do in IDLE state
         }
     }
