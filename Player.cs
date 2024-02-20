@@ -7,7 +7,7 @@ using Monsterfall_01;
 using Monsterfall_01.Input;
 namespace Monsterfall_01
 {
-    internal class Player : Collidable
+    public class Player : Collidable
     {
         const float MOVEMENT_RESET_TIME = 0.1F;
 

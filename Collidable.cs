@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Monsterfall_01
 {
-    internal class Collidable
+    public class Collidable
     {
         protected Rectangle box = new Rectangle();
         protected bool isCollidable = true;

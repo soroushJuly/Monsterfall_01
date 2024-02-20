@@ -26,9 +26,13 @@ namespace Monsterfall_01
         // Get the height of the enemy ship           
         public int Height { get { return enemyAnimations[0].frameHeight; } }
         // The speed at which the enemy moves           
-        float enemyMoveSpeed;
+        public float enemyMoveSpeed;
 
-        private bool isInChaseRange;
+        public int currentAnimation;
+
+        public bool isInChaseRange;
+
+        public float distance = 0;
 
         FSM fsm;
 
@@ -50,6 +54,7 @@ namespace Monsterfall_01
             // Set the score value of the enemy  
             Value = 100;
 
+            currentAnimation = 0;
             isInChaseRange = false;
 
             fsm = new FSM(this);
@@ -61,20 +66,24 @@ namespace Monsterfall_01
             stateEnemyChase.AddTransition(new Transition(stateEnemyIdle, () => !isInChaseRange));
 
             fsm.AddState(stateEnemyIdle);
+            fsm.AddState(stateEnemyChase);
+
+            fsm.Initialise("Idle");
         }
         public void Update(GameTime gameTime)
         {
+            Sense();
             fsm.Update(gameTime);
 
             this.box = new Rectangle((int)(Position.X - Width / 4), (int)Position.Y - Height / 2, Width / 2, Height);
             // The enemy always moves to the left so decrement it's x position  
-            Position.X -= enemyMoveSpeed;
+            
             // Update the position of the Animation  
-            enemyAnimations[0].Position = Position;
+            enemyAnimations[currentAnimation].Position = Position;
             // Update Animation  
-            enemyAnimations[0].Update(gameTime);
+            enemyAnimations[currentAnimation].Update(gameTime);
             // If the enemy is past the screen or its health reaches 0 then deactivate it  
-            if (Position.X < -Width || Health <= 0)
+            if (Health <= 0)
             {
                 // By setting the Active flag to false, the game will remove this object from the 
                 // active game list  
@@ -87,7 +96,7 @@ namespace Monsterfall_01
             Texture2D pixel = new Texture2D(GraphicsDevices, 1, 1);
             pixel.SetData<Color>(new Color[] { Color.White });
             spriteBatch.Draw(pixel, box, Color.White);
-            enemyAnimations[0].Draw(spriteBatch);
+            enemyAnimations[currentAnimation].Draw(spriteBatch);
         }
 
         private void Sense()
@@ -95,7 +104,13 @@ namespace Monsterfall_01
             //List<Ship> enemies = GameWorld.AllShips;
             //Ship player = GameWorld.Player;
 
-            //Vector2 playerDistance = Game1.
+            //Game1.player.position;
+
+            Vector2 playerDistance = Game1.player.position - Position;
+            this.distance = playerDistance.Length();
+
+            isInChaseRange = distance < 400 ? true: false;
+
 
             //foreach (Ship enemy in enemies)
             //{

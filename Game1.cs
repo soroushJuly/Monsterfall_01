@@ -17,7 +17,7 @@ namespace Monsterfall_01
         private SpriteBatch _spriteBatch;
 
         //Represents the player  
-        Player player;
+        static public Player player;
         // One sample enemy
         //Enemy enemy;
         List<Enemy> enemies;
@@ -342,6 +342,10 @@ namespace Monsterfall_01
                 new Vector2(fixedXPosition, fixedYPosition + 90), Color.White);
             _spriteBatch.DrawString(font, "health: " + (player.position - player.prevPosition), 
                 new Vector2(fixedXPosition, fixedYPosition + 120), Color.White);
+            _spriteBatch.DrawString(font, "health: " + (enemies[0].distance), 
+                new Vector2(fixedXPosition, fixedYPosition + 160), Color.White);
+            _spriteBatch.DrawString(font, "is range: " + (enemies[0].isInChaseRange), 
+                new Vector2(fixedXPosition, fixedYPosition + 190), Color.White);
             //_spriteBatch.DrawString(font, "Anima: " + player.cNorm,
             //    new Vector2(fixedXPosition, fixedYPosition + 180), Color.White);
 
