@@ -3,6 +3,7 @@ Height: 22
 Decorations
 Barrel_E1: 0,1
 Barrel_E1: 2,0
+Barrel_E1: 4,0
 barrelsStacked_E1: 5,0
 Decorations
 barrelsStacked_N: 1,0
