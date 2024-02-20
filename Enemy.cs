@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Monsterfall_01.State;
+using Monsterfall_01.State.StatesEnemy;
 
 namespace Monsterfall_01
 {
@@ -26,6 +28,10 @@ namespace Monsterfall_01
         // The speed at which the enemy moves           
         float enemyMoveSpeed;
 
+        private bool isInChaseRange;
+
+        FSM fsm;
+
         public void Initialize(ref List<Animation> animations, Vector2 position)
         {
             // Load the enemy ship texture  
@@ -43,9 +49,23 @@ namespace Monsterfall_01
             enemyMoveSpeed = 1f;
             // Set the score value of the enemy  
             Value = 100;
+
+            isInChaseRange = false;
+
+            fsm = new FSM(this);
+
+            StateEnemyIdle stateEnemyIdle = new StateEnemyIdle();
+            StateEnemyChase stateEnemyChase = new StateEnemyChase();
+
+            stateEnemyIdle.AddTransition(new Transition(stateEnemyChase, () => isInChaseRange));
+            stateEnemyChase.AddTransition(new Transition(stateEnemyIdle, () => !isInChaseRange));
+
+            fsm.AddState(stateEnemyIdle);
         }
         public void Update(GameTime gameTime)
         {
+            fsm.Update(gameTime);
+
             this.box = new Rectangle((int)(Position.X - Width / 4), (int)Position.Y - Height / 2, Width / 2, Height);
             // The enemy always moves to the left so decrement it's x position  
             Position.X -= enemyMoveSpeed;
@@ -69,5 +89,31 @@ namespace Monsterfall_01
             spriteBatch.Draw(pixel, box, Color.White);
             enemyAnimations[0].Draw(spriteBatch);
         }
+
+        private void Sense()
+        {
+            //List<Ship> enemies = GameWorld.AllShips;
+            //Ship player = GameWorld.Player;
+
+            //Vector2 playerDistance = Game1.
+
+            //foreach (Ship enemy in enemies)
+            //{
+            //    if (enemy != this)
+            //    {
+            //        if (enemy.IsTagged && Sensor.Intersects(enemy.BoundingSphere))
+            //        {
+            //            taggerSeen = true;
+            //            break;
+            //        }
+            //        else
+            //        {
+            //            taggerSeen = false;
+            //        }
+            //    }
+            //}
+        }
+
+
     }
 }
