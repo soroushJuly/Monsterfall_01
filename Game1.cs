@@ -69,6 +69,8 @@ namespace Monsterfall_01
         // Input manager
         InputCommandManager inputCommandManager;
 
+        AnimationLoader animationLoader;
+
         // Translation of the view when player reaches the boundries
         Vector3 viewTranslate;
 
@@ -95,6 +97,8 @@ namespace Monsterfall_01
             enemies.Add(new Enemy());
 
             collisionManager = new CollisionManager();
+
+            animationLoader = new AnimationLoader();
 
             // Set the time keepers to zero  
             previousSpawnTime = TimeSpan.Zero;
@@ -126,41 +130,17 @@ namespace Monsterfall_01
             // Create a list of player's animations
             List<Animation> playerAnimations = new List<Animation>();
             const float PLAYER_SCALE = 0.6f;
-            for (int i = 0; i < 8; i++)
-            {
-                Animation playerAnimation = new Animation();
-                String path = createTexturePath("Graphics\\HeroFemale\\Run_Unarmed\\Run_Unarmed_Body_", i);
-
-                Texture2D playerTexture = Content.Load<Texture2D>(path);
-                playerAnimation.Initialize(playerTexture, Vector2.Zero, 320, 320, 20, 17, Color.White, PLAYER_SCALE, true, 5);
-                playerAnimations.Add(playerAnimation);
-
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                Animation playerAnimation = new Animation();
-                String path = createTexturePath("Graphics\\HeroFemale\\Idle_Unarmed\\Idle_Unarmed_Body_", i);
-
-                Texture2D playerTexture = Content.Load<Texture2D>(path);
-                playerAnimation.Initialize(playerTexture, Vector2.Zero, 320, 320, 16, 25, Color.White, PLAYER_SCALE, true, 4);
-                playerAnimations.Add(playerAnimation);
-            }    
+            animationLoader.LoadAnimations(Content, "Graphics\\HeroFemale\\Run_Unarmed\\Run_Unarmed_Body_", PLAYER_SCALE, playerAnimations,
+                320, 20, 17, 8, 5);
+            animationLoader.LoadAnimations(Content, "Graphics\\HeroFemale\\Idle_Unarmed\\Idle_Unarmed_Body_", PLAYER_SCALE, playerAnimations,
+                320, 16, 25, 8, 4);
             // get enemy textures
             const float ENEMY_SCALE = 1.2f;
-            List<Texture2D> monsterTextures = new List<Texture2D>();
-            for (int i = 0; i < 8; i++)
-            {
-                String path = createTexturePath("Graphics\\MonsterIce\\Run\\Run Body ", i);
-                Texture2D monsterTexture = Content.Load<Texture2D>(path);
-                monsterTextures.Add(monsterTexture);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                Animation monsterIceAnimation = new Animation();
-                String path = createTexturePath("Graphics\\MonsterIce\\Idle\\Idle Body ", i);
-                Texture2D monsterTexture = Content.Load<Texture2D>(path);
-                monsterTextures.Add(monsterTexture);                
-            }
+            List<Animation> monsterIceAnimations = new List<Animation>();
+            animationLoader.LoadAnimations(Content, "Graphics\\MonsterIce\\Run\\Run Body ", ENEMY_SCALE, monsterIceAnimations,
+                256, 20, 17, 16, 4);
+            animationLoader.LoadAnimations(Content, "Graphics\\MonsterIce\\Idle\\Idle Body ", ENEMY_SCALE, monsterIceAnimations,
+                256, 20, 17, 16, 4);
 
             // Load level details
             List<string> lines = new List<string>();
@@ -225,17 +205,7 @@ namespace Monsterfall_01
 
             for (int i = 0; i < enemies.Count; i++)
             {
-                List<Animation> monsterIceAnimations = new List<Animation>();
-                // Each texture is an animation
-                foreach (Texture2D texture in monsterTextures)
-                {
-                    Animation monsterIceAnimation = new Animation();
-                    monsterIceAnimation.Initialize(texture, playerPosition + new Vector2(i * 150 + 500, i),
-                        256, 256, 20, 17, Color.White, ENEMY_SCALE, true, 4);
-                    monsterIceAnimations.Add(monsterIceAnimation);
-                }
-
-                enemies[i].Initialize(ref monsterIceAnimations, playerPosition + new Vector2(i * 150 + 500, i));
+                enemies[i].Initialize(monsterIceAnimations, playerPosition + new Vector2(i * 150 + 500, i));
             }
 
             collisionManager.AddCollidable(player);
@@ -370,18 +340,6 @@ namespace Monsterfall_01
             inputCommandManager.AddKeyboardBinding(Keys.D, player.moveEast);
             inputCommandManager.AddKeyboardBinding(Keys.A, player.moveWest);
             inputCommandManager.AddKeyboardBinding(Keys.S, player.moveSouth);
-        }
-
-        private String createTexturePath(String basePath, int i)
-        {
-            int degree = i * 45;
-            String degreePath;
-            if (degree / 10 < 1) { degreePath = "000"; }
-            else if (degree / 100 < 1) { degreePath = "0" + degree.ToString(); }
-            else { degreePath = degree.ToString(); }
-            String path = basePath + degreePath;
-            return path;
-
         }
     }
 }
