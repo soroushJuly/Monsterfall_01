@@ -38,7 +38,7 @@ namespace Monsterfall_01
         // Width of a given frame???? (same as FrameWidth??)  
         public Vector2 Position;
 
-        public void Initialize(Texture2D texture, Vector2 position, int frameWidth, int frameHeight, int frameCount,
+        public Animation(Texture2D texture, Vector2 position, int frameWidth, int frameHeight, int frameCount,
             int frametime, Color color, float scale, bool looping, int cols = 1)
         {
             // Keep a local copy of the values passed in  
@@ -52,6 +52,25 @@ namespace Monsterfall_01
             Looping = looping;
             Position = position;
             spriteStrip = texture;
+            // Set the time to zero elapsedTime = 0; 
+            currentFrame = 0;
+            // Set the Animation to active by default   
+            Active = true;
+        }
+        // Copy constructor
+        public Animation(Animation other)
+        {
+            // Keep a local copy of the values passed in  
+            this.color = other.color;
+            this.frameWidth = other.frameWidth;
+            this.frameHeight = other.frameHeight;
+            this.frameCount = other.frameCount;
+            this.frameTime = other.frameTime;
+            this.scale = other.scale;
+            this.cols = other.cols;
+            this.Looping = other.Looping;
+            this.Position = other.Position;
+            this.spriteStrip = other.spriteStrip;
             // Set the time to zero elapsedTime = 0; 
             currentFrame = 0;
             // Set the Animation to active by default   
