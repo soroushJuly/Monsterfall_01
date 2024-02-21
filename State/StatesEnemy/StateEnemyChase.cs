@@ -29,8 +29,13 @@ namespace Monsterfall_01.State.StatesEnemy
             enemy.currentAnimation = 1;
 
             Vector2 direction = Vector2.Normalize(Game1.player.position - enemy.Position);
-            enemy.Position += direction; 
-            
+            enemy.Position += direction;
+
+            // 0 sprite is upwards then 0 degree is (0,1)
+
+            double degree = Math.Acos(Vector2.Dot(direction, new Vector2(0, 1)));
+            //enemy.distance = (float)(degree * 180 / Math.PI);
+            enemy.distance = (float)(degree * 180 / Math.PI) / 16;
             // Play run animation by the direction
             // Or put the animation logic in the enemy class?
             // Other things that enemy should do in Chase state

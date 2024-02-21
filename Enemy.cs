@@ -36,10 +36,14 @@ namespace Monsterfall_01
 
         FSM fsm;
 
-        public void Initialize(ref List<Animation> animations, Vector2 position)
+        public void Initialize(List<Animation> animations, Vector2 position)
         {
-            // Load the enemy ship texture  
-            this.enemyAnimations = animations;
+            // Load the enemy ship texture
+            this.enemyAnimations = new List<Animation>();
+            foreach (var animation in animations)
+            {
+                enemyAnimations.Add(new Animation(animation));
+            }
 
             // Set the position of the enemy  
             Position = position;
@@ -55,6 +59,7 @@ namespace Monsterfall_01
             Value = 100;
 
             currentAnimation = 0;
+            enemyAnimations[currentAnimation].Position = position;
             isInChaseRange = false;
 
             fsm = new FSM(this);
@@ -107,9 +112,7 @@ namespace Monsterfall_01
             //Game1.player.position;
 
             Vector2 playerDistance = Game1.player.position - Position;
-            this.distance = playerDistance.Length();
-
-            isInChaseRange = distance < 400 ? true: false;
+            isInChaseRange = playerDistance.Length() < 400 ? true: false;
 
 
             //foreach (Ship enemy in enemies)
