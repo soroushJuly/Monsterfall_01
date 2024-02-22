@@ -12,12 +12,12 @@ namespace Monsterfall_01
         // An array of positions of the parallaxing background   
         Vector2[] positions;
         // The speed which the background is moving           
-        int speed;
+        float speed;
         // Background width and height  
         int bgHeight;
         int bgWidth;
 
-        public void Initialize(ContentManager content, String texturePath, int screenWidth, int screenHeight, int speed)
+        public void Initialize(ContentManager content, String texturePath, int screenWidth, int screenHeight, float speed)
         {
             bgHeight = screenHeight;
             bgWidth = screenWidth;

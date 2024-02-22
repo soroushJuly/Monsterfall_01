@@ -36,6 +36,8 @@ namespace Monsterfall_01
         Texture2D mainBackground;
         // Parallaxing Layers   
         ParallaxingBackground bgLayer1;
+        ParallaxingBackground bgLayer2;
+        ParallaxingBackground bgLayer3;
 
         //The rate at which the enemies appear  
         TimeSpan enemySpawnTime;
@@ -110,6 +112,8 @@ namespace Monsterfall_01
 
             //Background  
             bgLayer1 = new ParallaxingBackground();
+            bgLayer2 = new ParallaxingBackground();
+            bgLayer3 = new ParallaxingBackground();
 
             inputCommandManager = new InputCommandManager();
 
@@ -220,8 +224,12 @@ namespace Monsterfall_01
                 collisionManager.AddCollidable(decoration);
 
             // Load the parallaxing background   
-            bgLayer1.Initialize(Content, "Graphics/bkgd_1", GraphicsDevice.Viewport.Width,
-                GraphicsDevice.Viewport.Height, 1);
+            bgLayer1.Initialize(Content, "Graphics/bkgd_6", GraphicsDevice.Viewport.Width,
+                GraphicsDevice.Viewport.Height, 0.6f);
+            bgLayer2.Initialize(Content, "Graphics/bkgd_7", GraphicsDevice.Viewport.Width,
+                GraphicsDevice.Viewport.Height, 0.6f);
+            bgLayer3.Initialize(Content, "Graphics/bkgd_3", GraphicsDevice.Viewport.Width,
+                GraphicsDevice.Viewport.Height, 0.6f);
 
             mainBackground = Content.Load<Texture2D>("Graphics/bkgd_0");
 
@@ -266,6 +274,8 @@ namespace Monsterfall_01
 
             // Update the parallaxing background    
             bgLayer1.Update(gameTime);
+            bgLayer2.Update(gameTime);
+            bgLayer3.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -295,6 +305,8 @@ namespace Monsterfall_01
                 new Rectangle(0,0,mainBackground.Width,mainBackground.Height), Color.White);
             // Draw the moving background  
             bgLayer1.Draw(_spriteBatch, new Vector2(-viewTranslate.X, -viewTranslate.Y));
+            bgLayer2.Draw(_spriteBatch, new Vector2(-viewTranslate.X, -viewTranslate.Y));
+            bgLayer3.Draw(_spriteBatch, new Vector2(-viewTranslate.X, -viewTranslate.Y));
 
             // Draw map
             map01.Draw(_spriteBatch, GraphicsDevice);
