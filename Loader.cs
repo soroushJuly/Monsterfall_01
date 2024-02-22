@@ -9,6 +9,7 @@ namespace Monsterfall_01
     internal class Loader
     {
         private Stream mFileStream;
+        public Loader() { }
         public Loader(Stream stream)
         {
             mFileStream = stream;

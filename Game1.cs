@@ -6,7 +6,6 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using Monsterfall_01;
-using System.IO;
 using Monsterfall_01.Input;
 
 namespace Monsterfall_01
@@ -24,14 +23,6 @@ namespace Monsterfall_01
 
         CollisionManager collisionManager;
 
-        // Keyboard states used to determine key presses   
-        KeyboardState currentKeyboardState;
-        KeyboardState previousKeyboardState;
-
-        //Mouse states used to track Mouse button press   
-        MouseState currentMouseState;
-        MouseState previousMouseState;
-
         // Image used to display the static background   
         Texture2D mainBackground;
         // Parallaxing Layers   
@@ -47,7 +38,6 @@ namespace Monsterfall_01
 
         // govern how fast our laser can fire.  
         TimeSpan laserSpawnTime;
-        TimeSpan previousLaserSpawnTime;
 
         //Our Laser Sound and Instance  
         private SoundEffect laserSound;
@@ -151,61 +141,17 @@ namespace Monsterfall_01
             animationLoader.LoadAnimations(Content, "Graphics\\MonsterIce\\Death\\Death Body ", ENEMY_SCALE, monsterIceAnimations,
                 256, 20, 17, 16, 4);
 
-            // Load level details
+            // Load level\Enviroment details (Position of elements in the map and the map it self)
             List<string> lines = new List<string>();
-            List<Decoration> decorations = new List<Decoration>();
-            int levelIndex = 0;
-            string levelPath = string.Format("Content\\Maps\\{0}.txt", levelIndex);
-            int width = 0;
-            int height = 0;
-            using (Stream fileStream = TitleContainer.OpenStream(levelPath))
-            {
-                bool isDecoraitons = false;
-                loader = new Loader(fileStream);
-                lines = loader.ReadLinesFromTextFile();
-                foreach (string line in lines)
-                {
-                    if (isDecoraitons)
-                    {
-                        if(line == "Decorations")
-                        {
-                            break;
-                        }
-                        string[] widthLine = line.Split(":");
-                        String title = widthLine[0];
-                        String point = widthLine[1];
-                        string[] coords = point.Split(",");
-                        Vector2 location = new Vector2(int.Parse(coords[0]), int.Parse(coords[1]));
-                        //Point location = new Point(coords[0],coords[1]);
-                        string path = string.Format("Graphics\\Env\\Dungeon\\{0}", title);
-                        Texture2D decorTexture = Content.Load<Texture2D>(path);
-                        decorations.Add(new Decoration(location, decorTexture));
-                        continue;
-                    }
-                    if (line.Contains("Width:"))
-                    {
-                        string[] widthLine = line.Split(":");
-                        width = int.Parse(widthLine[1]);
-                    }
-                    if (line.Contains("Height:"))
-                    {
-                        string[] heightLine = line.Split(":");
-                        height = int.Parse(heightLine[1]);
-                    }
-                    if (line.Contains("Decorations"))
-                    {
-                        isDecoraitons = true;
-                    }
-                }
-            }
-
+            MapData mapData = new MapData();
+            mapData.ReadMapData(lines, Content, 0);
 
             // Initialize map
             map01 = new Map();
-            Point MAP_SIZE = new Point(width, height);
-            map01.Initialize(MAP_SIZE, Content, decorations);
+            map01.Initialize(mapData.GetMapSize(), Content, mapData.GetDecorations());
 
-            //
+            // Load data related to the gameplay
+            loader = new Loader();
             loader.ReadXML("Content\\XML\\GameInfo.xml");
 
             Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X - 100,
@@ -254,14 +200,6 @@ namespace Monsterfall_01
             collisionManager.Update();
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
-            // Save the previous state of the keyboard, game pad, and mouse so we can determine single key/button presses  
-            previousKeyboardState = currentKeyboardState;
-            previousMouseState = currentMouseState;
-
-            // Read the current state of the keyboard, gamepad and mouse and store it  
-            currentKeyboardState = Keyboard.GetState();
-            currentMouseState = Mouse.GetState();
 
             //Update the player   
             UpdatePlayer(gameTime);

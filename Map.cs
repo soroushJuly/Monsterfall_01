@@ -10,22 +10,22 @@ namespace Monsterfall_01
 {
     internal class Map
     {
-        private Point mapSize;
+        private Vector2 mapSize;
         private Point mapOffset;
         private Point tileSize;
         private Tile[,] tiles;
         private List<Tile> decorTiles;
         public List<Tile> DecorTiles { get { return decorTiles; } }
-        List<Decoration> decorations;
+        private List<Decoration> decorations;
 
-        public void Initialize(Point mapSize, ContentManager content, List<Decoration> decorations)
+        public void Initialize(Vector2 mapSize, ContentManager content, List<Decoration> decorations)
         {
             this.decorations = decorations;
             this.mapSize = mapSize;
             decorTiles = new List<Tile>();
             //mapOffset = new Point(mapSize.X * 100, 0);
             mapOffset = new Point(0, 0);
-            tiles = new Tile[mapSize.X, mapSize.Y];
+            tiles = new Tile[(int)mapSize.X, (int)mapSize.Y];
 
             Texture2D tileTexture = content.Load<Texture2D>("Graphics\\Env\\Dungeon\\stone_E1");
             tileSize.X = tileTexture.Width;
