@@ -61,6 +61,7 @@ namespace Monsterfall_01
 
             // Set the position of the enemy  
             Position = position;
+            CollisionOffset = Vector2.Zero;
             // We initialize the enemy to be active so it will be update in the game  
             Active = true;
             // Set the health of the enemy  
@@ -99,8 +100,6 @@ namespace Monsterfall_01
             Sense();
             fsm.Update(gameTime);
             currentAnimation = directionIndex + 16 * (int)currentState;
-            distance = (float)currentState;
-
             this.box = new Rectangle((int)(Position.X - Width / 4), (int)Position.Y - Height / 4, Width / 2, Height / 2);
             // The enemy always moves to the left so decrement it's x position  
             
@@ -118,10 +117,8 @@ namespace Monsterfall_01
         }
         public void Draw(SpriteBatch spriteBatch, GraphicsDevice GraphicsDevices)
         {
-            // Draw the animation  
-            Texture2D pixel = new Texture2D(GraphicsDevices, 1, 1);
-            pixel.SetData<Color>(new Color[] { Color.White });
-            spriteBatch.Draw(pixel, box, Color.White);
+            // Draw the animation
+            //DrawBoundingBox(spriteBatch, GraphicsDevices);
             enemyAnimations[currentAnimation].Draw(spriteBatch);
         }
 
@@ -129,14 +126,14 @@ namespace Monsterfall_01
         {
             // Sensing the direction
             Vector2 direction = Vector2.Normalize(Game1.player.position - Position);
-            Position += direction;
+            Position += direction + Vector2.Multiply(CollisionOffset,0.01f);
 
             // 0 sprite is upwards then 0 degree is (0,1)
             double degree = Math.Acos(Vector2.Dot(-1 * direction, new Vector2(0, 1)));
             if (direction.X < 0) { degree += 2 * (Math.PI - degree); }
             directionIndex = (int)((degree * 180 / Math.PI) / (360.0f /16));
-             
-            //distance = currentAnimation;
+
+            distance = CollisionOffset.X;
 
 
             // Sensing distance
@@ -163,15 +160,12 @@ namespace Monsterfall_01
                 Vector2 depth = RectangleExtensions.GetIntersectionDepth(box, player.GetBox());
                 CollisionOffset = depth; 
             }
-            //Enemy enemy = obj as Enemy;
-            //if (enemy != null)
-            //{
-            //    if (takeDamageTimer < 0)
-            //    {
-            //        Health -= 10;
-            //        takeDamageTimer = 1f;
-            //    }
-            //}
+            Enemy enemy = obj as Enemy;
+            if (enemy != null)
+            {
+                Vector2 depth = RectangleExtensions.GetIntersectionDepth(box, enemy.GetBox());
+                CollisionOffset = depth;
+            }
             //if (blockTimer > 0)
             //{
             //    return;
