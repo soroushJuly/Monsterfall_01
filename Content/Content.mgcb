@@ -3644,7 +3644,7 @@
 /processorParam:TextureFormat=Compressed
 /build:Graphics/gameFont.spritefont
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_000.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_000.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3654,9 +3654,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_000.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_000.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_022.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_022.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3666,9 +3666,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_022.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_022.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_045.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_045.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3678,9 +3678,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_045.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_045.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_067.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_067.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3690,9 +3690,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_067.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_067.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_090.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_090.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3702,9 +3702,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_090.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_090.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_112.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_112.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3714,9 +3714,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_112.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_112.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_135.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_135.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3726,9 +3726,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_135.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_135.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_157.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_157.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3738,9 +3738,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_157.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_157.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_180.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_180.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3750,9 +3750,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_180.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_180.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_202.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_202.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3762,9 +3762,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_202.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_202.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_225.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_225.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3774,9 +3774,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_225.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_225.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_247.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_247.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3786,9 +3786,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_247.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_247.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_270.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_270.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3798,9 +3798,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_270.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_270.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_292.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_292.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3810,9 +3810,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_292.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_292.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_315.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_315.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3822,9 +3822,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_315.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_315.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_337.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_337.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3834,9 +3834,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Body_337.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_337.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_000.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_000.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3846,9 +3846,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_000.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_000.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_022.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_022.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3858,9 +3858,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_022.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_022.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_045.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_045.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3870,9 +3870,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_045.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_045.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_067.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_067.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3882,9 +3882,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_067.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_067.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_090.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_090.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3894,9 +3894,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_090.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_090.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_112.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_112.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3906,9 +3906,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_112.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_112.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_135.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_135.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3918,9 +3918,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_135.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_135.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_157.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_157.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3930,9 +3930,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_157.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_157.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_180.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_180.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3942,9 +3942,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_180.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_180.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_202.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_202.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3954,9 +3954,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_202.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_202.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_225.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_225.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3966,9 +3966,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_225.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_225.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_247.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_247.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3978,9 +3978,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_247.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_247.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_270.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_270.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -3990,9 +3990,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_270.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_270.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_292.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_292.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4002,9 +4002,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_292.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_292.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_315.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_315.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4014,9 +4014,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_315.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_315.png
 
-#begin Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_337.png
+#begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_337.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4026,9 +4026,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Idle_Unarmed/Idle_Unarmed_Shadow_337.png
+/build:Graphics/HeroFemale/Attack_Bow/Attack_Bow_Shadow_337.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Body_000.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Body_000.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4038,9 +4038,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Body_000.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Body_000.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Body_022.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Body_022.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4050,9 +4050,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Body_022.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Body_022.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Body_045.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Body_045.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4062,9 +4062,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Body_045.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Body_045.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Body_067.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Body_067.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4074,9 +4074,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Body_067.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Body_067.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Body_090.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Body_090.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4086,9 +4086,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Body_090.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Body_090.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Body_112.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Body_112.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4098,9 +4098,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Body_112.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Body_112.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Body_135.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Body_135.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4110,9 +4110,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Body_135.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Body_135.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Body_157.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Body_157.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4122,9 +4122,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Body_157.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Body_157.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Body_180.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Body_180.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4134,9 +4134,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Body_180.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Body_180.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Body_202.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Body_202.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4146,9 +4146,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Body_202.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Body_202.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Body_225.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Body_225.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4158,9 +4158,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Body_225.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Body_225.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Body_247.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Body_247.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4170,9 +4170,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Body_247.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Body_247.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Body_270.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Body_270.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4182,9 +4182,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Body_270.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Body_270.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Body_292.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Body_292.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4194,9 +4194,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Body_292.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Body_292.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Body_315.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Body_315.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4206,9 +4206,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Body_315.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Body_315.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Body_337.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Body_337.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4218,9 +4218,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Body_337.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Body_337.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_000.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_000.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4230,9 +4230,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_000.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_000.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_022.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_022.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4242,9 +4242,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_022.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_022.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_045.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_045.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4254,9 +4254,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_045.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_045.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_067.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_067.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4266,9 +4266,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_067.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_067.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_090.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_090.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4278,9 +4278,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_090.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_090.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_112.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_112.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4290,9 +4290,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_112.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_112.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_135.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_135.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4302,9 +4302,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_135.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_135.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_157.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_157.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4314,9 +4314,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_157.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_157.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_180.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_180.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4326,9 +4326,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_180.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_180.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_202.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_202.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4338,9 +4338,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_202.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_202.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_225.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_225.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4350,9 +4350,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_225.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_225.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_247.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_247.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4362,9 +4362,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_247.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_247.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_270.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_270.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4374,9 +4374,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_270.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_270.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_292.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_292.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4386,9 +4386,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_292.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_292.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_315.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_315.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4398,9 +4398,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_315.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_315.png
 
-#begin Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_337.png
+#begin Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_337.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4410,9 +4410,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Sword/Run_Sword_Shadow_337.png
+/build:Graphics/HeroFemale/Death_Bow/Death_Bow_Shadow_337.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_000.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_000.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4422,9 +4422,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_000.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_000.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_022.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_022.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4434,9 +4434,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_022.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_022.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_045.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_045.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4446,9 +4446,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_045.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_045.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_067.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_067.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4458,9 +4458,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_067.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_067.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_090.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_090.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4470,9 +4470,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_090.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_090.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_112.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_112.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4482,9 +4482,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_112.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_112.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_135.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_135.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4494,9 +4494,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_135.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_135.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_157.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_157.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4506,9 +4506,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_157.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_157.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_180.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_180.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4518,9 +4518,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_180.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_180.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_202.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_202.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4530,9 +4530,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_202.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_202.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_225.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_225.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4542,9 +4542,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_225.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_225.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_247.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_247.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4554,9 +4554,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_247.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_247.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_270.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_270.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4566,9 +4566,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_270.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_270.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_292.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_292.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4578,9 +4578,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_292.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_292.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_315.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_315.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4590,9 +4590,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_315.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_315.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_337.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_337.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4602,9 +4602,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Body_337.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Body_337.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_000.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_000.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4614,9 +4614,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_000.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_000.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_022.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_022.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4626,9 +4626,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_022.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_022.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_045.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_045.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4638,9 +4638,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_045.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_045.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_067.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_067.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4650,9 +4650,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_067.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_067.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_090.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_090.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4662,9 +4662,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_090.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_090.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_112.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_112.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4674,9 +4674,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_112.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_112.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_135.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_135.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4686,9 +4686,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_135.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_135.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_157.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_157.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4698,9 +4698,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_157.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_157.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_180.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_180.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4710,9 +4710,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_180.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_180.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_202.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_202.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4722,9 +4722,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_202.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_202.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_225.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_225.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4734,9 +4734,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_225.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_225.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_247.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_247.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4746,9 +4746,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_247.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_247.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_270.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_270.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4758,9 +4758,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_270.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_270.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_292.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_292.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4770,9 +4770,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_292.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_292.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_315.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_315.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4782,9 +4782,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_315.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_315.png
 
-#begin Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_337.png
+#begin Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_337.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -4794,7 +4794,775 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/HeroFemale/Run_Unarmed/Run_Unarmed_Shadow_337.png
+/build:Graphics/HeroFemale/Hit_Bow/Hit_Bow_Shadow_337.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_000.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_000.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_022.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_022.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_045.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_045.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_067.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_067.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_090.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_090.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_112.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_112.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_135.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_135.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_157.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_157.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_180.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_180.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_202.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_202.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_225.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_225.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_247.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_247.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_270.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_270.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_292.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_292.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_315.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_315.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_337.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Body_337.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_000.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_000.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_022.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_022.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_045.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_045.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_067.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_067.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_090.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_090.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_112.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_112.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_135.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_135.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_157.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_157.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_180.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_180.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_202.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_202.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_225.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_225.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_247.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_247.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_270.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_270.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_292.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_292.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_315.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_315.png
+
+#begin Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_337.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Idle_Bow/Idle_Bow_Shadow_337.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Body_000.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Body_000.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Body_022.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Body_022.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Body_045.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Body_045.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Body_067.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Body_067.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Body_090.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Body_090.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Body_112.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Body_112.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Body_135.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Body_135.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Body_157.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Body_157.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Body_180.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Body_180.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Body_202.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Body_202.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Body_225.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Body_225.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Body_247.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Body_247.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Body_270.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Body_270.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Body_292.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Body_292.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Body_315.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Body_315.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Body_337.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Body_337.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_000.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_000.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_022.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_022.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_045.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_045.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_067.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_067.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_090.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_090.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_112.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_112.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_135.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_135.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_157.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_157.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_180.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_180.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_202.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_202.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_225.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_225.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_247.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_247.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_270.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_270.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_292.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_292.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_315.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_315.png
+
+#begin Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_337.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/HeroFemale/Run_Bow/Run_Bow_Shadow_337.png
 
 #begin Graphics/mainbackground.png
 /importer:TextureImporter
