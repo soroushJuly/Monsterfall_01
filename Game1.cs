@@ -30,6 +30,10 @@ namespace Monsterfall_01
         ParallaxingBackground bgLayer2;
         ParallaxingBackground bgLayer3;
 
+        // Arrow Texture
+        static public Texture2D arrowTexture;
+        static public List<Arrow> arrowList;
+
         //The rate at which the enemies appear  
         TimeSpan enemySpawnTime;
         TimeSpan previousSpawnTime;
@@ -82,6 +86,8 @@ namespace Monsterfall_01
             // TODO: Add your initialization logic here
             // Initialize the player class
             player = new Player();
+
+            arrowList = new List<Arrow>();
 
             enemies = new List<Enemy>();
             enemies.Add(new Enemy());
@@ -140,6 +146,9 @@ namespace Monsterfall_01
                 256, 20, 32, 16, 4);
             animationLoader.LoadAnimations(Content, "Graphics\\MonsterIce\\Death\\Death Body ", ENEMY_SCALE, monsterIceAnimations,
                 256, 20, 17, 16, 4);
+
+            // load the texture to serve as the laser
+            arrowTexture = Content.Load<Texture2D>("Graphics\\Arrow");
 
             // Load level\Enviroment details (Position of elements in the map and the map it self)
             List<string> lines = new List<string>();
@@ -204,8 +213,13 @@ namespace Monsterfall_01
             //Update the player   
             UpdatePlayer(gameTime);
             player.Update(gameTime);
-            
-            foreach(Enemy enemy in enemies)
+
+            foreach (Arrow arrow in arrowList) 
+            { 
+                arrow.Update(gameTime); 
+            }
+
+            foreach (Enemy enemy in enemies)
             {
                 enemy.Update(gameTime);
             }
@@ -258,6 +272,8 @@ namespace Monsterfall_01
                 enemy.Draw(_spriteBatch, GraphicsDevice);
             }
 
+            foreach(Arrow arrow in arrowList) { arrow.Draw(_spriteBatch); }
+
             int fixedYPosition = GraphicsDevice.Viewport.TitleSafeArea.Y - (int)viewTranslate.Y;
             int fixedXPosition = GraphicsDevice.Viewport.TitleSafeArea.X - (int)viewTranslate.X;
 
@@ -289,10 +305,13 @@ namespace Monsterfall_01
         }
         private void InitializeKeyBindings()
         {
+            // Basic movements
             inputCommandManager.AddKeyboardBinding(Keys.W, player.moveNorth);
             inputCommandManager.AddKeyboardBinding(Keys.D, player.moveEast);
             inputCommandManager.AddKeyboardBinding(Keys.A, player.moveWest);
             inputCommandManager.AddKeyboardBinding(Keys.S, player.moveSouth);
+            // Shoot arrow
+            inputCommandManager.AddKeyboardBinding(Keys.J, player.ShootArrow);
         }
     }
 }

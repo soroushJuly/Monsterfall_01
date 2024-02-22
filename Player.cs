@@ -180,6 +180,13 @@ namespace Monsterfall_01
             return directions[0] + directions[1]; 
         }
 
+        public void ShootArrow(eButtonState buttonState, Vector2 amount)
+        {
+            if (buttonState == eButtonState.DOWN)
+            {
+                Game1.arrowList.Add(new Arrow(this.position));
+            }
+        }
         public override bool CollisionTest(Collidable obj)
         {
             if (this.Intersects(obj))
