@@ -9,9 +9,18 @@ namespace Monsterfall_01
 {
     public class Player : Collidable
     {
+        enum STATES
+        {
+            IDLE,
+            RUN,
+            ATTACK_BOW,
+            HIT,
+            DEATH
+        }
         const float MOVEMENT_RESET_TIME = 0.1F;
 
         public Animation playerAnimation;
+        private Dictionary<String, int> mapDirections;
         List<Animation> playerAnimations;
         public float movementSpeed;
         public float scale;
@@ -20,6 +29,9 @@ namespace Monsterfall_01
         public Vector2 prevPosition;
         public bool isActive;
         public int Health;
+
+        public int currentDirectionIndex;
+        public int currentState;
 
         public Vector2 depth;
 
@@ -45,10 +57,22 @@ namespace Monsterfall_01
             this.prevPosition = this.position;
             this.playerAnimations = playerAnimations;
             this.directions = new List<String>();
+            mapDirections = new Dictionary<String, int>();
             String direction = "";
             directions.Add(direction);
             directions.Add(direction);
-            
+
+            currentState = 0;
+
+            mapDirections.Add("NORTH", 0);
+            mapDirections.Add("NORTHEAST", 1);
+            mapDirections.Add("EAST", 2);
+            mapDirections.Add("SOUTHEAST", 3);
+            mapDirections.Add("SOUTH", 4);
+            mapDirections.Add("SOUTHWEST", 5);
+            mapDirections.Add("WEST", 6);
+            mapDirections.Add("NORTHWEST", 7);
+
             currentAnimation = 0;
             this.xtimer = 0;
             this.blockTimer = 0;
@@ -74,45 +98,23 @@ namespace Monsterfall_01
         }
         private void UpdateAnimation(GameTime gameTime)
         {
-            // Switch current animation based on latest direction
-            switch (getDirection())
+            // 
+            if (getDirection() == "")
+                currentState = 0;
+            else
             {
-                case "North":
-                    currentAnimation = 0;
-                    break;
-                case "EastNorth":
-                    currentAnimation = 1;
-                    break;
-                case "East":
-                    currentAnimation = 2;
-                    break;
-                case "EastSouth":
-                    currentAnimation = 3;
-                    break;
-                case "South":
-                    currentAnimation = 4;
-                    break;
-                case "WestSouth":
-                    currentAnimation = 5;
-                    break;
-                case "West":
-                    currentAnimation = 6;
-                    break;
-                case "WestNorth":
-                    currentAnimation = 7;
-                    break;
-                default:
-                    currentAnimation = 8;
-                    break;
+                currentState = 1;
+                currentDirectionIndex = mapDirections[getDirection()];
             }
 
+            currentAnimation = currentDirectionIndex + 8 * (int)currentState;
             playerAnimations[currentAnimation].Position = position;
             playerAnimations[currentAnimation].Update(gameTime);
         }
         public void Draw(SpriteBatch spriteBatch, GraphicsDevice GraphicsDevices)
         {
             checkTimers();
-            DrawBoundingBox(spriteBatch, GraphicsDevices);
+            //DrawBoundingBox(spriteBatch, GraphicsDevices);
             playerAnimations[currentAnimation].Draw(spriteBatch);
         }
 
@@ -120,7 +122,7 @@ namespace Monsterfall_01
         {
             if (buttonState == eButtonState.DOWN)
             {
-                setYTimer("North");
+                setYTimer("NORTH");
                 this.prevPosition.Y = position.Y;
                 this.position.Y -= movementSpeed;
             }
@@ -129,7 +131,7 @@ namespace Monsterfall_01
         {
             if (buttonState == eButtonState.DOWN)
             {
-                setXTimer("East");
+                setXTimer("EAST");
                 this.prevPosition.X = position.X;
                 this.position.X += movementSpeed;
             }
@@ -138,7 +140,7 @@ namespace Monsterfall_01
         {
             if (buttonState == eButtonState.DOWN)
             {
-                setYTimer("South");
+                setYTimer("SOUTH");
                 this.prevPosition.Y = position.Y;
                 this.position.Y += movementSpeed;
             }
@@ -147,7 +149,7 @@ namespace Monsterfall_01
         {
             if (buttonState == eButtonState.DOWN)
             {
-                setXTimer("West");
+                setXTimer("WEST");
                 this.prevPosition.X = position.X;
                 this.position.X -= movementSpeed;
             }
@@ -157,22 +159,22 @@ namespace Monsterfall_01
             if (xtimer < 0)
             {
                 prevPosition.X = position.X;
-                directions[0] = "";
+                directions[1] = "";
             }
             if (ytimer < 0)
             {
                 prevPosition.Y = position.Y;
-                directions[1] = "";
+                directions[0] = "";
             }
         }
         private void setXTimer(String direction)
         {
-            directions[0] = direction;
+            directions[1] = direction;
             xtimer = MOVEMENT_RESET_TIME;
         }
         private void setYTimer(String direction)
         {
-            directions[1] = direction;
+            directions[0] = direction;
             ytimer = MOVEMENT_RESET_TIME;
         }
         public String getDirection()

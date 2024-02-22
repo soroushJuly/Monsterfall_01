@@ -131,10 +131,10 @@ namespace Monsterfall_01
             // Create a list of player's animations
             List<Animation> playerAnimations = new List<Animation>();
             const float PLAYER_SCALE = 0.6f;
-            animationLoader.LoadAnimations(Content, "Graphics\\HeroFemale\\Run_Unarmed\\Run_Unarmed_Body_", PLAYER_SCALE, playerAnimations,
-                320, 20, 17, 8, 5);
             animationLoader.LoadAnimations(Content, "Graphics\\HeroFemale\\Idle_Unarmed\\Idle_Unarmed_Body_", PLAYER_SCALE, playerAnimations,
                 320, 16, 25, 8, 4);
+            animationLoader.LoadAnimations(Content, "Graphics\\HeroFemale\\Run_Unarmed\\Run_Unarmed_Body_", PLAYER_SCALE, playerAnimations,
+                320, 20, 17, 8, 5);
             // get enemy textures
             const float ENEMY_SCALE = 1.2f;
             List<Animation> monsterIceAnimations = new List<Animation>();
@@ -287,7 +287,7 @@ namespace Monsterfall_01
                 new Vector2(fixedXPosition, fixedYPosition + 90), Color.White);
             _spriteBatch.DrawString(font, "health: " + (player.position - player.prevPosition), 
                 new Vector2(fixedXPosition, fixedYPosition + 120), Color.White);
-            _spriteBatch.DrawString(font, "is attack range: " + (enemies[0].isInAttackRange), 
+            _spriteBatch.DrawString(font, "currentAnimation: " + (player.currentAnimation), 
                 new Vector2(fixedXPosition, fixedYPosition + 190), Color.White);
             _spriteBatch.DrawString(font, "is chase range: " + (enemies[0].isInChaseRange), 
                 new Vector2(fixedXPosition, fixedYPosition + 220), Color.White);
