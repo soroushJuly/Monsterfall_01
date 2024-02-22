@@ -34,8 +34,6 @@ namespace Monsterfall_01
         public bool isInChaseRange;
         public bool isInAttackRange;
 
-        public float distance = 0;
-
         public int directionIndex = 0;
 
         FSM fsm;
@@ -126,15 +124,12 @@ namespace Monsterfall_01
         {
             // Sensing the direction
             Vector2 direction = Vector2.Normalize(Game1.player.position - Position);
-            Position += direction + Vector2.Multiply(CollisionOffset,0.01f);
+            Position += direction + Vector2.Multiply(CollisionOffset, 0.01f);
 
             // 0 sprite is upwards then 0 degree is (0,1)
             double degree = Math.Acos(Vector2.Dot(-1 * direction, new Vector2(0, 1)));
             if (direction.X < 0) { degree += 2 * (Math.PI - degree); }
             directionIndex = (int)((degree * 180 / Math.PI) / (360.0f /16));
-
-            distance = CollisionOffset.X;
-
 
             // Sensing distance
             Vector2 playerDistance = Game1.player.position - Position;
