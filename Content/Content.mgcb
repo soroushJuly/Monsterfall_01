@@ -8264,7 +8264,7 @@
 /processorParam:TextureFormat=Color
 /build:Graphics/MonsterFire/Walk/Walk Shadow 337.png
 
-#begin Graphics/MonsterIce/Attack1/Attack1 Body 0.png
+#begin Graphics/MonsterIce/Attack1/Attack1 Body 000.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -8274,7 +8274,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/MonsterIce/Attack1/Attack1 Body 0.png
+/build:Graphics/MonsterIce/Attack1/Attack1 Body 000.png
 
 #begin Graphics/MonsterIce/Attack1/Attack1 Body 022.png
 /importer:TextureImporter
@@ -8456,7 +8456,7 @@
 /processorParam:TextureFormat=Color
 /build:Graphics/MonsterIce/Attack1/Attack1 Body 337.png
 
-#begin Graphics/MonsterIce/Attack1/Attack1 Shadow 0.png
+#begin Graphics/MonsterIce/Attack1/Attack1 Shadow 000.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -8466,7 +8466,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/MonsterIce/Attack1/Attack1 Shadow 0.png
+/build:Graphics/MonsterIce/Attack1/Attack1 Shadow 000.png
 
 #begin Graphics/MonsterIce/Attack1/Attack1 Shadow 022.png
 /importer:TextureImporter
@@ -8648,7 +8648,7 @@
 /processorParam:TextureFormat=Color
 /build:Graphics/MonsterIce/Attack1/Attack1 Shadow 337.png
 
-#begin Graphics/MonsterIce/Death/Death Body 0.png
+#begin Graphics/MonsterIce/Death/Death Body 000.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -8658,7 +8658,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/MonsterIce/Death/Death Body 0.png
+/build:Graphics/MonsterIce/Death/Death Body 000.png
 
 #begin Graphics/MonsterIce/Death/Death Body 022.png
 /importer:TextureImporter
@@ -8840,7 +8840,7 @@
 /processorParam:TextureFormat=Color
 /build:Graphics/MonsterIce/Death/Death Body 337.png
 
-#begin Graphics/MonsterIce/Death/Death Shadow 0.png
+#begin Graphics/MonsterIce/Death/Death Shadow 000.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -8850,7 +8850,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/MonsterIce/Death/Death Shadow 0.png
+/build:Graphics/MonsterIce/Death/Death Shadow 000.png
 
 #begin Graphics/MonsterIce/Death/Death Shadow 022.png
 /importer:TextureImporter
@@ -9031,6 +9031,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Graphics/MonsterIce/Death/Death Shadow 337.png
+
+#begin Graphics/MonsterIce/Hit/Hit Body 000.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/Hit/Hit Body 000.png
 
 #begin Graphics/MonsterIce/Hit/Hit Body 022.png
 /importer:TextureImporter
@@ -10171,6 +10183,390 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Graphics/MonsterIce/Run/Run Shadow 337.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Body 000.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Body 000.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Body 022.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Body 022.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Body 045.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Body 045.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Body 067.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Body 067.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Body 090.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Body 090.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Body 112.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Body 112.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Body 135.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Body 135.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Body 157.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Body 157.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Body 180.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Body 180.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Body 202.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Body 202.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Body 225.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Body 225.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Body 247.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Body 247.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Body 270.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Body 270.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Body 292.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Body 292.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Body 315.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Body 315.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Body 337.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Body 337.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Shadow 000.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Shadow 000.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Shadow 022.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Shadow 022.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Shadow 045.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Shadow 045.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Shadow 067.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Shadow 067.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Shadow 090.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Shadow 090.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Shadow 112.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Shadow 112.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Shadow 135.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Shadow 135.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Shadow 157.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Shadow 157.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Shadow 180.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Shadow 180.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Shadow 202.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Shadow 202.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Shadow 225.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Shadow 225.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Shadow 247.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Shadow 247.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Shadow 270.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Shadow 270.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Shadow 292.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Shadow 292.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Shadow 315.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Shadow 315.png
+
+#begin Graphics/MonsterIce/WalkForward/WalkForward Shadow 337.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/MonsterIce/WalkForward/WalkForward Shadow 337.png
 
 #begin Graphics/player.png
 /importer:TextureImporter
