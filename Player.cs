@@ -182,7 +182,7 @@ namespace Monsterfall_01
 
         public override bool CollisionTest(Collidable obj)
         {
-            if(this.Intersects(obj))
+            if (this.Intersects(obj))
             {
                 return true;
             }
