@@ -94,7 +94,7 @@ namespace Monsterfall_01
             enemies = new List<Enemy>();
             enemies.Add(new Enemy());
             enemies.Add(new Enemy());
-            enemies.Add(new Enemy());
+            //enemies.Add(new Enemy());
 
             collisionManager = new CollisionManager();
 
@@ -137,9 +137,13 @@ namespace Monsterfall_01
             // get enemy textures
             const float ENEMY_SCALE = 1.2f;
             List<Animation> monsterIceAnimations = new List<Animation>();
+            animationLoader.LoadAnimations(Content, "Graphics\\MonsterIce\\WalkForward\\WalkForward Body ", ENEMY_SCALE, monsterIceAnimations,
+                256, 20, 17, 16, 4);
             animationLoader.LoadAnimations(Content, "Graphics\\MonsterIce\\Run\\Run Body ", ENEMY_SCALE, monsterIceAnimations,
                 256, 20, 17, 16, 4);
-            animationLoader.LoadAnimations(Content, "Graphics\\MonsterIce\\Idle\\Idle Body ", ENEMY_SCALE, monsterIceAnimations,
+            animationLoader.LoadAnimations(Content, "Graphics\\MonsterIce\\Attack1\\Attack1 Body ", ENEMY_SCALE, monsterIceAnimations,
+                256, 20, 42, 16, 4);
+            animationLoader.LoadAnimations(Content, "Graphics\\MonsterIce\\Death\\Death Body ", ENEMY_SCALE, monsterIceAnimations,
                 256, 20, 17, 16, 4);
 
             // Load level details
@@ -318,10 +322,10 @@ namespace Monsterfall_01
                 new Vector2(fixedXPosition, fixedYPosition + 120), Color.White);
             _spriteBatch.DrawString(font, "health: " + (enemies[0].distance), 
                 new Vector2(fixedXPosition, fixedYPosition + 160), Color.White);
-            _spriteBatch.DrawString(font, "is range: " + (enemies[0].isInChaseRange), 
+            _spriteBatch.DrawString(font, "is attack range: " + (enemies[0].isInAttackRange), 
                 new Vector2(fixedXPosition, fixedYPosition + 190), Color.White);
-            //_spriteBatch.DrawString(font, "Anima: " + player.cNorm,
-            //    new Vector2(fixedXPosition, fixedYPosition + 180), Color.White);
+            _spriteBatch.DrawString(font, "is chase range: " + (enemies[0].isInChaseRange), 
+                new Vector2(fixedXPosition, fixedYPosition + 220), Color.White);
 
 
             // Stop drawing  

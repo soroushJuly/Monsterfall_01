@@ -14,9 +14,10 @@ namespace Monsterfall_01.State.StatesEnemy
             Name = "Idle";
         }
         public override void Enter(object owner) 
-        { 
+        {
             Enemy enemy = owner as Enemy;
-            //if
+            if (enemy == null) { return; }
+            enemy.currentState = Enemy.States.WALK;
         }
         public override void Exit(object owner) 
         { 
@@ -25,15 +26,7 @@ namespace Monsterfall_01.State.StatesEnemy
         {
             Enemy enemy = owner as Enemy;
 
-            if (enemy == null)
-            {
-                return;
-            }
-
-            enemy.currentAnimation = 0;
-            enemy.Position.X -= enemy.enemyMoveSpeed;
-            // Play Idle animation regarding the directon
-            // Other things that enemy should do in IDLE state
+            if (enemy == null) { return; }
         }
     }
 }
