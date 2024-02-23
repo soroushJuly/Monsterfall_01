@@ -8,6 +8,7 @@ namespace Monsterfall_01.Input
 {
     // We check for any update in inputs here (polling)
     // and then sending events accordingly
+    // This listens to Inputs BUT actualy fires events
     internal class InputListener
     {
         public event EventHandler<KeyboardEventArgs> OnKeyDown = delegate { };
