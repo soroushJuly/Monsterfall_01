@@ -53,5 +53,23 @@ namespace Monsterfall_01
             DrawBoundingBox(spriteBatch, graphicsDevice);
             spriteBatch.Draw(Game1.arrowTexture, dest, src, Color.White, (float)angle, origin, SpriteEffects.None, 0f);
         }
+        public override bool CollisionTest(Collidable obj)
+        {
+            if (this.Intersects(obj))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public override void OnCollision(Collidable obj)
+        {
+            Enemy enemy = obj as Enemy;
+            if (enemy != null)
+            {
+                flagForRemoval = true;
+            }
+  
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace Monsterfall_01
         public Vector2 Position;
         public Vector2 CollisionOffset;
         // The state of the Enemy Ship  
-        public bool Active;
+        public bool isActive;
         // The hit points of the enemy, if this goes to zero the enemy dies 
         public int Health;
         // The amount of damage the enemy inflicts on the player ship  
@@ -62,7 +62,7 @@ namespace Monsterfall_01
             Position = position;
             CollisionOffset = Vector2.Zero;
             // We initialize the enemy to be active so it will be update in the game  
-            Active = true;
+            isActive = true;
             // Set the health of the enemy  
             Health = 10;
             // Set the amount of damage the enemy can do  
@@ -111,7 +111,7 @@ namespace Monsterfall_01
             {
                 // By setting the Active flag to false, the game will remove this object from the 
                 // active game list  
-                Active = false;
+                flagForRemoval = true;
             }
         }
         public void Draw(SpriteBatch spriteBatch, GraphicsDevice GraphicsDevices)
@@ -149,6 +149,12 @@ namespace Monsterfall_01
 
         public override void OnCollision(Collidable obj)
         {
+            Arrow arrow = obj as Arrow;
+            CollisionOffset = Vector2.Zero;
+            if (arrow != null)
+            {
+                Health -= 100;
+            }
             Player player = obj as Player;
             CollisionOffset = Vector2.Zero;
             if (player != null)

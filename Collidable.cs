@@ -9,6 +9,7 @@ namespace Monsterfall_01
     {
         protected Rectangle box = new Rectangle();
         protected bool isCollidable = true;
+        public bool flagForRemoval = false;
         public Rectangle GetBox() { return box; }
         protected void DrawBoundingBox(SpriteBatch spriteBatch, GraphicsDevice GraphicsDevices)
         {

@@ -211,6 +211,9 @@ namespace Monsterfall_01
 
         protected override void Update(GameTime gameTime)
         {
+            ResolveRemovals();
+            foreach (Arrow arrow in arrowList)
+                collisionManager.AddCollidable(arrow);
             inputCommandManager.Update();
             collisionManager.Update();
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
@@ -320,6 +323,37 @@ namespace Monsterfall_01
             inputCommandManager.AddKeyboardBinding(Keys.S, player.moveSouth);
             // Shoot arrow
             inputCommandManager.AddKeyboardBinding(Keys.J, player.ShootArrow);
+        }
+        private void ResolveRemovals()
+        {
+            // TODO: isActive(flagForRemoval) will go to collidable so we can remove then from the collision manager too
+            List<Enemy> removals = new List<Enemy>();
+            foreach(Enemy enemy in enemies)
+            {
+                if (enemy.flagForRemoval)
+                {
+                    removals.Add(enemy);
+                }
+            }
+            foreach(Enemy enemy in removals)
+            {
+                enemies.Remove(enemy);
+                collisionManager.RemoveCollidable(enemy);
+            }
+
+            List<Arrow> arrowRemovals = new List<Arrow>();
+            foreach (Arrow arrow in arrowList)
+            {
+                if (arrow.flagForRemoval)
+                {
+                    arrowRemovals.Add(arrow);
+                }
+            }
+            foreach(Arrow arrow in arrowRemovals)
+            {
+                arrowList.Remove(arrow);
+                collisionManager.RemoveCollidable(arrow);
+            }
         }
     }
 }
