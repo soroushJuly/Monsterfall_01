@@ -1,23 +1,21 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Monsterfall_01.State.StatesEnemy
+using Monsterfall_01.StateManager;
+
+namespace Monsterfall_01.StatesEnemy
 {
-    internal class StateEnemyChase : State
+    internal class StateEnemyAttack : State
     {
-        public StateEnemyChase()
+        public StateEnemyAttack()
         {
-            Name = "Chase";
+            Name = "Attack";
         }
         public override void Enter(object owner)
         {
             Enemy enemy = owner as Enemy;
             if (enemy == null) { return; }
-            enemy.currentState = Enemy.States.RUN;
+            enemy.currentState = Enemy.States.ATTACK;
         }
         public override void Exit(object owner)
         {

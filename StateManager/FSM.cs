@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Monsterfall_01.State
+namespace Monsterfall_01.StateManager
 {
     public class FSM
     {

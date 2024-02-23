@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Monsterfall_01.State;
-using Monsterfall_01.State.StatesEnemy;
+
+using Monsterfall_01.StateManager;
+using Monsterfall_01.StatesEnemy;
 
 namespace Monsterfall_01
 {

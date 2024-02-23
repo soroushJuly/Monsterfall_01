@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 
-namespace Monsterfall_01.State
+namespace Monsterfall_01.StateManager
 {
     // We can have different state classes but no Pure state
     public abstract class State

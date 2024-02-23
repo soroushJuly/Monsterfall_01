@@ -5,11 +5,13 @@ using Microsoft.Xna.Framework.Graphics;
 
 using Monsterfall_01;
 using Monsterfall_01.Input;
+using Monsterfall_01.StateManager;
+using Monsterfall_01.StatesPlayer;
 namespace Monsterfall_01
 {
     public class Player : Collidable
     {
-        enum STATES
+        public enum States
         {
             IDLE,
             RUN,
@@ -17,11 +19,13 @@ namespace Monsterfall_01
             HIT,
             DEATH
         }
-        const float MOVEMENT_RESET_TIME = 0.1F;
+        const float MOVEMENT_RESET_TIME = 0.05F;
+
+        FSM animationManager; 
 
         public Animation playerAnimation;
         private Dictionary<String, int> mapDirections;
-        List<Animation> playerAnimations;
+        public List<Animation> playerAnimations;
         public float movementSpeed;
         public float scale;
        
@@ -31,7 +35,7 @@ namespace Monsterfall_01
         public int Health;
 
         public int currentDirectionIndex;
-        public int currentState;
+        public States currentState;
 
         public Vector2 depth;
 
@@ -39,10 +43,13 @@ namespace Monsterfall_01
         private float ytimer;
         private float blockTimer;
         private float takeDamageTimer;
+        private float attackTimer;
 
         private List<String> directions;
 
         public int currentAnimation;
+
+        public bool isAttacking;
 
         public int Width
         { get { return (int)((float)playerAnimation.frameWidth * scale); } }
@@ -62,7 +69,32 @@ namespace Monsterfall_01
             directions.Add(direction);
             directions.Add(direction);
 
-            currentState = 0;
+            isAttacking = false;
+
+            animationManager = new FSM(this);
+
+            StatePlayerIdle statePlayerIdle = new StatePlayerIdle();
+            StatePlayerRun statePlayerRun = new StatePlayerRun();
+            StatePlayerAttack statePlayerAttack = new StatePlayerAttack();
+            StatePlayerHit statePlayerHit = new StatePlayerHit();
+            StatePlayerDeath statePlayerDeath = new StatePlayerDeath();
+
+
+            statePlayerIdle.AddTransition(new Transition(statePlayerRun, () => DeltaPosition() != Vector2.Zero));
+            statePlayerIdle.AddTransition(new Transition(statePlayerAttack, () => isAttacking));
+            statePlayerRun.AddTransition(new Transition(statePlayerIdle, () => DeltaPosition() == Vector2.Zero));
+            statePlayerRun.AddTransition(new Transition(statePlayerAttack, () => isAttacking));
+            statePlayerAttack.AddTransition(new Transition(statePlayerIdle, () => DeltaPosition() == Vector2.Zero && !this.playerAnimations[currentAnimation].Active));
+            statePlayerAttack.AddTransition(new Transition(statePlayerRun, () => DeltaPosition() != Vector2.Zero && !this.playerAnimations[currentAnimation].Active));
+            //statePlayerAttack.AddTransition(new Transition(statePlayerRun, () => DeltaPosition() != Vector2.Zero && !this.playerAnimations[currentAnimation].Active));
+
+            animationManager.AddState(statePlayerIdle);
+            animationManager.AddState(statePlayerRun);
+            animationManager.AddState(statePlayerAttack);
+            animationManager.AddState(statePlayerHit);
+            animationManager.AddState(statePlayerDeath);
+
+            animationManager.Initialise("Idle");
 
             mapDirections.Add("NORTH", 0);
             mapDirections.Add("NORTHEAST", 1);
@@ -89,6 +121,7 @@ namespace Monsterfall_01
         public void Update(GameTime gameTime)
         {
             // Draw the box to screen for debugging purposes
+            animationManager.Update(gameTime);
             this.box = new Rectangle((int)(position.X - Width / 4), (int)position.Y - 120 / 2, Width / 2, 120);
             xtimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             ytimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -98,14 +131,8 @@ namespace Monsterfall_01
         }
         private void UpdateAnimation(GameTime gameTime)
         {
-            // 
-            if (getDirection() == "")
-                currentState = 0;
-            else
-            {
-                currentState = 1;
+            if(getDirection() != "")
                 currentDirectionIndex = mapDirections[getDirection()];
-            }
 
             currentAnimation = currentDirectionIndex + 8 * (int)currentState;
             playerAnimations[currentAnimation].Position = position;
@@ -186,6 +213,7 @@ namespace Monsterfall_01
         {
             if (buttonState == eButtonState.DOWN)
             {
+                isAttacking = true;
                 Game1.arrowList.Add(new Arrow(this.position));
             }
         }
@@ -197,7 +225,7 @@ namespace Monsterfall_01
             }
             return false;
         }
-
+        
         public override void OnCollision(Collidable obj)
         {
             Enemy enemy = obj as Enemy;
@@ -245,5 +273,7 @@ namespace Monsterfall_01
                 blockTimer = 0.01f;
             }
         }
+
+        public Vector2 DeltaPosition() { return position - prevPosition; }
     }
 }

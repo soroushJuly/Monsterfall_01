@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
 
-namespace Monsterfall_01.State
+namespace Monsterfall_01.StateManager
 {
     public class Transition
     {

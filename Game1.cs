@@ -136,11 +136,11 @@ namespace Monsterfall_01
             animationLoader.LoadAnimations(Content, "Graphics\\HeroFemale\\Run_Bow\\Run_Bow_Body_", PLAYER_SCALE, playerAnimations,
                 320, 20, 17, 8, 5);
             animationLoader.LoadAnimations(Content, "Graphics\\HeroFemale\\Attack_Bow\\Attack_Bow_Body_", PLAYER_SCALE, playerAnimations,
-                320, 20, 17, 8, 6);
+                320, 20, 17, 8, 6, false);
             animationLoader.LoadAnimations(Content, "Graphics\\HeroFemale\\Hit_Bow\\Hit_Bow_Body_", PLAYER_SCALE, playerAnimations,
-                320, 20, 17, 8, 5);
+                320, 20, 17, 8, 5, false);
             animationLoader.LoadAnimations(Content, "Graphics\\HeroFemale\\Death_Bow\\Death_Bow_Body_", PLAYER_SCALE, playerAnimations,
-                320, 20, 17, 8, 6);
+                320, 20, 17, 8, 6, false);
             // get enemy textures
             const float ENEMY_SCALE = 1.2f;
             List<Animation> monsterIceAnimations = new List<Animation>();
@@ -291,8 +291,10 @@ namespace Monsterfall_01
                 new Vector2(fixedXPosition, fixedYPosition + 30), Color.White);
             _spriteBatch.DrawString(font, "health: " + player.depth, 
                 new Vector2(fixedXPosition, fixedYPosition + 90), Color.White);
-            _spriteBatch.DrawString(font, "health: " + (player.position - player.prevPosition), 
+            _spriteBatch.DrawString(font, "health: " + (player.DeltaPosition()), 
                 new Vector2(fixedXPosition, fixedYPosition + 120), Color.White);
+            _spriteBatch.DrawString(font, "health: " + (player.DeltaPosition() != Vector2.Zero), 
+                new Vector2(fixedXPosition, fixedYPosition + 150), Color.White);
             _spriteBatch.DrawString(font, "currentAnimation: " + (player.currentAnimation), 
                 new Vector2(fixedXPosition, fixedYPosition + 190), Color.White);
             _spriteBatch.DrawString(font, "is chase range: " + (enemies[0].isInChaseRange), 

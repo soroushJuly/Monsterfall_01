@@ -9,13 +9,14 @@ namespace Monsterfall_01
 {
     internal class AnimationLoader
     {
-        public void LoadAnimations(ContentManager Content, String BasePath, float Scale, List<Animation> Animations, int size, int framecount, int frametime, int directioncount, int cols)
+        public void LoadAnimations(ContentManager Content, String BasePath, float Scale, List<Animation> Animations, int size, int framecount, int frametime, 
+            int directioncount, int cols, bool isLooping = true)
         {
             for (int i = 0; i < directioncount; i++)
             {
                 // Create texture with base path and the degree calculated by the function
                 Texture2D playerTexture = Content.Load<Texture2D>(createTexturePath(BasePath, i, directioncount));
-                Animation animation = new Animation(playerTexture, Vector2.Zero, size, size, framecount, frametime, Color.White, Scale, true, cols);
+                Animation animation = new Animation(playerTexture, Vector2.Zero, size, size, framecount, frametime, Color.White, Scale, isLooping, cols);
                 Animations.Add(animation);
             }
         }

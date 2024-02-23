@@ -1,26 +1,24 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Monsterfall_01.StateManager;
 
-namespace Monsterfall_01.State.StatesEnemy
+
+namespace Monsterfall_01.StatesEnemy
 {
     public class StateEnemyIdle : State
     {
-        public StateEnemyIdle() 
+        public StateEnemyIdle()
         {
             Name = "Idle";
         }
-        public override void Enter(object owner) 
+        public override void Enter(object owner)
         {
             Enemy enemy = owner as Enemy;
             if (enemy == null) { return; }
             enemy.currentState = Enemy.States.WALK;
         }
-        public override void Exit(object owner) 
-        { 
+        public override void Exit(object owner)
+        {
         }
         public override void Execute(object owner, GameTime gameTime)
         {
