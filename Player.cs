@@ -110,6 +110,7 @@ namespace Monsterfall_01
             this.blockTimer = 0;
             this.takeDamageTimer = 0;
             this.ytimer = 0;
+            this.attackTimer = 0;
             playerAnimation = playerAnimations[currentAnimation];
 
             Health = GameInfo.Instance.PlayerInfo.health;
@@ -127,6 +128,7 @@ namespace Monsterfall_01
             ytimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             blockTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             takeDamageTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            attackTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             UpdateAnimation(gameTime);
         }
         private void UpdateAnimation(GameTime gameTime)
@@ -213,8 +215,12 @@ namespace Monsterfall_01
         {
             if (buttonState == eButtonState.DOWN)
             {
-                isAttacking = true;
-                Game1.arrowList.Add(new Arrow(this.position));
+                if (attackTimer < 0)
+                {
+                    Game1.arrowList.Add(new Arrow(this.position, currentDirectionIndex));
+                    isAttacking = true;
+                    attackTimer = .6f;
+                }
             }
         }
         public override bool CollisionTest(Collidable obj)

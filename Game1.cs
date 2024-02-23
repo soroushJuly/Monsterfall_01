@@ -278,7 +278,7 @@ namespace Monsterfall_01
                 enemy.Draw(_spriteBatch, GraphicsDevice);
             }
 
-            foreach(Arrow arrow in arrowList) { arrow.Draw(_spriteBatch); }
+            foreach(Arrow arrow in arrowList) { arrow.Draw(_spriteBatch, GraphicsDevice); }
 
             int fixedYPosition = GraphicsDevice.Viewport.TitleSafeArea.Y - (int)viewTranslate.Y;
             int fixedXPosition = GraphicsDevice.Viewport.TitleSafeArea.X - (int)viewTranslate.X;
