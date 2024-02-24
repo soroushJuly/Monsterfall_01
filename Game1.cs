@@ -163,7 +163,7 @@ namespace Monsterfall_01
             loader.ReadXML("Content\\XML\\GameInfo.xml");
 
             Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X - 100,
-                GraphicsDevice.Viewport.TitleSafeArea.Y + GraphicsDevice.Viewport.TitleSafeArea.Height / 2);
+                GraphicsDevice.Viewport.TitleSafeArea.Y + 400);
             player.Initialize(ref playerAnimations, playerPosition, PLAYER_SCALE);
 
             for (int i = 0; i < enemies.Count; i++)

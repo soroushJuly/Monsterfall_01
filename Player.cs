@@ -244,15 +244,15 @@ namespace Monsterfall_01
                     takeDamageTimer = 1f;
                 }
             }
-            if (blockTimer > 0)
-            {
-                return;
-            }
+            //if (blockTimer > 0)
+            //{
+            //    return;
+            //}
             // Only the first decoration collision is working
             Tile decoration = obj as Tile;
             if (decoration != null)
             {
-                float PUSH_POWER = .5f;
+                float PUSH_POWER = 1f;
                 Vector2 depth = RectangleExtensions.GetIntersectionDepth(box, decoration.GetBox());
                 Vector2 fallback = Vector2.Zero;
                 //Vector2 direction = Vector2.Normalize(position - prevPosition);
@@ -269,7 +269,7 @@ namespace Monsterfall_01
                 }
 
                 position += fallback;
-                blockTimer = .01f;
+                //blockTimer = .01f;
             }
         }
 
