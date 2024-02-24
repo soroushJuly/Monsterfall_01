@@ -22,10 +22,5 @@ namespace Monsterfall_01
         }
 
         public PlayerInfo PlayerInfo;
-        public int Score = 0;
-        public void OnEnemyDied(object owner, EventArgs eventArgs)
-        {
-            Score += 10;
-        }
     }
 }

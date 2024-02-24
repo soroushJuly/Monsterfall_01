@@ -68,6 +68,10 @@ namespace Monsterfall_01
         // Translation of the view when player reaches the boundries
         Vector3 viewTranslate;
 
+        // Object to save the players activity
+        GameStats stats;
+        HighScores highScoresTable;
+
         private Loader loader;
         public Game1()
         {
@@ -161,7 +165,10 @@ namespace Monsterfall_01
             // Load data related to the gameplay
             loader = new Loader();
             loader.ReadXML("Content\\XML\\GameInfo.xml");
-
+            highScoresTable = new HighScores();
+            highScoresTable = HighScores.Load();
+            stats = new GameStats();
+            
             Vector2 playerPosition = new Vector2(GraphicsDevice.Viewport.TitleSafeArea.X - 100,
                 GraphicsDevice.Viewport.TitleSafeArea.Y + 400);
             player.Initialize(ref playerAnimations, playerPosition, PLAYER_SCALE);
@@ -169,7 +176,7 @@ namespace Monsterfall_01
             for (int i = 0; i < enemies.Count; i++)
             {
                 enemies[i].Initialize(monsterIceAnimations, playerPosition + new Vector2(i * 150 + 500, i));
-                enemies[i].EnemyDied += GameInfo.Instance.OnEnemyDied;
+                enemies[i].EnemyDied += stats.OnEnemyDied;
             }
 
             collisionManager.AddCollidable(player);
@@ -280,7 +287,7 @@ namespace Monsterfall_01
             int fixedXPosition = GraphicsDevice.Viewport.TitleSafeArea.X - (int)viewTranslate.X;
 
             // Draw the score  
-            _spriteBatch.DrawString(font, "score: " + GameInfo.Instance.Score, 
+            _spriteBatch.DrawString(font, "score: " + stats.score, 
                 new Vector2(fixedXPosition, fixedYPosition), Color.White);
             // Draw the player health  
             _spriteBatch.DrawString(font, "health: " + player.Health, 
@@ -300,6 +307,8 @@ namespace Monsterfall_01
         }
         protected override void UnloadContent()
         {
+            highScoresTable.Add(stats);
+            HighScores.Save(highScoresTable);
             laserSoundInstance.Dispose();
             explosionSoundInstance.Dispose();
         }
