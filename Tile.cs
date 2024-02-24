@@ -8,7 +8,7 @@ namespace Monsterfall_01
     {
         public Texture2D tileTexture;
         private Vector2 position;
-
+        public Vector2 GetPosition() { return position; }
         public Tile() { this.isCollidable = false; }
         public Tile(Texture2D tileTexture, Vector2 position, bool isCollidable)
         {

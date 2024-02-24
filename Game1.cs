@@ -90,8 +90,6 @@ namespace Monsterfall_01
             enemies = new List<Enemy>();
             enemies.Add(new Enemy());
             enemies.Add(new Enemy());
-            enemies.Add(new Enemy());
-            enemies.Add(new Enemy());
 
             collisionManager = new CollisionManager();
 
@@ -289,9 +287,7 @@ namespace Monsterfall_01
                 new Vector2(fixedXPosition, fixedYPosition + 30), Color.White);
             _spriteBatch.DrawString(font, "health: " + player.depth, 
                 new Vector2(fixedXPosition, fixedYPosition + 90), Color.White);
-            _spriteBatch.DrawString(font, "health: " + (player.DeltaPosition()), 
-                new Vector2(fixedXPosition, fixedYPosition + 120), Color.White);
-            _spriteBatch.DrawString(font, "health: " + (player.DeltaPosition() != Vector2.Zero), 
+            _spriteBatch.DrawString(font, "health: " + (player.DeltaPosition()),
                 new Vector2(fixedXPosition, fixedYPosition + 150), Color.White);
             _spriteBatch.DrawString(font, "currentAnimation: " + (player.currentAnimation), 
                 new Vector2(fixedXPosition, fixedYPosition + 190), Color.White);

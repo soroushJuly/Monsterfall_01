@@ -123,7 +123,8 @@ namespace Monsterfall_01
         {
             // Draw the box to screen for debugging purposes
             animationManager.Update(gameTime);
-            this.box = new Rectangle((int)(position.X - Width / 4), (int)position.Y - 120 / 2, Width / 2, 120);
+            this.box = new Rectangle((int)(position.X - Width / 6), (int)position.Y - 100 / 2, Width / 3, 100);
+            //this.box = new Rectangle((int)position.X , (int)position.Y, 10, 10);
             xtimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             ytimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             blockTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -143,7 +144,7 @@ namespace Monsterfall_01
         public void Draw(SpriteBatch spriteBatch, GraphicsDevice GraphicsDevices)
         {
             checkTimers();
-            //DrawBoundingBox(spriteBatch, GraphicsDevices);
+            DrawBoundingBox(spriteBatch, GraphicsDevices);
             playerAnimations[currentAnimation].Draw(spriteBatch);
         }
 
@@ -251,32 +252,24 @@ namespace Monsterfall_01
             Tile decoration = obj as Tile;
             if (decoration != null)
             {
+                float PUSH_POWER = .5f;
                 Vector2 depth = RectangleExtensions.GetIntersectionDepth(box, decoration.GetBox());
-                this.depth = depth;
-                Vector2 direction = position - prevPosition;
-                if(direction.X != 0 && direction.Y == 0)
-                {
-                    prevPosition = position;
-                    position = new Vector2(position.X + .5f * depth.X, position.Y);
+                Vector2 fallback = Vector2.Zero;
+                //Vector2 direction = Vector2.Normalize(position - prevPosition);
 
-                }
-                else if(direction.Y != 0 && direction.X == 0)
+                // Check which direction we are colliding with the object
+                if (position.Y >= (decoration.GetPosition().Y + decoration.GetBox().Height) ||
+                        position.Y <= (decoration.GetPosition().Y - decoration.GetBox().Height))
                 {
-                    prevPosition = position;
-                    position = new Vector2(position.X, position.Y + .5f * depth.Y);
+                    fallback.Y = PUSH_POWER * depth.Y;
                 }
-                else if (direction.Y != 0 && direction.X != 0)
+                else
                 {
-                    prevPosition = position;
-                    if (depth.X < 2 * movementSpeed)
-                        position = new Vector2(position.X + .5f * depth.X, position.Y);
-                    else if (depth.Y < 2 * movementSpeed)
-                        position = new Vector2(position.X, position.Y + .5f * depth.Y);
-                    else
-                        position = new Vector2(position.X + .5f * depth.X, position.Y + .5f * depth.Y);
+                    fallback.X = PUSH_POWER * depth.X;
                 }
 
-                blockTimer = 0.01f;
+                position += fallback;
+                blockTimer = .01f;
             }
         }
 
