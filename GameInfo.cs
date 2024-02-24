@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Monsterfall_01
 {
@@ -26,5 +22,10 @@ namespace Monsterfall_01
         }
 
         public PlayerInfo PlayerInfo;
+        public int Score = 0;
+        public void OnEnemyDied(object owner, EventArgs eventArgs)
+        {
+            Score += 10;
+        }
     }
 }

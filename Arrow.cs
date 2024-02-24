@@ -19,8 +19,9 @@ namespace Monsterfall_01
         private Vector2 origin;
         // Scale of arrow texture
         const float SCALE = 0.25f;
-          
-        //public int Damage = 10;
+
+        // Arrow Damage power
+        public readonly int Damage = 100;
         // Angle between arrow and (0,1) vector
         private double angle;
         // Arrow range.  

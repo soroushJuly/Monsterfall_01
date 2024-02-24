@@ -56,8 +56,6 @@ namespace Monsterfall_01
 
         // The font used to display UI elements  
         SpriteFont font;
-        //Number that holds the player score  
-        int score;
 
         // Tile map for the first level
         Map map01;
@@ -74,9 +72,9 @@ namespace Monsterfall_01
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
-            _graphics.PreferredBackBufferWidth = 1920;
-            _graphics.PreferredBackBufferHeight = 1080;
-            _graphics.IsFullScreen = true;
+            _graphics.PreferredBackBufferWidth = 1020;
+            //_graphics.PreferredBackBufferHeight = 1080;
+            //_graphics.IsFullScreen = true;
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
@@ -112,9 +110,6 @@ namespace Monsterfall_01
             bgLayer3 = new ParallaxingBackground();
 
             inputCommandManager = new InputCommandManager();
-
-            //Set player's score to zero
-            score = 0;
 
             viewTranslate = Vector3.Zero;
 
@@ -176,6 +171,7 @@ namespace Monsterfall_01
             for (int i = 0; i < enemies.Count; i++)
             {
                 enemies[i].Initialize(monsterIceAnimations, playerPosition + new Vector2(i * 150 + 500, i));
+                enemies[i].EnemyDied += GameInfo.Instance.OnEnemyDied;
             }
 
             collisionManager.AddCollidable(player);
@@ -211,7 +207,6 @@ namespace Monsterfall_01
 
         protected override void Update(GameTime gameTime)
         {
-            ResolveRemovals();
             foreach (Arrow arrow in arrowList)
                 collisionManager.AddCollidable(arrow);
             inputCommandManager.Update();
@@ -238,6 +233,7 @@ namespace Monsterfall_01
             bgLayer2.Update(gameTime);
             bgLayer3.Update(gameTime);
 
+            ResolveRemovals();
             base.Update(gameTime);
         }
         // Getting and reacting to the inputs for the player
@@ -250,7 +246,6 @@ namespace Monsterfall_01
             if (player.Health <= 0)
             {
                 player.Health = 100;
-                score = 0;
             }
         }
         protected override void Draw(GameTime gameTime)
@@ -287,7 +282,7 @@ namespace Monsterfall_01
             int fixedXPosition = GraphicsDevice.Viewport.TitleSafeArea.X - (int)viewTranslate.X;
 
             // Draw the score  
-            _spriteBatch.DrawString(font, "score: " + score, 
+            _spriteBatch.DrawString(font, "score: " + GameInfo.Instance.Score, 
                 new Vector2(fixedXPosition, fixedYPosition), Color.White);
             // Draw the player health  
             _spriteBatch.DrawString(font, "health: " + player.Health, 
@@ -300,8 +295,6 @@ namespace Monsterfall_01
                 new Vector2(fixedXPosition, fixedYPosition + 150), Color.White);
             _spriteBatch.DrawString(font, "currentAnimation: " + (player.currentAnimation), 
                 new Vector2(fixedXPosition, fixedYPosition + 190), Color.White);
-            _spriteBatch.DrawString(font, "is chase range: " + (enemies[0].isInChaseRange), 
-                new Vector2(fixedXPosition, fixedYPosition + 220), Color.White);
 
 
             // Stop drawing  
@@ -326,34 +319,24 @@ namespace Monsterfall_01
         }
         private void ResolveRemovals()
         {
-            // TODO: isActive(flagForRemoval) will go to collidable so we can remove then from the collision manager too
+            // Remove all the flagged objects from lists
             List<Enemy> removals = new List<Enemy>();
             foreach(Enemy enemy in enemies)
             {
                 if (enemy.flagForRemoval)
-                {
                     removals.Add(enemy);
-                }
             }
             foreach(Enemy enemy in removals)
-            {
                 enemies.Remove(enemy);
-                collisionManager.RemoveCollidable(enemy);
-            }
 
             List<Arrow> arrowRemovals = new List<Arrow>();
             foreach (Arrow arrow in arrowList)
             {
                 if (arrow.flagForRemoval)
-                {
                     arrowRemovals.Add(arrow);
-                }
             }
             foreach(Arrow arrow in arrowRemovals)
-            {
                 arrowList.Remove(arrow);
-                collisionManager.RemoveCollidable(arrow);
-            }
         }
     }
 }

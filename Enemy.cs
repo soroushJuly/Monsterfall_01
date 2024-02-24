@@ -10,6 +10,10 @@ namespace Monsterfall_01
 {
     internal class Enemy : Collidable
     {
+        // Agreement (delegate) for the enemy died event: (agreement on the signiture)
+        public delegate void EnemyDiedEventHandler(object owner, EventArgs eventArgs);
+        // The event with the handler(agreement)
+        public event EnemyDiedEventHandler EnemyDied;
         // Animation list for the enemy  
         private List<Animation> enemyAnimations;
         // The position of the enemy ship relative to the top left corner of the screen  
@@ -36,6 +40,8 @@ namespace Monsterfall_01
         public bool isInAttackRange;
 
         public int directionIndex = 0;
+
+        private TimeSpan hitTimer;
 
         FSM fsm;
         // States associated with animations
@@ -98,6 +104,7 @@ namespace Monsterfall_01
         {
             Sense();
             fsm.Update(gameTime);
+            hitTimer = hitTimer.Subtract(TimeSpan.FromSeconds(gameTime.TotalGameTime.TotalSeconds));
             currentAnimation = directionIndex + 16 * (int)currentState;
             this.box = new Rectangle((int)(Position.X - Width / 4), (int)Position.Y - Height / 4, Width / 2, Height / 2);
             // The enemy always moves to the left so decrement it's x position  
@@ -150,10 +157,14 @@ namespace Monsterfall_01
         public override void OnCollision(Collidable obj)
         {
             Arrow arrow = obj as Arrow;
-            CollisionOffset = Vector2.Zero;
             if (arrow != null)
             {
-                Health -= 100;
+                if (hitTimer.TotalMilliseconds < 0)
+                {
+                    Health -= arrow.Damage;
+                    OnEnemyDied();
+                    hitTimer = TimeSpan.FromMilliseconds(1000);
+                }
             }
             Player player = obj as Player;
             CollisionOffset = Vector2.Zero;
@@ -168,41 +179,14 @@ namespace Monsterfall_01
                 Vector2 depth = RectangleExtensions.GetIntersectionDepth(box, enemy.GetBox());
                 CollisionOffset = depth;
             }
-            //if (blockTimer > 0)
-            //{
-            //    return;
-            //}
-            //// Only the first decoration collision is working
-            //Tile decoration = obj as Tile;
-            //if (decoration != null)
-            //{
-            //    Vector2 depth = RectangleExtensions.GetIntersectionDepth(box, decoration.GetBox());
-            //    this.depth = depth;
-            //    Vector2 direction = position - prevPosition;
-            //    if (direction.X != 0 && direction.Y == 0)
-            //    {
-            //        prevPosition = position;
-            //        position = new Vector2(position.X + .5f * depth.X, position.Y);
-
-            //    }
-            //    else if (direction.Y != 0 && direction.X == 0)
-            //    {
-            //        prevPosition = position;
-            //        position = new Vector2(position.X, position.Y + .5f * depth.Y);
-            //    }
-            //    else if (direction.Y != 0 && direction.X != 0)
-            //    {
-            //        prevPosition = position;
-            //        if (depth.X < 2 * movementSpeed)
-            //            position = new Vector2(position.X + .5f * depth.X, position.Y);
-            //        else if (depth.Y < 2 * movementSpeed)
-            //            position = new Vector2(position.X, position.Y + .5f * depth.Y);
-            //        else
-            //            position = new Vector2(position.X + .5f * depth.X, position.Y + .5f * depth.Y);
-            //    }
-
-            //    blockTimer = 0.01f;
-            //}
+        }
+        protected void OnEnemyDied()
+        {
+            // Check the list of subscribers
+            if (EnemyDied != null)
+            {
+                EnemyDied(this, EventArgs.Empty);
+            }
         }
     }
 }
