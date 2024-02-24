@@ -23,7 +23,7 @@ namespace Monsterfall_01
             this.decorations = decorations;
             this.mapSize = mapSize;
             decorTiles = new List<Tile>();
-            //mapOffset = new Point(mapSize.X * 100, 0);
+
             mapOffset = new Point(0, 0);
             tiles = new Tile[(int)mapSize.X, (int)mapSize.Y];
 
@@ -48,7 +48,7 @@ namespace Monsterfall_01
 
         private Vector2 MapToScreen(int x, int y)
         {
-            // This code works only for ground tiles right now
+            // To map the tile toghether in ISOMETRIC way
             var screenX = x * tileSize.X / 2 - y * (tileSize.X / 2) + mapOffset.X;
             var screenY = y * (tileSize.Y / 2 - 10) + x * (tileSize.Y / 2 - 10) + mapOffset.Y;
 

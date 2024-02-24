@@ -21,7 +21,7 @@ namespace Monsterfall_01
         }
         const float MOVEMENT_RESET_TIME = 0.05F;
 
-        FSM animationManager; 
+        FSM animationManager;
 
         public Animation playerAnimation;
         private Dictionary<String, int> mapDirections;
@@ -213,7 +213,7 @@ namespace Monsterfall_01
 
         public void ShootArrow(eButtonState buttonState, Vector2 amount)
         {
-            if (buttonState == eButtonState.DOWN)
+            if (buttonState == eButtonState.UP)
             {
                 if (attackTimer < 0)
                 {

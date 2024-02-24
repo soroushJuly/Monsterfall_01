@@ -21,7 +21,7 @@ namespace Monsterfall_01
         {
             UpdateCollisions();
             ResolveCollisions();
-            
+            RemoveFlaggedCollidables();
         }
         private void UpdateCollisions()
         {
@@ -41,13 +41,27 @@ namespace Monsterfall_01
             foreach (Collision collision in m_collisions)
             {
                 collision.Resolve();
-                //m_collisions.Remove(collision);
             }
             m_collisions = new HashSet<Collision>();
         }
         public void RemoveCollidable(Collidable collidable)
         {
             m_collidables.Remove(collidable);
+        }
+        private void RemoveFlaggedCollidables()
+        {
+            List<Collidable> removalList = new List<Collidable>();
+            foreach (Collidable collidable in m_collidables)
+            {
+                if (collidable.flagForRemoval)
+                {
+                    removalList.Add(collidable);
+                }
+            }
+            foreach (Collidable collidable in removalList)
+            {
+                m_collidables.Remove(collidable);
+            }
         }
     }
 }

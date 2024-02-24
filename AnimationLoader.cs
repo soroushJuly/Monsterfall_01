@@ -9,6 +9,7 @@ namespace Monsterfall_01
 {
     internal class AnimationLoader
     {
+        // Load and add all the animations related to one state
         public void LoadAnimations(ContentManager Content, String BasePath, float Scale, List<Animation> Animations, int size, int framecount, int frametime, 
             int directioncount, int cols, bool isLooping = true)
         {
@@ -20,6 +21,7 @@ namespace Monsterfall_01
                 Animations.Add(animation);
             }
         }
+        // Creating texture path string based on number of directions
         private String createTexturePath(String basePath, int i, int directionCount)
         {
             float degree = i * (360 / (float)directionCount);
@@ -27,8 +29,8 @@ namespace Monsterfall_01
             if (degree / 10 < 1) { degreePath = "000"; }
             else if (degree / 100 < 1) { degreePath = "0" + ((int)degree).ToString(); }
             else { degreePath = ((int)degree).ToString(); }
-            String path = basePath + degreePath;
-            return path;
+            // Full path = basePath + DegreePath
+            return basePath + degreePath;
 
         }
     }
