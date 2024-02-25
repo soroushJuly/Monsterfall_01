@@ -32,13 +32,16 @@ namespace Monsterfall_01
 
         public Arrow(Vector2 position, int directionIndex)
         {
-            this.Position = position;
-            this.firstPosition = position;
-
             this.angle = (directionIndex * (Math.PI / 4));
             this.arrowMoveSpeed = 8.5f;
 
+            // Set the first position a little further than center of the player
+            this.Position.X = position.X + (float)(4 * arrowMoveSpeed * Math.Sin(angle));
+            this.Position.Y = position.Y - (float)(4 * arrowMoveSpeed * Math.Cos(angle));
+            this.firstPosition = this.Position;
+
             origin = Vector2.Zero;
+            origin = new Vector2(GetWidth() / 2, GetHeight());
         }
         public void Update(GameTime gameTime)
         {
