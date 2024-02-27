@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 using Monsterfall_01;
 using Monsterfall_01.Input;
+using Monsterfall_01.StateGame;
 using Monsterfall_01.StateManager;
 using Monsterfall_01.StatesPlayer;
 namespace Monsterfall_01
@@ -123,7 +124,7 @@ namespace Monsterfall_01
         {
             // Draw the box to screen for debugging purposes
             animationManager.Update(gameTime);
-            this.box = new Rectangle((int)(position.X - Width / 6), (int)position.Y - 100 / 2, Width / 3, 100);
+            this.box = new Rectangle((int)(position.X - Width / 6), (int)position.Y - 90 / 2, Width / 3, 90);
             //this.box = new Rectangle((int)position.X , (int)position.Y, 10, 10);
             xtimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             ytimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -144,7 +145,7 @@ namespace Monsterfall_01
         public void Draw(SpriteBatch spriteBatch, GraphicsDevice GraphicsDevices)
         {
             checkTimers();
-            DrawBoundingBox(spriteBatch, GraphicsDevices);
+            //DrawBoundingBox(spriteBatch, GraphicsDevices);
             playerAnimations[currentAnimation].Draw(spriteBatch);
         }
 
@@ -218,7 +219,7 @@ namespace Monsterfall_01
             {
                 if (attackTimer < 0)
                 {
-                    Game1.arrowList.Add(new Arrow(this.position, currentDirectionIndex));
+                    StateGamePlay.arrowList.Add(new Arrow(this.position, currentDirectionIndex));
                     isAttacking = true;
                     attackTimer = .6f;
                 }

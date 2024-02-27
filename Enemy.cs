@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
+using Monsterfall_01.StateGame;
 using Monsterfall_01.StateManager;
 using Monsterfall_01.StatesEnemy;
 
@@ -106,7 +106,7 @@ namespace Monsterfall_01
             fsm.Update(gameTime);
             hitTimer = hitTimer.Subtract(TimeSpan.FromSeconds(gameTime.TotalGameTime.TotalSeconds));
             currentAnimation = directionIndex + 16 * (int)currentState;
-            this.box = new Rectangle((int)(Position.X - Width / 4), (int)Position.Y - Height / 4, Width / 2, Height / 2);
+            this.box = new Rectangle((int)(Position.X - Width / 5), (int)(Position.Y - Height / 5), (int)(Width / 2.5f), (int)(Height / 2.5f));
             // The enemy always moves to the left so decrement it's x position  
             
             // Update the position of the Animation  
@@ -131,7 +131,7 @@ namespace Monsterfall_01
         private void Sense()
         {
             // Sensing the direction
-            Vector2 direction = Vector2.Normalize(Game1.player.position - Position);
+            Vector2 direction = Vector2.Normalize(StateGamePlay.player.position - Position);
             Position += direction + Vector2.Multiply(CollisionOffset, 0.01f);
 
             // 0 sprite is upwards then 0 degree is (0,1)
@@ -140,7 +140,7 @@ namespace Monsterfall_01
             directionIndex = (int)((degree * 180 / Math.PI) / (360.0f /16));
 
             // Sensing distance
-            Vector2 playerDistance = Game1.player.position - Position;
+            Vector2 playerDistance = StateGamePlay.player.position - Position;
             isInChaseRange = (playerDistance.Length() < 400 && playerDistance.Length() > 100) ? true: false;
             isInAttackRange = playerDistance.Length() <= 100 ? true: false;
         }

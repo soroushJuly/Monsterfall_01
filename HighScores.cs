@@ -24,7 +24,7 @@ namespace Monsterfall_01
         {
             Scores = scores;
 
-            UpdateHighscores();
+            //UpdateHighscores();
         }
 
         public void Add(GameStats score)
@@ -33,7 +33,7 @@ namespace Monsterfall_01
 
             Scores = Scores.OrderByDescending(c => c.score).ToList(); // Orders the list so that the higher scores are first
 
-            UpdateHighscores();
+            //UpdateHighscores();
         }
 
         public static HighScores Load()

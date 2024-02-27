@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Monsterfall_01.StateGame;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,8 +28,8 @@ namespace Monsterfall_01
         // Arrow range.  
         int range = 550;
 
-        private int GetWidth() { return (int)(SCALE * Game1.arrowTexture.Width); }
-        private int GetHeight() { return (int)(SCALE * Game1.arrowTexture.Height); }
+        private int GetWidth() { return (int)(SCALE * StateGamePlay.arrowTexture.Width); }
+        private int GetHeight() { return (int)(SCALE * StateGamePlay.arrowTexture.Height); }
 
         public Arrow(Vector2 position, int directionIndex)
         {
@@ -58,10 +59,10 @@ namespace Monsterfall_01
         public void Draw(SpriteBatch spriteBatch, GraphicsDevice graphicsDevice)
         {
             Rectangle dest = new Rectangle((int)Position.X, (int)Position.Y, GetWidth(), GetHeight());
-            Rectangle src = new Rectangle(0,0, Game1.arrowTexture.Width, Game1.arrowTexture.Height);
+            Rectangle src = new Rectangle(0,0, StateGamePlay.arrowTexture.Width, StateGamePlay.arrowTexture.Height);
 
             DrawBoundingBox(spriteBatch, graphicsDevice);
-            spriteBatch.Draw(Game1.arrowTexture, dest, src, Color.White, (float)angle, origin, SpriteEffects.None, 0f);
+            spriteBatch.Draw(StateGamePlay.arrowTexture, dest, src, Color.White, (float)angle, origin, SpriteEffects.None, 0f);
         }
         public override bool CollisionTest(Collidable obj)
         {
