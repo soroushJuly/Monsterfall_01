@@ -49,5 +49,12 @@ namespace Monsterfall_01.StateManager
             // Execute the current state 
             currentState.Execute(m_owner, gameTime);
         }
+        // For the states with draw
+        public void Draw(GameTime gameTime)
+        {
+            if (currentState == null) return;
+
+            currentState.Draw(m_owner, gameTime);
+        }
     }
 }

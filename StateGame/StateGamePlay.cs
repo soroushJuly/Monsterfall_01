@@ -344,6 +344,7 @@ namespace Monsterfall_01.StateGame
             HighScores.Save(highScoresTable);
             laserSoundInstance.Dispose();
             explosionSoundInstance.Dispose();
+            Content.Unload();
         }
     }
 }
