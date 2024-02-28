@@ -3,12 +3,12 @@ using Monsterfall_01.Input;
 using Monsterfall_01.StateManager;
 using System;
 using System.Collections.Generic;
-using System.Collections;
+
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
-using System.Reflection.Metadata;
+
 using Microsoft.Xna.Framework.Content;
 using Monsterfall_01;
 
@@ -37,14 +37,8 @@ namespace Monsterfall_01.StateGame
         static public Texture2D arrowTexture;
         static public List<Arrow> arrowList;
 
-        //The rate at which the enemies appear  
-        TimeSpan enemySpawnTime;
-        TimeSpan previousSpawnTime;
         // A random number generator  
         Random random;
-
-        // govern how fast our laser can fire.  
-        TimeSpan laserSpawnTime;
 
         //Our Laser Sound and Instance  
         private SoundEffect laserSound;
@@ -91,7 +85,6 @@ namespace Monsterfall_01.StateGame
         public override void Enter(object owner)
         {
             Initialize();
-
             LoadContent();
         }
         public override void Exit(object owner)
@@ -102,7 +95,6 @@ namespace Monsterfall_01.StateGame
         {
             Update(gameTime);
             Draw(gameTime);
-
         }
         private void Initialize()
         {
@@ -120,11 +112,6 @@ namespace Monsterfall_01.StateGame
 
             animationLoader = new AnimationLoader();
 
-            // Set the time keepers to zero  
-            previousSpawnTime = TimeSpan.Zero;
-            // Used to determine how fast enemy respawns  
-            enemySpawnTime = TimeSpan.FromSeconds(1.0f);
-            // Initialize our random number generator  
             random = new Random();
 
             //Background  
@@ -329,8 +316,6 @@ namespace Monsterfall_01.StateGame
 
             // Stop drawing  
             _spriteBatch.End();
-
-            //base.Draw(gameTime);
         }
         private void ResolveRemovals()
         {
