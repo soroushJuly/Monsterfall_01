@@ -6,6 +6,8 @@ using SharpDX.MediaFoundation;
 
 namespace Monsterfall_01
 {
+    // TODO: this will go to the UI Folder in Engine Folder
+    // TODO: a component for selection of a button in a list
     internal class Button
     {
         private string text;
