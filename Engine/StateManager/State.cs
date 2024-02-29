@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 
-namespace Monsterfall_01.StateManager
+namespace Monsterfall_01.Engine.StateManager
 {
     // We can have different state classes but no Pure state
     public abstract class State
@@ -21,7 +21,7 @@ namespace Monsterfall_01.StateManager
         }
 
         private List<Transition> m_transitions = new List<Transition>();
-        public List<Transition> GetTransitions() {  return m_transitions; }
-        public void AddTransition(Transition transition) {  m_transitions.Add(transition); }
+        public List<Transition> GetTransitions() { return m_transitions; }
+        public void AddTransition(Transition transition) { m_transitions.Add(transition); }
     }
 }

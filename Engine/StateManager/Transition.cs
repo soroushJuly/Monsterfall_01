@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-namespace Monsterfall_01.StateManager
+namespace Monsterfall_01.Engine.StateManager
 {
     public class Transition
     {

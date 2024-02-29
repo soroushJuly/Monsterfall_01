@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Monsterfall_01.StateManager
+namespace Monsterfall_01.Engine.StateManager
 {
     public class FSM
     {
@@ -36,7 +36,7 @@ namespace Monsterfall_01.StateManager
             foreach (Transition transition in currentState.GetTransitions())
             {
                 // Execute the condition function
-                if(transition.Condition())
+                if (transition.Condition())
                 {
                     // Change the state if condition met
                     currentState.Exit(m_owner);

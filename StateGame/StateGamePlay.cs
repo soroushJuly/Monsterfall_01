@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Monsterfall_01.Input;
-using Monsterfall_01.StateManager;
 using System;
 using System.Collections.Generic;
 
@@ -11,6 +10,7 @@ using Microsoft.Xna.Framework.Media;
 
 using Microsoft.Xna.Framework.Content;
 using Monsterfall_01;
+using Monsterfall_01.Engine.StateManager;
 
 namespace Monsterfall_01.StateGame
 {

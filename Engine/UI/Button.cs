@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SharpDX.MediaFoundation;
 
-namespace Monsterfall_01
+namespace Monsterfall_01.Engine.UI
 {
     // TODO: this will go to the UI Folder in Engine Folder
     // TODO: a component for selection of a button in a list
@@ -26,21 +26,21 @@ namespace Monsterfall_01
         int width;
         int height;
 
-        public Button(string text, Texture2D indicatorTexture, Vector2 position, SpriteFont font) 
+        public Button(string text, Texture2D indicatorTexture, Vector2 position, SpriteFont font)
         {
             this.indicatorTexture = indicatorTexture;
             this.position = position;
             this.text = text;
             this.font = font;
 
-            this.isHovered = false;
+            isHovered = false;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             if (isHovered)
             {
-                spriteBatch.Draw(indicatorTexture, new Rectangle((int)position.X, (int)position.Y, 
+                spriteBatch.Draw(indicatorTexture, new Rectangle((int)position.X, (int)position.Y,
                     indicatorTexture.Width, indicatorTexture.Height), Color.White);
             }
             spriteBatch.DrawString(font, text, new Vector2(position.X + indicatorTexture.Width + 20, position.Y), Color.White,
@@ -48,7 +48,7 @@ namespace Monsterfall_01
         }
         public void updateHovered(bool status)
         {
-            this.isHovered = status;
+            isHovered = status;
         }
 
     }

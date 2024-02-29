@@ -2,9 +2,9 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-
+using Monsterfall_01.Engine.StateManager;
+using Monsterfall_01.Engine.UI;
 using Monsterfall_01.Input;
-using Monsterfall_01.StateManager;
 using System;
 using System.Collections.Generic;
 

@@ -2,8 +2,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-using Monsterfall_01.StateManager;
 using Monsterfall_01.StateGame;
+using Monsterfall_01.Engine.StateManager;
 
 namespace Monsterfall_01
 {
