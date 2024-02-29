@@ -52,6 +52,9 @@ namespace Monsterfall_01
 
         public bool isAttacking;
 
+        // Item that is in the pickup range of player
+        private ShopItem itemInRange;
+
         public int Width
         { get { return (int)((float)playerAnimation.frameWidth * scale); } }
         public int Height
@@ -225,6 +228,17 @@ namespace Monsterfall_01
                 }
             }
         }
+        public void Interact(eButtonState buttonState, Vector2 amount)
+        {
+            if (buttonState == eButtonState.PRESSED)
+            {
+                if (itemInRange != null)
+                {
+                    // to be changed
+                    itemInRange.Picked();
+                }
+            }
+        }
         public override bool CollisionTest(Collidable obj)
         {
             if (this.Intersects(obj))
@@ -250,6 +264,12 @@ namespace Monsterfall_01
             //    return;
             //}
             // Only the first decoration collision is working
+            ShopItem shopItem = obj as ShopItem;
+            if (shopItem != null) 
+            {
+                itemInRange = shopItem;
+                return;
+            }
             Tile decoration = obj as Tile;
             if (decoration != null)
             {

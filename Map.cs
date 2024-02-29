@@ -15,13 +15,16 @@ namespace Monsterfall_01
         private Tile[,] tiles;
         private List<Tile> decorTiles;
         public List<Tile> DecorTiles { get { return decorTiles; } }
-        private List<Decoration> decorations;
 
-        public void Initialize(Vector2 mapSize, ContentManager content, List<Decoration> decorations)
+        private List<ShopItem> shopItems;
+        public List<ShopItem> ShopItems { get { return shopItems; } }
+
+        public void Initialize(Vector2 mapSize, ContentManager content, List<Decoration> decorations,
+            List<ShopItem> shopItems, Point shopLocation)
         {
-            this.decorations = decorations;
             this.mapSize = mapSize;
-            decorTiles = new List<Tile>();
+            this.decorTiles = new List<Tile>();
+            this.shopItems = shopItems;
 
             mapOffset = new Point(0, 0);
             tiles = new Tile[(int)mapSize.X, (int)mapSize.Y];
@@ -44,6 +47,10 @@ namespace Monsterfall_01
             {
                 Tile tile = new Tile(decoration.texture, MapToScreen((int)decoration.location.X, (int)decoration.location.Y), true);
                 decorTiles.Add(tile);
+            }
+            for (int i = 0; i < shopItems.Count; i++)
+            {
+                shopItems[i].Initialize(MapToScreen((int)shopLocation.X + i, (int)shopLocation.Y));
             }
         }
         // Add the walls surrounding the map
@@ -99,6 +106,10 @@ namespace Monsterfall_01
             foreach(Tile tile in decorTiles)
             {
                 tile.Draw(spriteBatch, GraphicsDevices);
+            }
+            foreach (ShopItem shopItem in shopItems)
+            {
+                shopItem.Draw(spriteBatch, GraphicsDevices);
             }
         }
 

@@ -133,6 +133,18 @@
 /processorParam:TextureFormat=Color
 /build:Graphics/bkgd_7.png
 
+#begin Graphics/bowPickup.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/bowPickup.png
+
 #begin Graphics/endMenu.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -3656,6 +3668,18 @@
 /processorParam:TextureFormat=Compressed
 /build:Graphics/gameFont.spritefont
 
+#begin Graphics/heartPickup.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/heartPickup.png
+
 #begin Graphics/HeroFemale/Attack_Bow/Attack_Bow_Body_000.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -5587,18 +5611,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Graphics/mainbackground.png
-
-#begin Graphics/mainMenu.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Graphics/mainMenu.png
 
 #begin Graphics/MonsterFire/Attack1/Attack1 Body 0.png
 /importer:TextureImporter
@@ -11360,7 +11372,7 @@
 /processorParam:TextureFormat=Color
 /build:Graphics/MonsterIce/WalkForward/WalkForward Shadow 337.png
 
-#begin Graphics/player.png
+#begin Graphics/speedupPotion.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -11370,7 +11382,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Graphics/player.png
+/build:Graphics/speedupPotion.png
 
 #begin Graphics/spr_stars01.png
 /importer:TextureImporter

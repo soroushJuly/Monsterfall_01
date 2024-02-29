@@ -43,7 +43,7 @@ namespace Monsterfall_01
             fsm.AddState(stateGamePlay);
             fsm.AddState(stateGameFinish);
 
-            fsm.Initialise("Menu");
+            fsm.Initialise("Play");
 
             base.Initialize();
         }

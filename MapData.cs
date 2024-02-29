@@ -5,7 +5,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
 using System.IO;
-using System.Drawing;
 
 
 namespace Monsterfall_01
@@ -14,11 +13,14 @@ namespace Monsterfall_01
     {
         private List<Decoration> decorations;
         private Vector2 mapSize;
+        private Point shopLocation;
         public MapData() 
         { 
             decorations = new List<Decoration>();
             mapSize = Vector2.Zero;
+            shopLocation = Point.Zero;
         }
+        // TODO: clean this method
         public void ReadMapData(List<string> lines, ContentManager Content, int levelIndex)
         {
             //List<Decoration> decorations = new List<Decoration>();
@@ -48,6 +50,13 @@ namespace Monsterfall_01
                         decorations.Add(new Decoration(location, decorTexture));
                         continue;
                     }
+                    if (line.Contains("Shop:"))
+                    {
+                        string[] widthLine = line.Split(":");
+                        string point = widthLine[1];
+                        string[] coords = point.Split(",");
+                        shopLocation = new Point(int.Parse(coords[0]), int.Parse(coords[1]));
+                    }
                     if (line.Contains("Width:"))
                     {
                         string[] widthLine = line.Split(":");
@@ -69,5 +78,6 @@ namespace Monsterfall_01
         }
         public List<Decoration> GetDecorations() { return decorations; }
         public Vector2 GetMapSize() { return mapSize; }
+        public Point GetShopLocation() { return shopLocation; }
     }
 }

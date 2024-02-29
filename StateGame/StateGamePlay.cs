@@ -57,6 +57,9 @@ namespace Monsterfall_01.StateGame
         // Tile map for the first level
         Map map01;
 
+        // Items to buy in the map
+        List<ShopItem> shopItems;
+
         // Input manager
         InputCommandManager inputCommandManager;
 
@@ -108,6 +111,8 @@ namespace Monsterfall_01.StateGame
             enemies.Add(new Enemy());
             enemies.Add(new Enemy());
 
+            shopItems = new List<ShopItem>();
+
             collisionManager = new CollisionManager();
 
             animationLoader = new AnimationLoader();
@@ -158,6 +163,15 @@ namespace Monsterfall_01.StateGame
             // load the texture to serve as the laser
             arrowTexture = Content.Load<Texture2D>("Graphics\\Arrow");
 
+            // load shopItem textures
+            Texture2D speedupTexture = Content.Load<Texture2D>("Graphics\\speedupPotion");
+            Texture2D healthPickupTexture = Content.Load<Texture2D>("Graphics\\heartPickup");
+            Texture2D arrowPickupTexture = Content.Load<Texture2D>("Graphics\\bowPickup");
+            shopItems.Add(new ShopItem(speedupTexture));
+            shopItems.Add(new ShopItem(healthPickupTexture));
+            shopItems.Add(new ShopItem(arrowPickupTexture));
+
+
             // Load level\Enviroment details (Position of elements in the map and the map it self)
             List<string> lines = new List<string>();
             MapData mapData = new MapData();
@@ -165,8 +179,8 @@ namespace Monsterfall_01.StateGame
 
             // Initialize map
             map01 = new Map();
-            map01.Initialize(mapData.GetMapSize(), Content, mapData.GetDecorations());
-
+            map01.Initialize(mapData.GetMapSize(), Content, mapData.GetDecorations(), shopItems, mapData.GetShopLocation());
+            
             // Load data related to the gameplay
             loader = new Loader();
             loader.ReadXML("Content\\XML\\GameInfo.xml");
@@ -185,6 +199,8 @@ namespace Monsterfall_01.StateGame
             }
 
             collisionManager.AddCollidable(player);
+            foreach (ShopItem shopItem in map01.ShopItems)
+                collisionManager.AddCollidable(shopItem);
             foreach (Enemy enemy in enemies)
                 collisionManager.AddCollidable(enemy);
             foreach (Tile decoration in map01.DecorTiles)

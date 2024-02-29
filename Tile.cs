@@ -28,7 +28,7 @@ namespace Monsterfall_01
 
             return this;
         }
-        public void Draw(SpriteBatch spriteBatch, GraphicsDevice GraphicsDevices)
+        public virtual void Draw(SpriteBatch spriteBatch, GraphicsDevice GraphicsDevices)
         {
             //if (isCollidable)
             //{
