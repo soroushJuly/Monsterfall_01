@@ -37,6 +37,18 @@
 /processorParam:TextureFormat=Color
 /build:Graphics/bg_menu.jpg
 
+#begin Graphics/bg_success.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/bg_success.jpg
+
 #begin Graphics/bkgd_0.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -11419,6 +11431,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Graphics/spr_stars02.png
+
+#begin Graphics/Success.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/Success.png
 
 #begin Graphics/UI/arrowBeige_left.png
 /importer:TextureImporter

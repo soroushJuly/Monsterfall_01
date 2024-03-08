@@ -47,21 +47,23 @@ namespace Monsterfall_01
             stateGameDied.PlayAgain += (object sender, EventArgs e) => currentState = States.PLAYING;
             stateGameDied.BackToMenu += (object sender, EventArgs e) => currentState = States.MENU;
             // Transitions from game success
-            //stateGameFinish.PlayAgain += (object sender, EventArgs e) => currentState = States.PLAYING;
-            //stateGameFinish.BackToMenu += (object sender, EventArgs e) => currentState = States.MENU;
+            stateGameFinish.PlayAgain += (object sender, EventArgs e) => currentState = States.PLAYING;
+            stateGameFinish.BackToMenu += (object sender, EventArgs e) => currentState = States.MENU;
 
             stateGameMenu.AddTransition(new Transition(stateGamePlay, () => currentState == States.PLAYING));
             stateGamePlay.AddTransition(new Transition(stateGameDied, () => currentState == States.DIED));
             stateGameDied.AddTransition(new Transition(stateGamePlay, () => currentState == States.PLAYING));
             stateGameDied.AddTransition(new Transition(stateGameMenu, () => currentState == States.MENU));
+            stateGameFinish.AddTransition(new Transition(stateGamePlay, () => currentState == States.PLAYING));
+            stateGameFinish.AddTransition(new Transition(stateGameMenu, () => currentState == States.MENU));
 
             fsm.AddState(stateGameMenu);
             fsm.AddState(stateGamePlay);
             fsm.AddState(stateGameDied);
             fsm.AddState(stateGameFinish);
 
-            fsm.Initialise("Died");
-            currentState = States.DIED;
+            fsm.Initialise("Success");
+            currentState = States.SUCCESS;
 
             base.Initialize();
         }
