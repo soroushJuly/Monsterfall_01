@@ -76,7 +76,7 @@ namespace Monsterfall_01.StateGame
         Game Game;
 
         //GraphicsDevice GraphicsDevice;
-
+        public EventHandler PlayerDied;
         private Loader loader;
         public StateGamePlay(Game game)
         {
@@ -280,7 +280,8 @@ namespace Monsterfall_01.StateGame
             // reset score if player health goes to zero  
             if (player.Health <= 0)
             {
-                player.Health = 100;
+                PlayerDied(this, EventArgs.Empty);
+                //player.Health = 100;
             }
         }
         private void Draw(GameTime gameTime)

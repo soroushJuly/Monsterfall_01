@@ -133,6 +133,18 @@
 /processorParam:TextureFormat=Color
 /build:Graphics/bkgd_7.png
 
+#begin Graphics/BloodOverlay.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/BloodOverlay.png
+
 #begin Graphics/bowPickup.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -144,18 +156,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Graphics/bowPickup.png
-
-#begin Graphics/endMenu.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Graphics/endMenu.png
 
 #begin Graphics/Env/Dungeon/barrel_E.png
 /importer:TextureImporter
@@ -3667,6 +3667,18 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:Graphics/gameFont.spritefont
+
+#begin Graphics/GameOver.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/GameOver.png
 
 #begin Graphics/heartPickup.png
 /importer:TextureImporter

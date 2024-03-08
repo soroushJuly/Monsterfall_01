@@ -13,8 +13,15 @@ namespace Monsterfall_01
         private SpriteBatch _spriteBatch;
 
         FSM fsm;
-        // Is the player playing
-        private bool isPlaying;
+        // States that user can be in the game
+        enum States
+        {
+            MENU,
+            PLAYING,
+            DIED,
+            SUCCESS
+        }
+        private States currentState;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -23,8 +30,6 @@ namespace Monsterfall_01
             //_graphics.IsFullScreen = true;
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-            // Initially player is the menu
-            isPlaying = false;
         }
 
         protected override void Initialize()
@@ -34,16 +39,29 @@ namespace Monsterfall_01
             StateGameMenu stateGameMenu = new StateGameMenu(this);
             StateGamePlay stateGamePlay = new StateGamePlay(this);
             StateGameFinish stateGameFinish = new StateGameFinish(this);
+            StateGameDied stateGameDied = new StateGameDied(this);
 
-            stateGameMenu.GameStart += (object sender, EventArgs e) => isPlaying = true;
+            stateGameMenu.GameStart += (object sender, EventArgs e) => currentState = States.PLAYING;
+            stateGamePlay.PlayerDied += (object sender, EventArgs e) => currentState = States.DIED;
+            // Transitions from died
+            stateGameDied.PlayAgain += (object sender, EventArgs e) => currentState = States.PLAYING;
+            stateGameDied.BackToMenu += (object sender, EventArgs e) => currentState = States.MENU;
+            // Transitions from game success
+            //stateGameFinish.PlayAgain += (object sender, EventArgs e) => currentState = States.PLAYING;
+            //stateGameFinish.BackToMenu += (object sender, EventArgs e) => currentState = States.MENU;
 
-            stateGameMenu.AddTransition(new Transition(stateGamePlay, () => isPlaying));
+            stateGameMenu.AddTransition(new Transition(stateGamePlay, () => currentState == States.PLAYING));
+            stateGamePlay.AddTransition(new Transition(stateGameDied, () => currentState == States.DIED));
+            stateGameDied.AddTransition(new Transition(stateGamePlay, () => currentState == States.PLAYING));
+            stateGameDied.AddTransition(new Transition(stateGameMenu, () => currentState == States.MENU));
 
             fsm.AddState(stateGameMenu);
             fsm.AddState(stateGamePlay);
+            fsm.AddState(stateGameDied);
             fsm.AddState(stateGameFinish);
 
-            fsm.Initialise("Play");
+            fsm.Initialise("Died");
+            currentState = States.DIED;
 
             base.Initialize();
         }
