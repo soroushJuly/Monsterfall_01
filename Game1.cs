@@ -22,6 +22,8 @@ namespace Monsterfall_01
             SUCCESS
         }
         private States currentState;
+        static private GameStats gameStats;
+        static public GameStats GetGameStats() { return gameStats; }
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -34,6 +36,7 @@ namespace Monsterfall_01
 
         protected override void Initialize()
         {
+            gameStats = new GameStats();
             fsm = new FSM(this);
 
             StateGameMenu stateGameMenu = new StateGameMenu(this);
@@ -42,7 +45,7 @@ namespace Monsterfall_01
             StateGameDied stateGameDied = new StateGameDied(this);
 
             stateGameMenu.GameStart += (object sender, EventArgs e) => currentState = States.PLAYING;
-            stateGamePlay.PlayerDied += (object sender, EventArgs e) => currentState = States.DIED;
+            stateGamePlay.PlayerDied += (object sender, GameStats e) => { currentState = States.DIED; gameStats = e; };
             //stateGamePlay.PlayerSucceded += (object sender, EventArgs e) => currentState = States.SUCCESS;
             // Transitions from died
             stateGameDied.PlayAgain += (object sender, EventArgs e) => currentState = States.PLAYING;

@@ -1,13 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-
 using Monsterfall_01.Engine.UI;
 using Monsterfall_01.Engine.StateManager;
 using System;
-using System.Collections.Generic;
-using Monsterfall_01.Engine.Input;
 
 namespace Monsterfall_01.StateGame
 {
@@ -17,12 +13,10 @@ namespace Monsterfall_01.StateGame
         private SpriteBatch _spriteBatch;
         private ContentManager Content;
 
-        // Input manager
-        InputCommandManager inputCommandManager;
-
         private Texture2D diedBackground;
         private Texture2D gameOverText;
-        private List<Button> buttonList;
+        private ButtonList ButtonList;
+        private Text yourScoreText;
         private Texture2D panel;
         private int panelWidth;
         private int panelHeight;
@@ -46,6 +40,7 @@ namespace Monsterfall_01.StateGame
         public override void Exit(object owner)
         {
             Content.Unload();
+            ButtonList.Clear();
         }
         public override void Execute(object owner, GameTime gameTime)
         {
@@ -57,52 +52,13 @@ namespace Monsterfall_01.StateGame
         }
         private void Update()
         {
-            inputCommandManager.Update();
-        }
-        void Draw()
-        {
-            // check active (hovered) button
-            for (int i = 0; i < buttonList.Count; i++)
-            {
-                if (i == currentButtonIndex)
-                    buttonList[i].updateHovered(true);
-                else
-                    buttonList[i].updateHovered(false);
-            }
-
-            _spriteBatch.Begin(SpriteSortMode.Deferred);
-            // Draw Background
-            _spriteBatch.Draw(diedBackground, new Rectangle(0, 0, Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height),
-                new Rectangle(0, 0, diedBackground.Width, diedBackground.Height), Color.White);
-            // Draw Panel
-            _spriteBatch.Draw(panel, new Rectangle(
-                (Game.GraphicsDevice.Viewport.Width - panelWidth) / 2, (Game.GraphicsDevice.Viewport.Height - panelHeight) / 2,
-                panelWidth, panelHeight), Color.White);
-            // Game Over text
-            _spriteBatch.Draw(gameOverText, new Rectangle(
-                (Game.GraphicsDevice.Viewport.Width - panelWidth) / 2, (Game.GraphicsDevice.Viewport.Height - panelHeight) / 2,
-                Math.Min(gameOverText.Width, panelWidth), 90), Color.White);
-
-            foreach (var button in buttonList)
-            {
-                button.Draw(_spriteBatch);
-            }
-
-            _spriteBatch.End();
+            ButtonList.Update();
         }
 
         private void Initialize()
         {
             _spriteBatch = new SpriteBatch(Game.GraphicsDevice);
-            buttonList = new List<Button>();
-            inputCommandManager = new InputCommandManager();
 
-            currentButtonIndex = 0;
-
-            inputCommandManager.AddKeyboardBinding(Keys.Up, OnKeyUp);
-            inputCommandManager.AddKeyboardBinding(Keys.Down, OnKeyDown);
-            inputCommandManager.AddKeyboardBinding(Keys.Escape, OnExit);
-            inputCommandManager.AddKeyboardBinding(Keys.Enter, OnSelect);
         }
         private void LoadContent()
         {
@@ -118,67 +74,51 @@ namespace Monsterfall_01.StateGame
 
             int contentStartingPositionX = (Game.GraphicsDevice.Viewport.Width) / 2 - 150;
 
-            // TODO: add the text component for the score here:
-            buttonList.Add(new Button("Try Again", buttonIndicator, new Vector2(contentStartingPositionX, (Game.GraphicsDevice.Viewport.Height) / 2 - 30), font));
-            buttonList.Add(new Button("Back to menu", buttonIndicator, new Vector2(contentStartingPositionX, (Game.GraphicsDevice.Viewport.Height) / 2 + 20), font));
-            buttonList.Add(new Button("Exit the game", buttonIndicator, new Vector2(contentStartingPositionX, (Game.GraphicsDevice.Viewport.Height) / 2 + 70), font));
+            yourScoreText = new Text("Your Score: " + Game1.GetGameStats().score, new Vector2((Game.GraphicsDevice.Viewport.Width) / 2 - 75, (Game.GraphicsDevice.Viewport.Height) / 2 - 30), font, Color.Red);
+
+            ButtonList = new ButtonList(buttonIndicator, contentStartingPositionX, (Game.GraphicsDevice.Viewport.Height) / 2 + 10, font, 50);
+            ButtonList.AddButton("Try Again");
+            ButtonList.AddButton("Back to menu");
+            ButtonList.AddButton("Exit the game");
+            ButtonList.ButtonClicked += HandleButtonSelection;
         }
-        private void HandleButtonSelection()
+        private void HandleButtonSelection(object sender, Button button)
         {
-            switch (currentButtonIndex)
+            switch (button.GetText())
             {
-                case 0:
+                case "Try Again":
                     PlayAgain(this, EventArgs.Empty);
                     break;
-                case 1:
+                case "Back to menu":
                     BackToMenu(this, EventArgs.Empty);
                     break;
-                case 2:
+                case "Exit the game":
                     Game.Exit();
                     break;
                 default:
-                    // code block
                     break;
             }
         }
-        // TODO: these logics might go to a different encapsulated class
-        private void UpdateCurrentButton(int index)
+        void Draw()
         {
-            currentButtonIndex += index;
-            if (currentButtonIndex > buttonList.Count - 1)
-            {
-                currentButtonIndex = 0;
-                return;
-            }
-            if (currentButtonIndex < 0)
-            {
-                currentButtonIndex = buttonList.Count - 1;
-                return;
-            }
-        }
-        #region INPUT HANDLERS
-        private void OnExit(eButtonState buttonState, Vector2 amount)
-        {
-            if (buttonState == eButtonState.PRESSED)
-                Game.Exit();
-        }
+            _spriteBatch.Begin(SpriteSortMode.Deferred);
+            // Draw Background
+            _spriteBatch.Draw(diedBackground, new Rectangle(0, 0, Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height),
+                new Rectangle(0, 0, diedBackground.Width, diedBackground.Height), Color.White);
+            // Draw Panel
+            _spriteBatch.Draw(panel, new Rectangle(
+                (Game.GraphicsDevice.Viewport.Width - panelWidth) / 2, (Game.GraphicsDevice.Viewport.Height - panelHeight) / 2,
+                panelWidth, panelHeight), Color.White);
+            // Game Over text
+            _spriteBatch.Draw(gameOverText, new Rectangle(
+                (Game.GraphicsDevice.Viewport.Width - panelWidth) / 2, (Game.GraphicsDevice.Viewport.Height - panelHeight) / 2,
+                Math.Min(gameOverText.Width, panelWidth), 90), Color.White);
 
-        private void OnKeyDown(eButtonState buttonState, Vector2 amount)
-        {
-            if (buttonState == eButtonState.PRESSED)
-                UpdateCurrentButton(+1);
-        }
+            yourScoreText.Draw(_spriteBatch);
 
-        private void OnKeyUp(eButtonState buttonState, Vector2 amount)
-        {
-            if (buttonState == eButtonState.PRESSED)
-                UpdateCurrentButton(-1);
+            ButtonList.Draw(_spriteBatch);
+
+            _spriteBatch.End();
         }
-        private void OnSelect(eButtonState buttonState, Vector2 amount)
-        {
-            if (buttonState == eButtonState.PRESSED)
-                HandleButtonSelection();
-        }
-        #endregion
     }
 }

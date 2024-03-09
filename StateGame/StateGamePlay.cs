@@ -77,7 +77,7 @@ namespace Monsterfall_01.StateGame
         Game Game;
 
         //GraphicsDevice GraphicsDevice;
-        public EventHandler PlayerDied;
+        public EventHandler<GameStats> PlayerDied;
         private Loader loader;
         public StateGamePlay(Game game)
         {
@@ -277,12 +277,10 @@ namespace Monsterfall_01.StateGame
         {
             viewTranslate = new Vector3(Game.GraphicsDevice.Viewport.Width / 2 - player.position.X,
                 Game.GraphicsDevice.Viewport.Height / 2 - player.position.Y, 0);
-
-            // reset score if player health goes to zero  
+ 
             if (player.Health <= 0)
             {
-                PlayerDied(this, EventArgs.Empty);
-                //player.Health = 100;
+                PlayerDied(this, stats);
             }
         }
         private void Draw(GameTime gameTime)
