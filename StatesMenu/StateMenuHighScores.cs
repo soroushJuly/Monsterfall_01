@@ -11,13 +11,21 @@ namespace Monsterfall_01.StatesMenu
     {
         private ButtonList ButtonList;
         public event EventHandler Back;
+        private int offsetX;
+        private int offsetY;
+        private SpriteFont font;
+        private Texture2D buttonIndicator;
         public StateMenuHighScores(int offestX, int offsetY, SpriteFont font, Texture2D buttonIndicator)
         {
             Name = "High Scores";
-            ButtonList = new ButtonList(buttonIndicator, offestX, offsetY, font, 50);
+            this.offsetX = offestX;
+            this.offsetY = offsetY;
+            this.font = font;
+            this.buttonIndicator = buttonIndicator;
         }
         public override void Enter(object owner)
         {
+            ButtonList = new ButtonList(buttonIndicator, offsetX, offsetY, font, 50);
             LoadMainButtons();
         }
         public override void Exit(object owner)
