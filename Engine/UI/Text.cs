@@ -8,7 +8,7 @@ namespace Monsterfall_01.Engine.UI
 {
     // TODO: this will go to the UI Folder in Engine Folder
     // TODO: a component for selection of a button in a list
-    internal class Button
+    internal class Text
     {
         private string text;
         // TODO: use button box to sense mouse hover over button
@@ -20,37 +20,28 @@ namespace Monsterfall_01.Engine.UI
         SpriteFont font;
         // TODO: button texture to use on the background of button, It's tranparent only right now
         Texture2D buttonTexture;
-        // Little indicator on the left side of button
-        Texture2D indicatorTexture;
+        // Text Color
+        Color color;
+
         // TODO: use these variables later to have fixed size buttons
         int width;
         int height;
 
-        public string GetText() { return text; }
-        public Button(string text, Texture2D indicatorTexture, Vector2 position, SpriteFont font)
+        public Text(string text, Vector2 position, SpriteFont font, Color color)
         {
-            this.indicatorTexture = indicatorTexture;
             this.position = position;
             this.text = text;
             this.font = font;
+            this.color = color;
 
             isHovered = false;
         }
-        public void updateHovered(bool status)
-        {
-            isHovered = status;
-        }
+
         public void Draw(SpriteBatch spriteBatch)
         {
-            if (isHovered)
-            {
-                spriteBatch.Draw(indicatorTexture, new Rectangle((int)position.X, (int)position.Y,
-                    indicatorTexture.Width, indicatorTexture.Height), Color.White);
-            }
-            spriteBatch.DrawString(font, text, new Vector2(position.X + indicatorTexture.Width + 20, position.Y), Color.White,
+            spriteBatch.DrawString(font, text, new Vector2(position.X, position.Y), color,
                 0.0f, Vector2.Zero, 0.7f, SpriteEffects.None, 1.0f);
         }
-        
 
     }
 }

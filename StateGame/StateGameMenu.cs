@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Monsterfall_01.Engine.StateManager;
 using Monsterfall_01.Engine.UI;
+//using Monsterfall_01.Game.UI;
 using Monsterfall_01.Input;
 using System;
 using System.Collections.Generic;
@@ -20,12 +21,11 @@ namespace Monsterfall_01.StateGame
         InputCommandManager inputCommandManager;
 
         private Texture2D mainBackground;
-        private List<Button> buttonList;
+        private ButtonList ButtonList;
         private Texture2D panel;
         private int panelWidth;
         private int panelHeight;
 
-        int currentButtonIndex;
 
         public event EventHandler GameStart;
         public StateGameMenu(Game game)
@@ -41,7 +41,6 @@ namespace Monsterfall_01.StateGame
         }
         public override void Exit(object owner)
         {
-            currentButtonIndex = 0;
             UnloadContent();
         }
         public override void Execute(object owner, GameTime gameTime)
@@ -55,28 +54,28 @@ namespace Monsterfall_01.StateGame
         private void Initialize()
         {
             _spriteBatch = new SpriteBatch(Game.GraphicsDevice);
-            buttonList = new List<Button>();
+            
             inputCommandManager = new InputCommandManager();
 
-            currentButtonIndex = 0;
-
-            inputCommandManager.AddKeyboardBinding(Keys.Up, OnKeyUp);
-            inputCommandManager.AddKeyboardBinding(Keys.Down, OnKeyDown);
+            //inputCommandManager.AddKeyboardBinding(Keys.Up, OnKeyUp);
+            //inputCommandManager.AddKeyboardBinding(Keys.Down, OnKeyDown);
             inputCommandManager.AddKeyboardBinding(Keys.Escape, OnExit);
-            inputCommandManager.AddKeyboardBinding(Keys.Enter, OnSelect);
+            //inputCommandManager.AddKeyboardBinding(Keys.Enter, OnSelect);
         }
-        private void HandleButtonSelection()
+        private void HandleButtonSelection(object sender, Button button)
         {
-            switch (currentButtonIndex)
+            switch (button.GetText())
             {
-                case 0:
+                case "Start":
                     // Throw Start game Event
                     GameStart(this, EventArgs.Empty);
                     break;
-                case 1:
-                    // code block
+                case "High Scores":
+                    // High scores
                     break;
-                case 2:
+                case "Controls":
+                    // controls
+                case "Exit":
                     Game.Exit();
                     break;
                 default:
@@ -84,25 +83,11 @@ namespace Monsterfall_01.StateGame
                     break;
             }
         }
-        private void UpdateCurrentButton(int index)
-        {
-            currentButtonIndex += index;
-            if (currentButtonIndex > buttonList.Count - 1)
-            {
-                currentButtonIndex = 0;
-                return;
-            }
-            if (currentButtonIndex < 0)
-            {
-                currentButtonIndex = buttonList.Count - 1;
-                return;
-            }
-        }
 
         private void Update()
         {
             inputCommandManager.Update();
-            
+            ButtonList.Update();
         }
         private void UnloadContent()
         {
@@ -121,23 +106,21 @@ namespace Monsterfall_01.StateGame
             panelHeight = Math.Clamp((int)(Game.GraphicsDevice.Viewport.Height * 0.6f), 400, 650);
 
             int contentStartingPositionX = (Game.GraphicsDevice.Viewport.Width) / 2 - 150;
+            int contentStartingPositionY = (Game.GraphicsDevice.Viewport.Height) / 2 - 50;
 
-            buttonList.Add(new Button("Start", buttonIndicator, new Vector2(contentStartingPositionX, (Game.GraphicsDevice.Viewport.Height) / 2 - 30), font));
-            buttonList.Add(new Button("Options", buttonIndicator, new Vector2(contentStartingPositionX, (Game.GraphicsDevice.Viewport.Height) / 2 + 20 ), font));
-            buttonList.Add(new Button("Exit", buttonIndicator, new Vector2(contentStartingPositionX, (Game.GraphicsDevice.Viewport.Height) / 2 + 70), font));
+            // Main Menu button list
+            ButtonList = new ButtonList(buttonIndicator, contentStartingPositionX, contentStartingPositionY, font, 50);
+            ButtonList.AddButton("Start");
+            ButtonList.AddButton("High Scores");
+            ButtonList.AddButton("Controls");
+            ButtonList.AddButton("Exit");
+            ButtonList.ButtonClicked += this.HandleButtonSelection;
+            // High scores text list
 
+            // Controls texts list
         }
         void Draw()
         {
-            // check active (hovered) button
-            for (int i = 0; i < buttonList.Count; i++)
-            {
-                if (i == currentButtonIndex)
-                    buttonList[i].updateHovered(true);
-                else
-                    buttonList[i].updateHovered(false);
-            }
-
             _spriteBatch.Begin(SpriteSortMode.Deferred);
             // Draw Background
             _spriteBatch.Draw(mainBackground, new Rectangle(0, 0, Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height),
@@ -147,10 +130,7 @@ namespace Monsterfall_01.StateGame
                 (Game.GraphicsDevice.Viewport.Width - panelWidth) / 2, (Game.GraphicsDevice.Viewport.Height - panelHeight) / 2,
                 panelWidth, panelHeight), Color.White);
 
-            foreach (var button in buttonList)
-            {
-                button.Draw(_spriteBatch);
-            }
+            ButtonList.Draw(_spriteBatch);
 
             _spriteBatch.End();
         }
@@ -160,23 +140,6 @@ namespace Monsterfall_01.StateGame
         {
             if (buttonState == eButtonState.PRESSED)
                 Game.Exit();
-        }
-
-        private void OnKeyDown(eButtonState buttonState, Vector2 amount)
-        {
-            if (buttonState == eButtonState.PRESSED)
-                UpdateCurrentButton(+1);
-        }
-
-        private void OnKeyUp(eButtonState buttonState, Vector2 amount)
-        {
-            if (buttonState == eButtonState.PRESSED)
-                UpdateCurrentButton(-1);
-        }
-        private void OnSelect(eButtonState buttonState, Vector2 amount)
-        {
-            if (buttonState == eButtonState.PRESSED)
-                HandleButtonSelection();
         }
         #endregion
     }
