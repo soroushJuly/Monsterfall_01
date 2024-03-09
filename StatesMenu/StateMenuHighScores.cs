@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Monsterfall_01.Engine.StateManager;
@@ -10,11 +11,20 @@ namespace Monsterfall_01.StatesMenu
     internal class StateMenuHighScores : State
     {
         private ButtonList ButtonList;
+        private TextList IndexList;
+        private TextList ScoreList;
+        // TODO: get player name before playing
+        private TextList NameList;
+        private TextList TimeList;
         public event EventHandler Back;
         private int offsetX;
         private int offsetY;
         private SpriteFont font;
         private Texture2D buttonIndicator;
+
+        private const int SCORES_COUNT = 5;
+
+        HighScores highScoresTable;
         public StateMenuHighScores(int offestX, int offsetY, SpriteFont font, Texture2D buttonIndicator)
         {
             Name = "High Scores";
@@ -26,8 +36,26 @@ namespace Monsterfall_01.StatesMenu
         public override void Enter(object owner)
         {
             ButtonList = new ButtonList(buttonIndicator, offsetX, offsetY, font, 50);
+            IndexList = new TextList(offsetX, offsetY + 30, font, Color.DarkKhaki, 25);
+            ScoreList = new TextList(offsetX + 50, offsetY + 30, font, Color.DarkOliveGreen, 25);
+
+            for(int i = 0; i < SCORES_COUNT; i++)
+                IndexList.AddText(i.ToString() + '.');
             LoadMainButtons();
+            highScoresTable = new HighScores();
+            highScoresTable = HighScores.Load();
+            LoadScores();
         }
+
+        private void LoadScores()
+        {
+            for (int i = 0; i < SCORES_COUNT; i++)
+            {
+                if (i < highScoresTable.Scores.Count)
+                    ScoreList.AddText(highScoresTable.Scores[i]?.score.ToString());
+            }
+        }
+
         public override void Exit(object owner)
         {
             ButtonList.Clear();
@@ -44,6 +72,8 @@ namespace Monsterfall_01.StatesMenu
         public override void Draw(object owner, GameTime gameTime, SpriteBatch spriteBatch = null)
         {
             ButtonList.Draw(spriteBatch);
+            IndexList.Draw(spriteBatch);
+            ScoreList.Draw(spriteBatch);
         }
         private void HandleButtonSelection(object sender, Button button)
         {
