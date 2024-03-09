@@ -136,6 +136,8 @@ namespace Monsterfall_01.StateGame
         {
             _spriteBatch = new SpriteBatch(Game.GraphicsDevice);
 
+            stats = new GameStats();
+
             // Load the player resources
             // Create a list of player's animations
             List<Animation> playerAnimations = new List<Animation>();
@@ -173,8 +175,11 @@ namespace Monsterfall_01.StateGame
             PowerUpBow powerUpBow = new PowerUpBow(arrowPickupTexture);
             PowerUpHealth powerUpHealth = new PowerUpHealth(healthPickupTexture);
             powerUpHealth.AddHealth += player.AddHealth;
+            powerUpHealth.AddHealth += stats.OnAddHealth;
             powerUpSpeed.OnSpeedUp += player.SpeedUp;
+            powerUpSpeed.OnSpeedUp += stats.OnSpeedUp;
             powerUpBow.OnBowUpgrade += player.BowUpgrade;
+            powerUpBow.OnBowUpgrade += stats.OnBowUpgrade;
             shopItems.Add(powerUpSpeed);
             shopItems.Add(powerUpHealth);
             shopItems.Add(powerUpBow);
@@ -195,7 +200,6 @@ namespace Monsterfall_01.StateGame
             highScoresTable = new HighScores();
             highScoresTable = HighScores.Load();
             highScoresTable = HighScores.Load();
-            stats = new GameStats();
 
             Vector2 playerPosition = new Vector2(Game.GraphicsDevice.Viewport.TitleSafeArea.X - 100,
                 Game.GraphicsDevice.Viewport.TitleSafeArea.Y + 400);

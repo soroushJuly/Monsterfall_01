@@ -11,10 +11,12 @@ namespace Monsterfall_01
         Vector2 position;
         const float SCALE = 0.6f;
 
+        protected int cost;
         bool isInRange;
         public ShopItem(Texture2D texture) 
         {
             this.texture = texture;
+            this.cost = 0;
             isInRange = false;
         }
 

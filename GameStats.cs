@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Monsterfall_01.PowerUp;
 
 namespace Monsterfall_01
 {
@@ -17,7 +18,21 @@ namespace Monsterfall_01
         }
         public void OnEnemyDied(object owner, EventArgs eventArgs)
         {
-            score += 10;
+            score += 1000;
+        }
+        internal void OnAddHealth(object sender, HealthArgs e)
+        {
+            score -= e.cost;
+        }
+
+        internal void OnSpeedUp(object sender, PowerUpSpeed.SpeedUpArgs e)
+        {
+            score -= e.cost;
+        }
+
+        internal void OnBowUpgrade(object sender, BowArgs e)
+        {
+            score -= e.cost;
         }
     }
 }

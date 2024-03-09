@@ -310,9 +310,9 @@ namespace Monsterfall_01
 
         public Vector2 DeltaPosition() { return position - prevPosition; }
 
-        internal void AddHealth(object sender, EventArgs e)
+        internal void AddHealth(object sender, HealthArgs e)
         {
-            Health += 10;
+            Health += e.health;
         }
 
         internal void SpeedUp(object sender, PowerUpSpeed.SpeedUpArgs e)
@@ -321,9 +321,9 @@ namespace Monsterfall_01
             speedUpTimer = e.duration;
         }
 
-        internal void BowUpgrade(object sender, int e)
+        internal void BowUpgrade(object sender, BowArgs e)
         {
-            bowUpgradeTimer = e;
+            bowUpgradeTimer = e.duration;
         }
     }
 }
