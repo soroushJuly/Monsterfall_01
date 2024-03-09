@@ -44,8 +44,6 @@ namespace Monsterfall_01.StateGame
 
             contentStartingPositionX = (Game.GraphicsDevice.Viewport.Width) / 2 - 150;
             contentStartingPositionY = (Game.GraphicsDevice.Viewport.Height) / 2 - 50;
-
-            fsm = new FSM(this);
         }
         public override void Enter(object owner)
         {
@@ -88,10 +86,8 @@ namespace Monsterfall_01.StateGame
             panelWidth = Math.Clamp((int)(Game.GraphicsDevice.Viewport.Width * 0.4f), 400, 600);
             panelHeight = Math.Clamp((int)(Game.GraphicsDevice.Viewport.Height * 0.6f), 400, 650);
 
-            //int contentStartingPositionX = (Game.GraphicsDevice.Viewport.Width) / 2 - 150;
-            //int contentStartingPositionY = (Game.GraphicsDevice.Viewport.Height) / 2 - 50;
+            fsm = new FSM(this);
 
-            // Main Menu button list
             StatesMenuMain statesMenuMain = new StatesMenuMain(contentStartingPositionX, contentStartingPositionY, font, buttonIndicator);
             StateMenuHighScores statesMenuHighScores = new StateMenuHighScores(contentStartingPositionX, contentStartingPositionY, font, buttonIndicator);
             StateMenuControls statesMenuControls = new StateMenuControls(contentStartingPositionX, contentStartingPositionY, font, buttonIndicator);
