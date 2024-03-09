@@ -6,7 +6,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace Monsterfall_01
+namespace Monsterfall_01.Engine.Input
 {
     public class KeyboardEventArgs : EventArgs
     {

@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Monsterfall_01.Input;
 using System;
 using System.Collections.Generic;
 
@@ -12,6 +11,7 @@ using Microsoft.Xna.Framework.Content;
 using Monsterfall_01.Engine.StateManager;
 using Monsterfall_01.Engine.Collision;
 using Monsterfall_01.Engine;
+using Monsterfall_01.Engine.Input;
 
 namespace Monsterfall_01.StateGame
 {

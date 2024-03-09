@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 
-namespace Monsterfall_01.Input
+namespace Monsterfall_01.Engine.Input
 {
     // We check for any update in inputs here (polling)
     // and then sending events accordingly

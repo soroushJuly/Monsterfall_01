@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Monsterfall_01.Engine.Collision;
+using Monsterfall_01.Engine.Input;
 using Monsterfall_01.Engine.StateManager;
-using Monsterfall_01.Input;
 using Monsterfall_01.StateGame;
 using Monsterfall_01.StatesPlayer;
 namespace Monsterfall_01

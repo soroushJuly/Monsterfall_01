@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace Monsterfall_01.Input
+namespace Monsterfall_01.Engine.Input
 {
     // Game action must have this structure to be called-back by the event
     public delegate void GameAction(eButtonState buttonState, Vector2 amount);
@@ -22,9 +22,9 @@ namespace Monsterfall_01.Input
             m_Input = new InputListener();
 
             // Register events with the input listener 
-            m_Input.OnKeyDown += this.OnKeyDown;
-            m_Input.OnKeyPressed += this.OnKeyPressed;
-            m_Input.OnKeyUp += this.OnKeyUp;
+            m_Input.OnKeyDown += OnKeyDown;
+            m_Input.OnKeyPressed += OnKeyPressed;
+            m_Input.OnKeyUp += OnKeyUp;
         }
 
         // Add new keys to listen for

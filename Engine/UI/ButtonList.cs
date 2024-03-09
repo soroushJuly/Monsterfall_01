@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
-using Monsterfall_01.Input;
+using Monsterfall_01.Engine.Input;
 
 namespace Monsterfall_01.Engine.UI
 {

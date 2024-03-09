@@ -5,9 +5,9 @@ using Microsoft.Xna.Framework.Input;
 
 using Monsterfall_01.Engine.UI;
 using Monsterfall_01.Engine.StateManager;
-using Monsterfall_01.Input;
 using System;
 using System.Collections.Generic;
+using Monsterfall_01.Engine.Input;
 
 namespace Monsterfall_01.StateGame
 {
