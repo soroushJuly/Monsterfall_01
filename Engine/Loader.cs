@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
-using Microsoft.Xna.Framework;
 
-namespace Monsterfall_01
+namespace Monsterfall_01.Engine
 {
     internal class Loader
     {

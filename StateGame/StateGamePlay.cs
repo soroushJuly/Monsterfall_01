@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Content;
 using Monsterfall_01.Engine.StateManager;
 using Monsterfall_01.Engine.Collision;
+using Monsterfall_01.Engine;
 
 namespace Monsterfall_01.StateGame
 {
