@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Monsterfall_01
+namespace Monsterfall_01.Engine.Collision
 {
     internal class CollisionManager
     {
         private HashSet<Collision> m_collisions;
         private List<Collidable> m_collidables;
 
-        public CollisionManager() 
-        { 
+        public CollisionManager()
+        {
             m_collisions = new HashSet<Collision>();
             m_collidables = new List<Collidable>();
         }
@@ -27,7 +27,7 @@ namespace Monsterfall_01
         {
             foreach (Collidable collidable in m_collidables)
             {
-                foreach(Collidable otherCollidable in m_collidables)
+                foreach (Collidable otherCollidable in m_collidables)
                 {
                     if (collidable.Equals(otherCollidable))
                         continue;

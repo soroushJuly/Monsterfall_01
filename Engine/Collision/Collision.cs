@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Monsterfall_01
+namespace Monsterfall_01.Engine.Collision
 {
     internal class Collision
     {
@@ -19,7 +19,7 @@ namespace Monsterfall_01
         {
             if (other == null) return false;
 
-            if ((this.A.Equals(other.A) && this.B.Equals(other.B)))
+            if (A.Equals(other.A) && B.Equals(other.B))
             {
                 return true;
             }
@@ -28,7 +28,7 @@ namespace Monsterfall_01
         }
         public void Resolve()
         {
-            this.A.OnCollision(this.B);
+            A.OnCollision(B);
         }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 
-namespace Monsterfall_01
+namespace Monsterfall_01.Engine.Collision
 {
     public class Collidable
     {
@@ -17,7 +17,7 @@ namespace Monsterfall_01
         protected void DrawBoundingBox(SpriteBatch spriteBatch, GraphicsDevice GraphicsDevices)
         {
             Texture2D pixel = new Texture2D(GraphicsDevices, 1, 1);
-            pixel.SetData<Color>(new Color[] { Color.White });
+            pixel.SetData(new Color[] { Color.White });
             spriteBatch.Draw(pixel, box, Color.White);
         }
 

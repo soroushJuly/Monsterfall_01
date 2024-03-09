@@ -1,10 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Monsterfall_01.Engine.Collision;
 using Monsterfall_01.StateGame;
 using System;
-using System.Collections.Generic;
-using System.IO;
-
 namespace Monsterfall_01
 {
     public class Arrow : Collidable
