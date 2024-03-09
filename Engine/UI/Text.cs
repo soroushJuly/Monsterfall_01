@@ -11,15 +11,10 @@ namespace Monsterfall_01.Engine.UI
     internal class Text
     {
         private string text;
-        // TODO: use button box to sense mouse hover over button
-        Rectangle buttonBox;
-        bool isHovered;
         Vector2 position;
 
         // The font used to display UI elements  
         SpriteFont font;
-        // TODO: button texture to use on the background of button, It's tranparent only right now
-        Texture2D buttonTexture;
         // Text Color
         Color color;
 
@@ -33,8 +28,6 @@ namespace Monsterfall_01.Engine.UI
             this.text = text;
             this.font = font;
             this.color = color;
-
-            isHovered = false;
         }
 
         public void Draw(SpriteBatch spriteBatch)
