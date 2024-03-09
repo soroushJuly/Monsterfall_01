@@ -12,6 +12,7 @@ using Monsterfall_01.Engine.StateManager;
 using Monsterfall_01.Engine.Collision;
 using Monsterfall_01.Engine;
 using Monsterfall_01.Engine.Input;
+using Monsterfall_01.PowerUp;
 
 namespace Monsterfall_01.StateGame
 {
@@ -168,9 +169,15 @@ namespace Monsterfall_01.StateGame
             Texture2D speedupTexture = Content.Load<Texture2D>("Graphics\\speedupPotion");
             Texture2D healthPickupTexture = Content.Load<Texture2D>("Graphics\\heartPickup");
             Texture2D arrowPickupTexture = Content.Load<Texture2D>("Graphics\\bowPickup");
-            shopItems.Add(new ShopItem(speedupTexture));
-            shopItems.Add(new ShopItem(healthPickupTexture));
-            shopItems.Add(new ShopItem(arrowPickupTexture));
+            PowerUpSpeed powerUpSpeed = new PowerUpSpeed(speedupTexture);
+            PowerUpBow powerUpBow = new PowerUpBow(arrowPickupTexture);
+            PowerUpHealth powerUpHealth = new PowerUpHealth(healthPickupTexture);
+            powerUpHealth.AddHealth += player.AddHealth;
+            powerUpSpeed.OnSpeedUp += player.SpeedUp;
+            powerUpBow.OnBowUpgrade += player.BowUpgrade;
+            shopItems.Add(powerUpSpeed);
+            shopItems.Add(powerUpHealth);
+            shopItems.Add(powerUpBow);
 
 
             // Load level\Enviroment details (Position of elements in the map and the map it self)
@@ -186,6 +193,7 @@ namespace Monsterfall_01.StateGame
             loader = new Loader();
             loader.ReadXML("Content\\XML\\GameInfo.xml");
             highScoresTable = new HighScores();
+            highScoresTable = HighScores.Load();
             highScoresTable = HighScores.Load();
             stats = new GameStats();
 
@@ -240,6 +248,8 @@ namespace Monsterfall_01.StateGame
             inputCommandManager.AddKeyboardBinding(Keys.S, player.moveSouth);
             // Shoot arrow
             inputCommandManager.AddKeyboardBinding(Keys.J, player.ShootArrow);
+            // Interact/Buy Items in the shop
+            inputCommandManager.AddKeyboardBinding(Keys.E, player.Interact);
         }
 
         private void Update(GameTime gameTime)

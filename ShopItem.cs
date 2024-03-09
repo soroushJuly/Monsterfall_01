@@ -5,7 +5,7 @@ using Monsterfall_01.Engine.Collision;
 
 namespace Monsterfall_01
 {
-    internal class ShopItem : Tile
+    internal abstract class ShopItem : Tile
     {
         Texture2D texture;
         Vector2 position;
@@ -51,7 +51,7 @@ namespace Monsterfall_01
             }
         }
 
-        public void Picked()
+        public virtual void Picked()
         {
             
         }

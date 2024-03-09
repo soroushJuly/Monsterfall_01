@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Monsterfall_01.Engine.Collision;
 using Monsterfall_01.Engine.Input;
 using Monsterfall_01.Engine.StateManager;
+using Monsterfall_01.PowerUp;
 using Monsterfall_01.StateGame;
 using Monsterfall_01.StatesPlayer;
 namespace Monsterfall_01
@@ -44,6 +45,8 @@ namespace Monsterfall_01
         private float blockTimer;
         private float takeDamageTimer;
         private float attackTimer;
+        private float speedUpTimer;
+        private float bowUpgradeTimer;
 
         private List<String> directions;
 
@@ -109,11 +112,14 @@ namespace Monsterfall_01
             mapDirections.Add("NORTHWEST", 7);
 
             currentAnimation = 0;
+            // TODO: add Timer manager
             this.xtimer = 0;
             this.blockTimer = 0;
             this.takeDamageTimer = 0;
             this.ytimer = 0;
             this.attackTimer = 0;
+            this.speedUpTimer = 0;
+            this.bowUpgradeTimer = 0.0f;
             playerAnimation = playerAnimations[currentAnimation];
 
             Health = GameInfo.Instance.PlayerInfo.health;
@@ -130,9 +136,12 @@ namespace Monsterfall_01
             //this.box = new Rectangle((int)position.X , (int)position.Y, 10, 10);
             xtimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             ytimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            speedUpTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             blockTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             takeDamageTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             attackTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            bowUpgradeTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (speedUpTimer < 0) movementSpeed = 4;
             UpdateAnimation(gameTime);
         }
         private void UpdateAnimation(GameTime gameTime)
@@ -219,12 +228,21 @@ namespace Monsterfall_01
         {
             if (buttonState == eButtonState.UP)
             {
-                if (attackTimer < 0)
+                if (attackTimer > 0)
+                {
+                    return;
+                }
+                if(bowUpgradeTimer > 0)
                 {
                     StateGamePlay.arrowList.Add(new Arrow(this.position, currentDirectionIndex));
-                    isAttacking = true;
-                    attackTimer = .6f;
+                    StateGamePlay.arrowList.Add(new Arrow(this.position, currentDirectionIndex + 1));
+                    StateGamePlay.arrowList.Add(new Arrow(this.position, currentDirectionIndex - 1));
                 }
+                else
+                    StateGamePlay.arrowList.Add(new Arrow(this.position, currentDirectionIndex));
+
+                isAttacking = true;
+                attackTimer = .6f;
             }
         }
         public void Interact(eButtonState buttonState, Vector2 amount)
@@ -232,10 +250,7 @@ namespace Monsterfall_01
             if (buttonState == eButtonState.PRESSED)
             {
                 if (itemInRange != null)
-                {
-                    // to be changed
                     itemInRange.Picked();
-                }
             }
         }
         public override bool CollisionTest(Collidable obj)
@@ -294,5 +309,21 @@ namespace Monsterfall_01
         }
 
         public Vector2 DeltaPosition() { return position - prevPosition; }
+
+        internal void AddHealth(object sender, EventArgs e)
+        {
+            Health += 10;
+        }
+
+        internal void SpeedUp(object sender, PowerUpSpeed.SpeedUpArgs e)
+        {
+            movementSpeed *= e.speedUpIntensity;
+            speedUpTimer = e.duration;
+        }
+
+        internal void BowUpgrade(object sender, int e)
+        {
+            bowUpgradeTimer = e;
+        }
     }
 }
