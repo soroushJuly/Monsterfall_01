@@ -1,6 +1,6 @@
 Width: 12
 Height: 12
-Shop: 4,4
+Shop: 2,4
 Decorations
 Barrel_E1: 5,1
 Barrel_E1: 2,2

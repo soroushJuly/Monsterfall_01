@@ -10,6 +10,7 @@ namespace Monsterfall_01
         public int timeSpent;
         public string name;
 
+        public event EventHandler<int> OnScoreChanged;
         public GameStats()
         {
             score = 0;
@@ -18,21 +19,26 @@ namespace Monsterfall_01
         }
         public void OnEnemyDied(object owner, EventArgs eventArgs)
         {
-            score += 1000;
+            ChangeScore(1000);
         }
         internal void OnAddHealth(object sender, HealthArgs e)
         {
-            score -= e.cost;
+            ChangeScore(-1 * e.cost);
         }
 
         internal void OnSpeedUp(object sender, PowerUpSpeed.SpeedUpArgs e)
         {
-            score -= e.cost;
+            ChangeScore(-1 * e.cost);
         }
 
         internal void OnBowUpgrade(object sender, BowArgs e)
         {
-            score -= e.cost;
+            ChangeScore(-1 * e.cost);
+        }
+        private void ChangeScore(int change)
+        {
+            score += change;
+            OnScoreChanged(this, score);
         }
     }
 }

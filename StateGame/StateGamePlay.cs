@@ -204,6 +204,7 @@ namespace Monsterfall_01.StateGame
             Vector2 playerPosition = new Vector2(Game.GraphicsDevice.Viewport.TitleSafeArea.X - 100,
                 Game.GraphicsDevice.Viewport.TitleSafeArea.Y + 400);
             player.Initialize(ref playerAnimations, playerPosition, PLAYER_SCALE);
+            stats.OnScoreChanged += player.UpdateScore;
 
             for (int i = 0; i < enemies.Count; i++)
             {
@@ -314,7 +315,7 @@ namespace Monsterfall_01.StateGame
             bgLayer3.Draw(_spriteBatch, new Vector2(-viewTranslate.X, -viewTranslate.Y));
 
             // Draw map
-            map01.Draw(_spriteBatch, Game.GraphicsDevice);
+            map01.Draw(_spriteBatch, Game.GraphicsDevice, font);
 
             // Draw the Player  
             player.Draw(_spriteBatch, Game.GraphicsDevice);

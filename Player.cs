@@ -54,6 +54,8 @@ namespace Monsterfall_01
 
         public bool isAttacking;
 
+        private int playerScore;
+
         // Item that is in the pickup range of player
         private ShopItem itemInRange;
 
@@ -74,7 +76,7 @@ namespace Monsterfall_01
             String direction = "";
             directions.Add(direction);
             directions.Add(direction);
-
+            playerScore = 0;
             isAttacking = false;
 
             animationManager = new FSM(this);
@@ -141,6 +143,7 @@ namespace Monsterfall_01
             takeDamageTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             attackTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             bowUpgradeTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            //  !!!! THIS CHANGED THE MOVEMNET SPEED DURING SHOOTING ARROW !!!!
             if (speedUpTimer < 0) movementSpeed = 4;
             UpdateAnimation(gameTime);
         }
@@ -249,6 +252,10 @@ namespace Monsterfall_01
         {
             if (buttonState == eButtonState.PRESSED)
             {
+                if (itemInRange.GetCost() > playerScore)
+                {
+                    return;
+                }
                 if (itemInRange != null)
                     itemInRange.Picked();
             }
@@ -324,6 +331,10 @@ namespace Monsterfall_01
         internal void BowUpgrade(object sender, BowArgs e)
         {
             bowUpgradeTimer = e.duration;
+        }
+        public void UpdateScore(object sender, int e)
+        {
+            playerScore = e;
         }
     }
 }

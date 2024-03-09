@@ -50,7 +50,7 @@ namespace Monsterfall_01
             }
             for (int i = 0; i < shopItems.Count; i++)
             {
-                shopItems[i].Initialize(MapToScreen((int)shopLocation.X + i, (int)shopLocation.Y));
+                shopItems[i].Initialize(MapToScreen((int)shopLocation.X, (int)shopLocation.Y + i));
             }
         }
         // Add the walls surrounding the map
@@ -94,7 +94,7 @@ namespace Monsterfall_01
             return new Vector2(screenX, screenY);
         }
 
-        public void Draw(SpriteBatch spriteBatch, GraphicsDevice GraphicsDevices)
+        public void Draw(SpriteBatch spriteBatch, GraphicsDevice GraphicsDevices, SpriteFont font)
         {
             for (int j = 1; j < mapSize.Y; j++)
             {
@@ -109,7 +109,7 @@ namespace Monsterfall_01
             }
             foreach (ShopItem shopItem in shopItems)
             {
-                shopItem.Draw(spriteBatch, GraphicsDevices);
+                shopItem.Draw(spriteBatch, GraphicsDevices, font);
             }
         }
 
