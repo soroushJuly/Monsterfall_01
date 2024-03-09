@@ -29,7 +29,7 @@ namespace Monsterfall_01
             _graphics = new GraphicsDeviceManager(this);
             _graphics.PreferredBackBufferWidth = 1020;
             //_graphics.PreferredBackBufferHeight = 1080;
-            //_graphics.IsFullScreen = true;
+            _graphics.IsFullScreen = true;
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }

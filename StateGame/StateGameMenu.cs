@@ -18,6 +18,7 @@ namespace Monsterfall_01.StateGame
 
         private Texture2D mainBackground;
         private Texture2D panel;
+        private Texture2D gameName;
         private int panelWidth;
         private int panelHeight;
 
@@ -82,6 +83,7 @@ namespace Monsterfall_01.StateGame
             panel = Content.Load<Texture2D>("Graphics\\UI\\panel_stone");
             SpriteFont font = Content.Load<SpriteFont>("Graphics\\gameFont");
             mainBackground = Content.Load<Texture2D>("Graphics\\bg_menu");
+            gameName = Content.Load<Texture2D>("Graphics\\Name");
 
             panelWidth = Math.Clamp((int)(Game.GraphicsDevice.Viewport.Width * 0.4f), 400, 600);
             panelHeight = Math.Clamp((int)(Game.GraphicsDevice.Viewport.Height * 0.6f), 400, 650);
@@ -125,6 +127,9 @@ namespace Monsterfall_01.StateGame
             _spriteBatch.Draw(panel, new Rectangle(
                 (Game.GraphicsDevice.Viewport.Width - panelWidth) / 2, (Game.GraphicsDevice.Viewport.Height - panelHeight) / 2,
                 panelWidth, panelHeight), Color.White);
+            _spriteBatch.Draw(gameName, new Rectangle(
+                (Game.GraphicsDevice.Viewport.Width - panelWidth) / 2, (Game.GraphicsDevice.Viewport.Height - panelHeight) / 2,
+                panelWidth, 100), Color.White);
 
             fsm.Draw(gameTime, _spriteBatch);
 
