@@ -40,6 +40,7 @@ namespace Monsterfall_01.Engine.UI
         {
             isHovered = status;
         }
+        public bool GetIsHovered() {  return isHovered; }
         public void Draw(SpriteBatch spriteBatch)
         {
             if (isHovered)

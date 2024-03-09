@@ -51,7 +51,7 @@ namespace Monsterfall_01.StateGame
         {
             Update();
         }
-        public override void Draw(object owner, GameTime gameTime)
+        public override void Draw(object owner, GameTime gameTime, SpriteBatch spriteBatch = null)
         {
             Draw();
         }

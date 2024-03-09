@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 
 namespace Monsterfall_01.Engine.StateManager
@@ -12,7 +13,7 @@ namespace Monsterfall_01.Engine.StateManager
         public abstract void Execute(object owner, GameTime gameTime);
         public abstract void Exit(object owner);
         // Draw State for the state objects with texture
-        public virtual void Draw(object owner, GameTime gameTime) { }
+        public virtual void Draw(object owner, GameTime gameTime, SpriteBatch spriteBatch = null) { }
         // Name of the state to be set in the derived class and to make users able to search by the name
         public string Name
         {

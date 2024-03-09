@@ -41,14 +41,17 @@ namespace Monsterfall_01.Engine.UI
 
         public void AddButton(string text)
         {
-            buttonList.Add(new Button(text, buttonIndicator, new Vector2(offsetX, offsetY + count * paddings), font));
-            count++;
+            buttonList.Add(new Button(text, buttonIndicator, new Vector2(offsetX, offsetY + buttonList.Count * paddings), font));
         }
         public void Update()
         {
             inputCommandManager?.Update();
         }
-
+        public void Clear()
+        {
+            buttonList.Clear();
+        }
+        public int GetCount() { return buttonList.Count; }
         public void Draw(SpriteBatch _spriteBatch)
         {
             // check active (hovered) button

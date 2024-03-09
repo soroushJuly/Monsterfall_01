@@ -5,9 +5,10 @@ using Microsoft.Xna.Framework.Input;
 using Monsterfall_01.Engine.Input;
 using Monsterfall_01.Engine.StateManager;
 using Monsterfall_01.Engine.UI;
+using Monsterfall_01.StatesMenu;
+
 //using Monsterfall_01.Game.UI;
 using System;
-using System.Collections.Generic;
 
 namespace Monsterfall_01.StateGame
 {
@@ -21,10 +22,22 @@ namespace Monsterfall_01.StateGame
         InputCommandManager inputCommandManager;
 
         private Texture2D mainBackground;
-        private ButtonList ButtonList;
         private Texture2D panel;
         private int panelWidth;
         private int panelHeight;
+
+        int contentStartingPositionX;
+        int contentStartingPositionY;
+
+        FSM fsm;
+
+        enum States
+        {
+            MAIN,
+            HIGHSCORES,
+            CONTROLS
+        }
+        private States currentState;
 
 
         public event EventHandler GameStart;
@@ -33,6 +46,12 @@ namespace Monsterfall_01.StateGame
             Name = "Menu";
             Game = game;
             Content = game.Content;
+            currentState = States.MAIN;
+
+            contentStartingPositionX = (Game.GraphicsDevice.Viewport.Width) / 2 - 150;
+            contentStartingPositionY = (Game.GraphicsDevice.Viewport.Height) / 2 - 50;
+
+            fsm = new FSM(this);
         }
         public override void Enter(object owner)
         {
@@ -45,49 +64,22 @@ namespace Monsterfall_01.StateGame
         }
         public override void Execute(object owner, GameTime gameTime)
         {
-            Update();
+            Update(gameTime);
         }
-        public override void Draw(object owner, GameTime gameTime)
+        public override void Draw(object owner, GameTime gameTime, SpriteBatch spriteBatch = null)
         {
-            Draw();
+            Draw(gameTime);
         }
         private void Initialize()
         {
             _spriteBatch = new SpriteBatch(Game.GraphicsDevice);
             
             inputCommandManager = new InputCommandManager();
-
-            //inputCommandManager.AddKeyboardBinding(Keys.Up, OnKeyUp);
-            //inputCommandManager.AddKeyboardBinding(Keys.Down, OnKeyDown);
-            inputCommandManager.AddKeyboardBinding(Keys.Escape, OnExit);
-            //inputCommandManager.AddKeyboardBinding(Keys.Enter, OnSelect);
         }
-        private void HandleButtonSelection(object sender, Button button)
-        {
-            switch (button.GetText())
-            {
-                case "Start":
-                    // Throw Start game Event
-                    GameStart(this, EventArgs.Empty);
-                    break;
-                case "High Scores":
-                    // High scores
-                    break;
-                case "Controls":
-                    // controls
-                case "Exit":
-                    Game.Exit();
-                    break;
-                default:
-                    // code block
-                    break;
-            }
-        }
-
-        private void Update()
+        private void Update(GameTime gameTime)
         {
             inputCommandManager.Update();
-            ButtonList.Update();
+            fsm.Update(gameTime);
         }
         private void UnloadContent()
         {
@@ -109,17 +101,32 @@ namespace Monsterfall_01.StateGame
             int contentStartingPositionY = (Game.GraphicsDevice.Viewport.Height) / 2 - 50;
 
             // Main Menu button list
-            ButtonList = new ButtonList(buttonIndicator, contentStartingPositionX, contentStartingPositionY, font, 50);
-            ButtonList.AddButton("Start");
-            ButtonList.AddButton("High Scores");
-            ButtonList.AddButton("Controls");
-            ButtonList.AddButton("Exit");
-            ButtonList.ButtonClicked += this.HandleButtonSelection;
-            // High scores text list
+            StatesMenuMain statesMenuMain = new StatesMenuMain(contentStartingPositionX, contentStartingPositionY, font, buttonIndicator);
+            StateMenuHighScores statesMenuHighScores = new StateMenuHighScores(contentStartingPositionX, contentStartingPositionY, font, buttonIndicator);
+            StateMenuControls statesMenuControls = new StateMenuControls(contentStartingPositionX, contentStartingPositionY, font, buttonIndicator);
 
-            // Controls texts list
+            statesMenuMain.HighScores += (object sender, EventArgs e) => currentState = States.HIGHSCORES;
+            statesMenuMain.Controls += (object sender, EventArgs e) => currentState = States.CONTROLS;
+            statesMenuMain.ExitGame += (object sender, EventArgs e) => Game.Exit();
+
+            statesMenuHighScores.Back += (object sender, EventArgs e) => currentState = States.MAIN;
+            statesMenuControls.Back += (object sender, EventArgs e) => currentState = States.MAIN;
+
+            statesMenuMain.AddTransition(new Transition(statesMenuHighScores, () => currentState == States.HIGHSCORES));
+            statesMenuMain.AddTransition(new Transition(statesMenuControls, () => currentState == States.CONTROLS));
+
+            statesMenuHighScores.AddTransition(new Transition(statesMenuMain, () => currentState == States.MAIN));
+            statesMenuControls.AddTransition(new Transition(statesMenuMain, () => currentState == States.MAIN));
+
+
+            fsm.AddState(statesMenuMain);
+            fsm.AddState(statesMenuControls);
+            fsm.AddState(statesMenuHighScores);
+
+            fsm.Initialise("Main");
         }
-        void Draw()
+
+        void Draw(GameTime gameTime)
         {
             _spriteBatch.Begin(SpriteSortMode.Deferred);
             // Draw Background
@@ -130,7 +137,7 @@ namespace Monsterfall_01.StateGame
                 (Game.GraphicsDevice.Viewport.Width - panelWidth) / 2, (Game.GraphicsDevice.Viewport.Height - panelHeight) / 2,
                 panelWidth, panelHeight), Color.White);
 
-            ButtonList.Draw(_spriteBatch);
+            fsm.Draw(gameTime, _spriteBatch);
 
             _spriteBatch.End();
         }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 
@@ -50,11 +51,12 @@ namespace Monsterfall_01.Engine.StateManager
             currentState.Execute(m_owner, gameTime);
         }
         // For the states with draw
-        public void Draw(GameTime gameTime)
+        // TODO: good idea to always pass sprite batch instead of sometimes?
+        public void Draw(GameTime gameTime, SpriteBatch spriteBatch = null)
         {
             if (currentState == null) return;
 
-            currentState.Draw(m_owner, gameTime);
+            currentState.Draw(m_owner, gameTime, spriteBatch);
         }
     }
 }
