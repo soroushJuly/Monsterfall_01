@@ -1,11 +1,10 @@
 ﻿using System;
 
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 //using static System.Net.Mime.MediaTypeNames;
 
-namespace Monsterfall_01
+namespace Monsterfall_01.Engine
 {
     public class Animation
     {
@@ -46,7 +45,7 @@ namespace Monsterfall_01
             this.frameWidth = frameWidth;
             this.frameHeight = frameHeight;
             this.frameCount = frameCount;
-            this.frameTime = frametime;
+            frameTime = frametime;
             this.scale = scale;
             this.cols = cols;
             Looping = looping;
@@ -61,16 +60,16 @@ namespace Monsterfall_01
         public Animation(Animation other)
         {
             // Keep a local copy of the values passed in  
-            this.color = other.color;
-            this.frameWidth = other.frameWidth;
-            this.frameHeight = other.frameHeight;
-            this.frameCount = other.frameCount;
-            this.frameTime = other.frameTime;
-            this.scale = other.scale;
-            this.cols = other.cols;
-            this.Looping = other.Looping;
-            this.Position = other.Position;
-            this.spriteStrip = other.spriteStrip;
+            color = other.color;
+            frameWidth = other.frameWidth;
+            frameHeight = other.frameHeight;
+            frameCount = other.frameCount;
+            frameTime = other.frameTime;
+            scale = other.scale;
+            cols = other.cols;
+            Looping = other.Looping;
+            Position = other.Position;
+            spriteStrip = other.spriteStrip;
             // Set the time to zero elapsedTime = 0; 
             currentFrame = 0;
             // Set the Animation to active by default   
@@ -108,7 +107,7 @@ namespace Monsterfall_01
             }
             else
             {
-                sourceRect = new Rectangle((currentFrame % cols) * frameWidth, (currentFrame / cols) * frameHeight, frameWidth, frameHeight);
+                sourceRect = new Rectangle(currentFrame % cols * frameWidth, currentFrame / cols * frameHeight, frameWidth, frameHeight);
             }
             // Grab the correct frame in the image strip by multiplying the currentFrame index by the frame width   
             destinationRect = new Rectangle((int)Position.X - (int)(frameWidth * scale) / 2,
