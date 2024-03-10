@@ -3,4 +3,32 @@
 	<PlayerInfo>
 		<health>50</health>
 	</PlayerInfo>
+	<GameWaves>
+		<waves>
+			<Wave>
+				<enemyCount>
+					2
+				</enemyCount>
+				<timeToNextWave>
+					50
+				</timeToNextWave>
+			</Wave>
+			<Wave>
+				<enemyCount>
+					4
+				</enemyCount>
+				<timeToNextWave>
+					50
+				</timeToNextWave>
+			</Wave>
+			<Wave>
+				<enemyCount>
+					10
+				</enemyCount>
+				<timeToNextWave>
+					50
+				</timeToNextWave>
+			</Wave>
+		</waves>
+	</GameWaves>
 </GameInfo>
