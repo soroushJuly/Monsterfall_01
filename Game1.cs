@@ -56,6 +56,7 @@ namespace Monsterfall_01
 
             stateGameMenu.AddTransition(new Transition(stateGamePlay, () => currentState == States.PLAYING));
             stateGamePlay.AddTransition(new Transition(stateGameDied, () => currentState == States.DIED));
+            stateGamePlay.AddTransition(new Transition(stateGameFinish, () => currentState == States.SUCCESS));
             stateGameDied.AddTransition(new Transition(stateGamePlay, () => currentState == States.PLAYING));
             stateGameDied.AddTransition(new Transition(stateGameMenu, () => currentState == States.MENU));
             stateGameFinish.AddTransition(new Transition(stateGamePlay, () => currentState == States.PLAYING));

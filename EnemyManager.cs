@@ -25,6 +25,7 @@ namespace Monsterfall_01
         public int GetWaveCount() { return waves.Count; }
         public int GetCurrentWave() { return currentWave; }
         public float GetTimeToNextWave() { return waveTimeLeft; }
+        public bool IsLastWave() { return waves.Count == (currentWave + 1); }
 
         public event EventHandler<WaveArgs> OnLoadWave;
         public event EventHandler<int> OnEnemyDied;

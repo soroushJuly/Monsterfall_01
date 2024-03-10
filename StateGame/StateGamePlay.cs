@@ -277,8 +277,7 @@ namespace Monsterfall_01.StateGame
 
             enemyManager.Update(gameTime);
             // Win game condition check
-            if (enemyManager.GetEnemies().Count == 0 &&
-                (enemyManager.GetWaveCount() + 1) == enemyManager.GetWaveCount())
+            if ((enemyManager.GetEnemies().Count == 0) && enemyManager.IsLastWave())
                 PlayerSuccess(this, stats);
 
             // Update the parallaxing background    
@@ -345,7 +344,7 @@ namespace Monsterfall_01.StateGame
             _spriteBatch.DrawString(font, "Wave: " + (enemyManager.GetCurrentWave() + 1) + " / " + enemyManager.GetWaveCount(),
                 new Vector2(fixedXPosition, fixedYPosition + 220), Color.White);
             // Shows Time left to next wave
-            if ((enemyManager.GetCurrentWave() + 1) != enemyManager.GetWaveCount())
+            if (!enemyManager.IsLastWave())
                 _spriteBatch.DrawString(font, "Next wave in: " + (int)enemyManager.GetTimeToNextWave(),
                     new Vector2(fixedXPosition, fixedYPosition + 250), Color.White);
 
