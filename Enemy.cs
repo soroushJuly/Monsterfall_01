@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Monsterfall_01.Engine;
@@ -53,8 +54,8 @@ namespace Monsterfall_01
             WALK,
             RUN,
             ATTACK,
-            HIT,
-            DEATH
+            DEATH,
+            HIT
         }
 
         public States currentState;
@@ -77,7 +78,7 @@ namespace Monsterfall_01
             // Set the amount of damage the enemy can do  
             Damage = 10;
             // Set how fast the enemy moves  
-            enemyMoveSpeed = 1f;
+            enemyMoveSpeed = 1.5f;
             // Set the score value of the enemy  
             Value = 500;
 
@@ -116,13 +117,6 @@ namespace Monsterfall_01
             enemyAnimations[currentAnimation].Position = Position;
             // Update Animation  
             enemyAnimations[currentAnimation].Update(gameTime);
-            // If the enemy is past the screen or its health reaches 0 then deactivate it  
-            if (Health <= 0)
-            {
-                // By setting the Active flag to false, the game will remove this object from the 
-                // active game list  
-                flagForRemoval = true;
-            }
         }
         public void Draw(SpriteBatch spriteBatch, GraphicsDevice GraphicsDevices)
         {
@@ -133,19 +127,19 @@ namespace Monsterfall_01
 
         private void Sense()
         {
-            // Sensing the direction
+            // Sensing the direction of the player
             Vector2 direction = Vector2.Normalize(StateGamePlay.player.position - Position);
-            Position += direction + Vector2.Multiply(CollisionOffset, 0.01f);
+            if (!isInAttackRange)
+                Position += direction + Vector2.Multiply(CollisionOffset, 0.01f);
 
             // 0 sprite is upwards then 0 degree is (0,1)
             double degree = Math.Acos(Vector2.Dot(-1 * direction, new Vector2(0, 1)));
             if (direction.X < 0) { degree += 2 * (Math.PI - degree); }
             directionIndex = (int)((degree * 180 / Math.PI) / (360.0f /16));
 
-            // Sensing distance
+            // Sensing distance of the player
             Vector2 playerDistance = StateGamePlay.player.position - Position;
-            isInChaseRange = (playerDistance.Length() < 400 && playerDistance.Length() > 100) ? true: false;
-            isInAttackRange = playerDistance.Length() <= 100 ? true: false;
+            isInChaseRange = playerDistance.Length() < 400 ? true: false;
         }
 
         public override bool CollisionTest(Collidable obj)
@@ -164,9 +158,9 @@ namespace Monsterfall_01
             {
                 if (hitTimer.TotalMilliseconds < 0)
                 {
-                    Health -= arrow.Damage;
                     EnemyHit(this, Position);
                     OnEnemyDied();
+                    currentState = States.DEATH;
                     hitTimer = TimeSpan.FromMilliseconds(1000);
                 }
             }
@@ -174,6 +168,7 @@ namespace Monsterfall_01
             CollisionOffset = Vector2.Zero;
             if (player != null)
             {
+                isInAttackRange = true;
                 Vector2 depth = RectangleExtensions.GetIntersectionDepth(box, player.GetBox());
                 CollisionOffset = depth; 
             }
@@ -184,11 +179,13 @@ namespace Monsterfall_01
                 CollisionOffset = depth;
             }
         }
-        protected void OnEnemyDied()
+        protected async void OnEnemyDied()
         {
+            await Task.Delay(TimeSpan.FromMilliseconds(400));
             // Check the list of subscribers
             if (EnemyDied != null)
             {
+                flagForRemoval = true;
                 EnemyDied(this, Value);
             }
         }
