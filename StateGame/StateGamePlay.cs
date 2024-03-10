@@ -143,7 +143,7 @@ namespace Monsterfall_01.StateGame
             List<Animation> playerAnimations = new List<Animation>();
             const float PLAYER_SCALE = 0.6f;
             animationLoader.LoadAnimations(Content, "Graphics\\HeroFemale\\Idle_Bow\\Idle_Bow_Body_", PLAYER_SCALE, playerAnimations,
-                320, 16, 25, 8, 4);
+                320, 16, 45, 8, 4);
             animationLoader.LoadAnimations(Content, "Graphics\\HeroFemale\\Run_Bow\\Run_Bow_Body_", PLAYER_SCALE, playerAnimations,
                 320, 20, 17, 8, 5);
             animationLoader.LoadAnimations(Content, "Graphics\\HeroFemale\\Attack_Bow\\Attack_Bow_Body_", PLAYER_SCALE, playerAnimations,
