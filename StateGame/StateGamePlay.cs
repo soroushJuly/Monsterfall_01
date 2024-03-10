@@ -342,6 +342,9 @@ namespace Monsterfall_01.StateGame
             if (!enemyManager.IsLastWave())
                 _spriteBatch.DrawString(font, "Next wave in: " + (int)enemyManager.GetTimeToNextWave(),
                     new Vector2(fixedXPosition, fixedYPosition + 250), Color.White);
+            // Shows how many enemies in map is left for killing
+            _spriteBatch.DrawString(font, "Enemies Left: " + enemyManager.GetEnemies().Count,
+                new Vector2(fixedXPosition, fixedYPosition + 280), Color.White);
 
             // Stop drawing  
             _spriteBatch.End();
