@@ -20,11 +20,11 @@ namespace Monsterfall_01.StateGame
     {
         private SpriteBatch _spriteBatch;
 
-        //Represents the player  
+        // Represents the player  
         static public Player player;
-        // One sample enemy
-        //Enemy enemy;
-        List<Enemy> enemies;
+
+        // Manages enemies in waves during the game;
+        EnemyManager enemyManager;
 
         CollisionManager collisionManager;
 
@@ -79,6 +79,7 @@ namespace Monsterfall_01.StateGame
 
         //GraphicsDevice GraphicsDevice;
         public EventHandler<GameStats> PlayerDied;
+        public EventHandler<GameStats> PlayerSuccess;
         private Loader loader;
         public StateGamePlay(Game game)
         {
@@ -103,15 +104,12 @@ namespace Monsterfall_01.StateGame
         }
         private void Initialize()
         {
-            // TODO: Add your initialization logic here
             // Initialize the player class
             player = new Player();
 
             arrowList = new List<Arrow>();
 
-            enemies = new List<Enemy>();
-            enemies.Add(new Enemy());
-            enemies.Add(new Enemy());
+            enemyManager = new EnemyManager();
 
             shopItems = new List<ShopItem>();
 
@@ -197,6 +195,10 @@ namespace Monsterfall_01.StateGame
             // Load data related to the gameplay
             loader = new Loader();
             loader.ReadXML("Content\\XML\\GameInfo.xml");
+            // Pass the waves details received from the xml file
+            enemyManager.AddWaves(GameInfo.Instance.GameWaves.waves);
+            enemyManager.AddAnimations("MonsterIce",monsterIceAnimations);
+
             highScoresTable = new HighScores();
             highScoresTable = HighScores.Load();
             highScoresTable = HighScores.Load();
@@ -206,17 +208,16 @@ namespace Monsterfall_01.StateGame
             player.Initialize(ref playerAnimations, playerPosition, PLAYER_SCALE);
             stats.OnScoreChanged += player.UpdateScore;
 
-            for (int i = 0; i < enemies.Count; i++)
+            enemyManager.OnEnemyDied += stats.OnEnemyDied;
+            enemyManager.OnLoadWave += (object sender, WaveArgs e) =>
             {
-                enemies[i].Initialize(monsterIceAnimations, playerPosition + new Vector2(i * 150 + 500, i));
-                enemies[i].EnemyDied += stats.OnEnemyDied;
-            }
+                foreach (Enemy enemy in enemyManager.GetEnemies())
+                    collisionManager.AddCollidable(enemy);
+            };
 
             collisionManager.AddCollidable(player);
             foreach (ShopItem shopItem in map01.ShopItems)
                 collisionManager.AddCollidable(shopItem);
-            foreach (Enemy enemy in enemies)
-                collisionManager.AddCollidable(enemy);
             foreach (Tile decoration in map01.DecorTiles)
                 collisionManager.AddCollidable(decoration);
 
@@ -259,12 +260,11 @@ namespace Monsterfall_01.StateGame
 
         private void Update(GameTime gameTime)
         {
+            // Dynamic collidables
             foreach (Arrow arrow in arrowList)
                 collisionManager.AddCollidable(arrow);
             inputCommandManager.Update();
             collisionManager.Update();
-            //if (Keyboard.GetState().IsKeyDown(Keys.Escape))
-            //    Exit();
 
             //Update the player   
             UpdatePlayer(gameTime);
@@ -275,10 +275,11 @@ namespace Monsterfall_01.StateGame
                 arrow.Update(gameTime);
             }
 
-            foreach (Enemy enemy in enemies)
-            {
-                enemy.Update(gameTime);
-            }
+            enemyManager.Update(gameTime);
+            // Win game condition check
+            if (enemyManager.GetEnemies().Count == 0 &&
+                (enemyManager.GetWaveCount() + 1) == enemyManager.GetWaveCount())
+                PlayerSuccess(this, stats);
 
             // Update the parallaxing background    
             bgLayer1.Update(gameTime);
@@ -320,11 +321,8 @@ namespace Monsterfall_01.StateGame
             // Draw the Player  
             player.Draw(_spriteBatch, Game.GraphicsDevice);
 
-            //enemy.Draw(_spriteBatch);
-            foreach (Enemy enemy in enemies)
-            {
-                enemy.Draw(_spriteBatch, Game.GraphicsDevice);
-            }
+            // Draw enemies
+            enemyManager.Draw(_spriteBatch, Game.GraphicsDevice);
 
             foreach (Arrow arrow in arrowList) { arrow.Draw(_spriteBatch, Game.GraphicsDevice); }
 
@@ -343,7 +341,13 @@ namespace Monsterfall_01.StateGame
                 new Vector2(fixedXPosition, fixedYPosition + 150), Color.White);
             _spriteBatch.DrawString(font, "currentAnimation: " + (player.currentAnimation),
                 new Vector2(fixedXPosition, fixedYPosition + 190), Color.White);
-
+            // Shows the current wave and total waves
+            _spriteBatch.DrawString(font, "Wave: " + (enemyManager.GetCurrentWave() + 1) + " / " + enemyManager.GetWaveCount(),
+                new Vector2(fixedXPosition, fixedYPosition + 220), Color.White);
+            // Shows Time left to next wave
+            if ((enemyManager.GetCurrentWave() + 1) != enemyManager.GetWaveCount())
+                _spriteBatch.DrawString(font, "Next wave in: " + (int)enemyManager.GetTimeToNextWave(),
+                    new Vector2(fixedXPosition, fixedYPosition + 250), Color.White);
 
             // Stop drawing  
             _spriteBatch.End();
@@ -352,13 +356,13 @@ namespace Monsterfall_01.StateGame
         {
             // Remove all the flagged objects from lists
             List<Enemy> removals = new List<Enemy>();
-            foreach (Enemy enemy in enemies)
+            foreach (Enemy enemy in enemyManager.GetEnemies())
             {
                 if (enemy.flagForRemoval)
                     removals.Add(enemy);
             }
             foreach (Enemy enemy in removals)
-                enemies.Remove(enemy);
+                enemyManager.Remove(enemy);
 
             List<Arrow> arrowRemovals = new List<Arrow>();
             foreach (Arrow arrow in arrowList)

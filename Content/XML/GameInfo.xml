@@ -10,20 +10,12 @@
 					2
 				</enemyCount>
 				<timeToNextWave>
-					50
+					20
 				</timeToNextWave>
 			</Wave>
 			<Wave>
 				<enemyCount>
 					4
-				</enemyCount>
-				<timeToNextWave>
-					50
-				</timeToNextWave>
-			</Wave>
-			<Wave>
-				<enemyCount>
-					10
 				</enemyCount>
 				<timeToNextWave>
 					50

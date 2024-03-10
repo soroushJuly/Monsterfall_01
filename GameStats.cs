@@ -17,9 +17,9 @@ namespace Monsterfall_01
             timeSpent = 0;
             name = string.Empty;
         }
-        public void OnEnemyDied(object owner, EventArgs eventArgs)
+        public void OnEnemyDied(object owner, int e)
         {
-            ChangeScore(1000);
+            ChangeScore(e);
         }
         internal void OnAddHealth(object sender, HealthArgs e)
         {

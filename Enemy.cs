@@ -10,10 +10,10 @@ using Monsterfall_01.StatesEnemy;
 
 namespace Monsterfall_01
 {
-    internal class Enemy : Collidable
+    public class Enemy : Collidable
     {
         // Agreement (delegate) for the enemy died event: (agreement on the signiture)
-        public delegate void EnemyDiedEventHandler(object owner, EventArgs eventArgs);
+        public delegate void EnemyDiedEventHandler(object owner, int value);
         // The event with the handler(agreement)
         public event EnemyDiedEventHandler EnemyDied;
         // Animation list for the enemy  
@@ -78,7 +78,7 @@ namespace Monsterfall_01
             // Set how fast the enemy moves  
             enemyMoveSpeed = 1f;
             // Set the score value of the enemy  
-            Value = 100;
+            Value = 500;
 
             currentAnimation = 0;
             enemyAnimations[currentAnimation].Position = position;
@@ -187,7 +187,7 @@ namespace Monsterfall_01
             // Check the list of subscribers
             if (EnemyDied != null)
             {
-                EnemyDied(this, EventArgs.Empty);
+                EnemyDied(this, Value);
             }
         }
     }
