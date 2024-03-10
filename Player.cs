@@ -65,6 +65,8 @@ namespace Monsterfall_01
         public int Height
         { get { return (int)((float)playerAnimation.frameHeight * scale); } }
 
+        public event EventHandler<Vector2> OnPlayerHit;
+        public event EventHandler<Vector2> OnPlayerPowerUp;
         public void Initialize(ref List<Animation> playerAnimations, Vector2 position, float scale = 1.0f)
         {
             movementSpeed = 4.0f;
@@ -258,7 +260,10 @@ namespace Monsterfall_01
                     return;
                 }
                 if (itemInRange != null)
+                {
+                    OnPlayerPowerUp(this, position);
                     itemInRange.Picked();
+                }
             }
         }
         public override bool CollisionTest(Collidable obj)
@@ -275,8 +280,9 @@ namespace Monsterfall_01
             Enemy enemy = obj as Enemy;
             if (enemy != null)
             {
-                if (takeDamageTimer < 0)
+                if (takeDamageTimer < 0 && (enemy.currentState == Enemy.States.ATTACK))
                 {
+                    OnPlayerHit(this, position);
                     Health -= 10;
                     takeDamageTimer = 1f;
                 }

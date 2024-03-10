@@ -16,6 +16,7 @@ namespace Monsterfall_01
         public delegate void EnemyDiedEventHandler(object owner, int value);
         // The event with the handler(agreement)
         public event EnemyDiedEventHandler EnemyDied;
+        public event EventHandler<Vector2> EnemyHit;
         // Animation list for the enemy  
         private List<Animation> enemyAnimations;
         // The position of the enemy ship relative to the top left corner of the screen  
@@ -164,6 +165,7 @@ namespace Monsterfall_01
                 if (hitTimer.TotalMilliseconds < 0)
                 {
                     Health -= arrow.Damage;
+                    EnemyHit(this, Position);
                     OnEnemyDied();
                     hitTimer = TimeSpan.FromMilliseconds(1000);
                 }

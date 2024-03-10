@@ -26,6 +26,9 @@ namespace Monsterfall_01.StateGame
         // Manages enemies in waves during the game;
         EnemyManager enemyManager;
 
+        // Manages effects that will happen during game
+        EffectManager effectManager;
+
         CollisionManager collisionManager;
 
         // Image used to display the static background   
@@ -107,6 +110,7 @@ namespace Monsterfall_01.StateGame
             arrowList = new List<Arrow>();
 
             enemyManager = new EnemyManager();
+            effectManager = new EffectManager();
 
             shopItems = new List<ShopItem>();
 
@@ -152,10 +156,16 @@ namespace Monsterfall_01.StateGame
                 256, 20, 17, 16, 4);
             animationLoader.LoadAnimations(Content, "Graphics\\MonsterIce\\Run\\Run Body ", ENEMY_SCALE, monsterIceAnimations,
                 256, 20, 17, 16, 4);
-            animationLoader.LoadAnimations(Content, "Graphics\\MonsterIce\\Attack1\\Attack1 Body ", ENEMY_SCALE, monsterIceAnimations,
-                256, 20, 32, 16, 4);
+            animationLoader.LoadAnimations(Content, "Graphics\\MonsterIce\\Attack2\\Attack2 Body ", ENEMY_SCALE, monsterIceAnimations,
+                256, 20, 50, 16, 4);
             animationLoader.LoadAnimations(Content, "Graphics\\MonsterIce\\Death\\Death Body ", ENEMY_SCALE, monsterIceAnimations,
                 256, 20, 17, 16, 4);
+
+            // load effects textures
+            Texture2D bloodTexture = Content.Load<Texture2D>("Graphics\\BloodSplash");
+            Texture2D pickUpTexture = Content.Load<Texture2D>("Graphics\\ItemPickedEffect");
+            effectManager.AddAnimation("Blood", bloodTexture);
+            effectManager.AddAnimation("PowerUp", pickUpTexture);
 
             // load the texture to serve as the laser
             arrowTexture = Content.Load<Texture2D>("Graphics\\Arrow");
@@ -203,7 +213,11 @@ namespace Monsterfall_01.StateGame
             player.Initialize(ref playerAnimations, playerPosition, PLAYER_SCALE);
             stats.OnScoreChanged += player.UpdateScore;
 
+            player.OnPlayerHit += effectManager.AddBloodEffect;
+            player.OnPlayerPowerUp += effectManager.AddPowerUpEffect;
+
             enemyManager.OnEnemyDied += stats.OnEnemyDied;
+            enemyManager.OnEnemyHit += effectManager.AddBloodEffect;
             enemyManager.OnLoadWave += (object sender, WaveArgs e) =>
             {
                 foreach (Enemy enemy in enemyManager.GetEnemies())
@@ -275,6 +289,8 @@ namespace Monsterfall_01.StateGame
             if ((enemyManager.GetEnemies().Count == 0) && enemyManager.IsLastWave())
                 PlayerSuccess(this, stats);
 
+            effectManager.Update(gameTime);
+
             // Update the parallaxing background    
             bgLayer1.Update(gameTime);
             bgLayer2.Update(gameTime);
@@ -317,6 +333,9 @@ namespace Monsterfall_01.StateGame
 
             // Draw enemies
             enemyManager.Draw(_spriteBatch, Game.GraphicsDevice);
+
+            // Draw effects
+            effectManager.Draw(_spriteBatch);
 
             foreach (Arrow arrow in arrowList) { arrow.Draw(_spriteBatch, Game.GraphicsDevice); }
 

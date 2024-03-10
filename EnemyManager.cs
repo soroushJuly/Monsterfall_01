@@ -35,6 +35,7 @@ namespace Monsterfall_01
 
         public event EventHandler<WaveArgs> OnLoadWave;
         public event EventHandler<int> OnEnemyDied;
+        public event EventHandler<Vector2> OnEnemyHit;
         public EnemyManager() 
         {
             enemyAnimations = new Dictionary<string, List<Animation>>();
@@ -69,10 +70,11 @@ namespace Monsterfall_01
                 // TODO: MonsterIce will come from data in future
                 // When there are more types of enemies
                 // This will make the chance of enemies generate at the corners of the map higher
-                int enemyX = Math.Min(random.Next(1, 3 * mapLimitX), mapLimitX);
-                int enemyY = Math.Min(random.Next(1, 3 * mapLimitY), mapLimitY);
+                int enemyX = Math.Min(random.Next(1, 2 * mapLimitX), mapLimitX);
+                int enemyY = Math.Min(random.Next(1, 2 * mapLimitY), mapLimitY);
                 enemy.Initialize(enemyAnimations["MonsterIce"], MapToScreen(enemyX, enemyY));
                 enemy.EnemyDied += (object sender, int e) => { OnEnemyDied(this, e); };
+                enemy.EnemyHit += (object sender, Vector2 e) => { OnEnemyHit(this, e); };
                 enemyList.Add(enemy);
             }
             OnLoadWave(this, new WaveArgs(enemyList));
