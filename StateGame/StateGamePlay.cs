@@ -39,9 +39,6 @@ namespace Monsterfall_01.StateGame
         static public Texture2D arrowTexture;
         static public List<Arrow> arrowList;
 
-        // A random number generator  
-        Random random;
-
         //Our Laser Sound and Instance  
         private SoundEffect laserSound;
         private SoundEffectInstance laserSoundInstance;
@@ -116,8 +113,6 @@ namespace Monsterfall_01.StateGame
             collisionManager = new CollisionManager();
 
             animationLoader = new AnimationLoader();
-
-            random = new Random();
 
             //Background  
             bgLayer1 = new ParallaxingBackground();
@@ -196,7 +191,7 @@ namespace Monsterfall_01.StateGame
             loader = new Loader();
             loader.ReadXML("Content\\XML\\GameInfo.xml");
             // Pass the waves details received from the xml file
-            enemyManager.AddWaves(GameInfo.Instance.GameWaves.waves);
+            enemyManager.Initialize(GameInfo.Instance.GameWaves.waves, mapData.GetMapSize());
             enemyManager.AddAnimations("MonsterIce",monsterIceAnimations);
 
             highScoresTable = new HighScores();

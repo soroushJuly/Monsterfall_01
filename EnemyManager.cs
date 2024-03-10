@@ -21,6 +21,12 @@ namespace Monsterfall_01
         private int currentWave;
         private float waveTimeLeft;
         private Dictionary<string, List<Animation>> enemyAnimations;
+
+        private int mapLimitX;
+        private int mapLimitY;
+        // A random number generator  
+        Random random;
+        
         public ref List<Enemy> GetEnemies() { return ref enemyList; }
         public int GetWaveCount() { return waves.Count; }
         public int GetCurrentWave() { return currentWave; }
@@ -36,11 +42,15 @@ namespace Monsterfall_01
             waves = new List<Wave>();
             currentWave = -1;
             waveTimeLeft = 5;
+
+            random = new Random();
         }
 
-        public void AddWaves(List<Wave> waves)
+        public void Initialize(List<Wave> waves, Vector2 mapSize)
         {
             this.waves = waves;
+            mapLimitX = (int)(mapSize.X - 1);
+            mapLimitY = (int)(mapSize.Y - 1);
         }
         public void AddAnimations(string name, List<Animation> animations)
         {
@@ -58,7 +68,10 @@ namespace Monsterfall_01
                 Enemy enemy = new Enemy();
                 // TODO: MonsterIce will come from data in future
                 // When there are more types of enemies
-                enemy.Initialize(enemyAnimations["MonsterIce"], new Vector2(i * 150 + 500, i));
+                // This will make the chance of enemies generate at the corners of the map higher
+                int enemyX = Math.Min(random.Next(1, 3 * mapLimitX), mapLimitX);
+                int enemyY = Math.Min(random.Next(1, 3 * mapLimitY), mapLimitY);
+                enemy.Initialize(enemyAnimations["MonsterIce"], MapToScreen(enemyX, enemyY));
                 enemy.EnemyDied += (object sender, int e) => { OnEnemyDied(this, e); };
                 enemyList.Add(enemy);
             }
@@ -83,6 +96,15 @@ namespace Monsterfall_01
             {
                 enemy.Draw(_spriteBatch, graphicsDevice);
             }
+        }
+        // TODO: this should be a helper class
+        private Vector2 MapToScreen(int x, int y)
+        {
+            // To map the tile toghether in ISOMETRIC way
+            var screenX = x * 256 / 2 - y * (256 / 2) + 0;
+            var screenY = y * (148 / 2 - 10) + x * (148 / 2 - 10) + 0;
+
+            return new Vector2(screenX, screenY);
         }
     }
 }
