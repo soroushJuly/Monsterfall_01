@@ -46,7 +46,7 @@ namespace Monsterfall_01
 
             stateGameMenu.GameStart += (object sender, EventArgs e) => currentState = States.PLAYING;
             stateGamePlay.PlayerDied += (object sender, GameStats e) => { currentState = States.DIED; gameStats = e; };
-            //stateGamePlay.PlayerSucceded += (object sender, EventArgs e) => currentState = States.SUCCESS;
+            stateGamePlay.PlayerSuccess += (object sender, GameStats e) => { currentState = States.SUCCESS; gameStats = e; };
             // Transitions from died
             stateGameDied.PlayAgain += (object sender, EventArgs e) => currentState = States.PLAYING;
             stateGameDied.BackToMenu += (object sender, EventArgs e) => currentState = States.MENU;
