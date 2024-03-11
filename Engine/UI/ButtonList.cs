@@ -21,6 +21,7 @@ namespace Monsterfall_01.Engine.UI
 
         private InputCommandManager inputCommandManager;
         public event EventHandler<Button> ButtonClicked;
+        public event EventHandler ButtonSwitched;
         public ButtonList(Texture2D buttonIndicator, int offsetX, int offsetY, SpriteFont font, int paddings)
         {
             this.buttonIndicator = buttonIndicator;
@@ -86,12 +87,24 @@ namespace Monsterfall_01.Engine.UI
         private void OnKeyDown(eButtonState buttonState, Vector2 amount)
         {
             if (buttonState == eButtonState.PRESSED)
+            {
                 UpdateCurrentButton(+1);
+                if (ButtonSwitched != null)
+                {
+                    ButtonSwitched(this, EventArgs.Empty);
+                }
+            }
         }
         private void OnKeyUp(eButtonState buttonState, Vector2 amount)
         {
             if (buttonState == eButtonState.PRESSED)
+            {
                 UpdateCurrentButton(-1);
+                if (ButtonSwitched != null)
+                {
+                    ButtonSwitched(this, EventArgs.Empty);
+                }
+            }
         }
         private void OnSelect(eButtonState buttonState, Vector2 amount)
         {
