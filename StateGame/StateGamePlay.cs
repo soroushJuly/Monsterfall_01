@@ -67,6 +67,9 @@ namespace Monsterfall_01.StateGame
 
         AnimationLoader animationLoader;
 
+        SoundEffect arrowHitSound;
+        SoundEffectInstance arrowHitSoundInstance;
+
         // Translation of the view when player reaches the boundries
         Vector3 viewTranslate;
 
@@ -170,6 +173,10 @@ namespace Monsterfall_01.StateGame
             // load the texture to serve as the laser
             arrowTexture = Content.Load<Texture2D>("Graphics\\Arrow");
 
+            // Load the laserSound Effect and create the effect Instance  
+            arrowHitSound = Content.Load<SoundEffect>("Sound\\arrowHit");
+            arrowHitSoundInstance = arrowHitSound.CreateInstance();
+
             // load shopItem textures
             Texture2D speedupTexture = Content.Load<Texture2D>("Graphics\\speedupPotion");
             Texture2D healthPickupTexture = Content.Load<Texture2D>("Graphics\\heartPickup");
@@ -218,6 +225,7 @@ namespace Monsterfall_01.StateGame
 
             enemyManager.OnEnemyDied += stats.OnEnemyDied;
             enemyManager.OnEnemyHit += effectManager.AddBloodEffect;
+            enemyManager.OnEnemyHit += (object sender, Vector2 e) => { arrowHitSoundInstance.Play(); };
             enemyManager.OnLoadWave += (object sender, WaveArgs e) =>
             {
                 foreach (Enemy enemy in enemyManager.GetEnemies())
@@ -240,16 +248,11 @@ namespace Monsterfall_01.StateGame
 
             mainBackground = Content.Load<Texture2D>("Graphics/bkgd_0");
 
-            // Load the laserSound Effect and create the effect Instance  
-            laserSound = Content.Load<SoundEffect>("Sound\\laserFire");
-            laserSoundInstance = laserSound.CreateInstance();
-            explosionSound = Content.Load<SoundEffect>("Sound\\explosion");
-            explosionSoundInstance = explosionSound.CreateInstance();
-
             // Load the game music  
-            //gameMusic = Content.Load<Song>("Sound\\gameMusic");
+            gameMusic = Content.Load<Song>("Sound\\gameMusic");
             // Start playing the music.  
-            //MediaPlayer.Play(gameMusic);
+            MediaPlayer.Play(gameMusic);
+            MediaPlayer.IsRepeating = true;
 
             // Load the score font   
             font = Content.Load<SpriteFont>("Graphics\\gameFont");
@@ -391,8 +394,6 @@ namespace Monsterfall_01.StateGame
         {
             highScoresTable.Add(stats);
             HighScores.Save(highScoresTable);
-            laserSoundInstance.Dispose();
-            explosionSoundInstance.Dispose();
             Content.Unload();
         }
     }
