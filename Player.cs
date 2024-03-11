@@ -30,6 +30,8 @@ namespace Monsterfall_01
         private Dictionary<String, int> mapDirections;
         public List<Animation> playerAnimations;
         public float movementSpeed;
+        private const float RUN_SPEED = 4.0f;
+        private float speedUpgrade;
         public float scale;
        
         public Vector2 position;
@@ -40,7 +42,6 @@ namespace Monsterfall_01
         public int currentDirectionIndex;
         public States currentState;
 
-        public Vector2 depth;
 
         private float xtimer;
         private float ytimer;
@@ -61,6 +62,7 @@ namespace Monsterfall_01
         // Item that is in the pickup range of player
         private ShopItem itemInRange;
 
+        public float GetMovementSpeed() { return speedUpgrade * movementSpeed; }
         public int Width
         { get { return (int)((float)playerAnimation.frameWidth * scale); } }
         public int Height
@@ -70,7 +72,8 @@ namespace Monsterfall_01
         public event EventHandler<Vector2> OnPlayerPowerUp;
         public void Initialize(ref List<Animation> playerAnimations, Vector2 position, float scale = 1.0f)
         {
-            movementSpeed = 4.0f;
+            speedUpgrade = 1.0f;
+            movementSpeed = RUN_SPEED;
 
             this.position = position;
             this.prevPosition = this.position;
@@ -147,13 +150,12 @@ namespace Monsterfall_01
             takeDamageTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             attackTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             bowUpgradeTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            //  !!!! THIS CHANGED THE MOVEMNET SPEED DURING SHOOTING ARROW !!!!
-            if (speedUpTimer < 0) movementSpeed = 4;
+            if (speedUpTimer < 0) { speedUpgrade = 1.0f; }
             UpdateAnimation(gameTime);
         }
         private void UpdateAnimation(GameTime gameTime)
         {
-            if(getDirection() != "")
+            if (getDirection() != "")
                 currentDirectionIndex = mapDirections[getDirection()];
 
             currentAnimation = currentDirectionIndex + 8 * (int)currentState;
@@ -173,7 +175,7 @@ namespace Monsterfall_01
             {
                 setYTimer("NORTH");
                 this.prevPosition.Y = position.Y;
-                this.position.Y -= movementSpeed;
+                this.position.Y -= GetMovementSpeed();
             }
         }
         public void moveEast(eButtonState buttonState, Vector2 amount)
@@ -182,7 +184,7 @@ namespace Monsterfall_01
             {
                 setXTimer("EAST");
                 this.prevPosition.X = position.X;
-                this.position.X += movementSpeed;
+                this.position.X += GetMovementSpeed();
             }
         }
         public void moveSouth(eButtonState buttonState, Vector2 amount)
@@ -191,7 +193,7 @@ namespace Monsterfall_01
             {
                 setYTimer("SOUTH");
                 this.prevPosition.Y = position.Y;
-                this.position.Y += movementSpeed;
+                this.position.Y += GetMovementSpeed();
             }
         }
         public void moveWest(eButtonState buttonState, Vector2 amount)
@@ -200,7 +202,7 @@ namespace Monsterfall_01
             {
                 setXTimer("WEST");
                 this.prevPosition.X = position.X;
-                this.position.X -= movementSpeed;
+                this.position.X -= GetMovementSpeed();
             }
         }
         private void checkTimers()
@@ -239,7 +241,7 @@ namespace Monsterfall_01
                 {
                     return;
                 }
-                if(bowUpgradeTimer > 0)
+                if (bowUpgradeTimer > 0)
                 {
                     StateGamePlay.arrowList.Add(new Arrow(this.position, currentDirectionIndex));
                     StateGamePlay.arrowList.Add(new Arrow(this.position, currentDirectionIndex + 1));
@@ -249,7 +251,7 @@ namespace Monsterfall_01
                     StateGamePlay.arrowList.Add(new Arrow(this.position, currentDirectionIndex));
 
                 isAttacking = true;
-                attackTimer = .6f;
+                attackTimer = .3f;
             }
         }
         public void Interact(eButtonState buttonState, Vector2 amount)
@@ -318,7 +320,6 @@ namespace Monsterfall_01
                 }
 
                 position += fallback;
-                //blockTimer = .01f;
             }
         }
 
@@ -331,7 +332,9 @@ namespace Monsterfall_01
 
         internal void SpeedUp(object sender, PowerUpSpeed.SpeedUpArgs e)
         {
-            movementSpeed *= e.speedUpIntensity;
+            if (speedUpTimer > 0)
+                return;
+            speedUpgrade = e.speedUpIntensity;
             speedUpTimer = e.duration;
         }
 

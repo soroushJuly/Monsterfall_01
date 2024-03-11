@@ -23,7 +23,7 @@ namespace Monsterfall_01.StatesPlayer
             if (player == null) { return; }
 
             player.isAttacking = false;
-            // Activating the animation again
+            // Activating the animation again since in will be played only once
             // so we can play it again next time on shooting arrow
             player.playerAnimations[player.currentAnimation].Active = true;
             player.movementSpeed = 4f;

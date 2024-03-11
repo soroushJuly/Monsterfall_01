@@ -144,7 +144,7 @@ namespace Monsterfall_01.StateGame
             animationLoader.LoadAnimations(Content, "Graphics\\HeroFemale\\Run_Bow\\Run_Bow_Body_", PLAYER_SCALE, playerAnimations,
                 320, 20, 17, 8, 5);
             animationLoader.LoadAnimations(Content, "Graphics\\HeroFemale\\Attack_Bow\\Attack_Bow_Body_", PLAYER_SCALE, playerAnimations,
-                320, 20, 17, 8, 6, false);
+                320, 20, 15, 8, 6, false);
             animationLoader.LoadAnimations(Content, "Graphics\\HeroFemale\\Hit_Bow\\Hit_Bow_Body_", PLAYER_SCALE, playerAnimations,
                 320, 20, 17, 8, 5, false);
             animationLoader.LoadAnimations(Content, "Graphics\\HeroFemale\\Death_Bow\\Death_Bow_Body_", PLAYER_SCALE, playerAnimations,
@@ -348,8 +348,6 @@ namespace Monsterfall_01.StateGame
             // Draw the player health  
             _spriteBatch.DrawString(font, "health: " + player.Health,
                 new Vector2(fixedXPosition, fixedYPosition + 30), Color.White);
-            _spriteBatch.DrawString(font, "health: " + player.depth,
-                new Vector2(fixedXPosition, fixedYPosition + 90), Color.White);
             _spriteBatch.DrawString(font, "health: " + (player.DeltaPosition()),
                 new Vector2(fixedXPosition, fixedYPosition + 150), Color.White);
             _spriteBatch.DrawString(font, "currentAnimation: " + (player.currentAnimation),
