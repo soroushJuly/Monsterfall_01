@@ -78,9 +78,9 @@ namespace Monsterfall_01
             // Set the amount of damage the enemy can do  
             Damage = 10;
             // Set how fast the enemy moves  
-            enemyMoveSpeed = 1.5f;
+            enemyMoveSpeed = 1.7f;
             // Set the score value of the enemy  
-            Value = 500;
+            Value = 20;
 
             currentAnimation = 0;
             enemyAnimations[currentAnimation].Position = position;
@@ -130,7 +130,7 @@ namespace Monsterfall_01
             // Sensing the direction of the player
             Vector2 direction = Vector2.Normalize(StateGamePlay.player.position - Position);
             if (!isInAttackRange)
-                Position += direction + Vector2.Multiply(CollisionOffset, 0.01f);
+                Position += direction + Vector2.Multiply(CollisionOffset, 0.02f);
 
             // 0 sprite is upwards then 0 degree is (0,1)
             double degree = Math.Acos(Vector2.Dot(-1 * direction, new Vector2(0, 1)));
@@ -169,8 +169,8 @@ namespace Monsterfall_01
             if (player != null)
             {
                 isInAttackRange = true;
-                Vector2 depth = RectangleExtensions.GetIntersectionDepth(box, player.GetBox());
-                CollisionOffset = depth; 
+                //Vector2 depth = RectangleExtensions.GetIntersectionDepth(box, player.GetBox());
+                //CollisionOffset = depth;
             }
             Enemy enemy = obj as Enemy;
             if (enemy != null)

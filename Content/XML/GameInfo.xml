@@ -7,7 +7,23 @@
 		<waves>
 			<Wave>
 				<enemyCount>
-					2
+					3
+				</enemyCount>
+				<timeToNextWave>
+					10
+				</timeToNextWave>
+			</Wave>
+			<Wave>
+				<enemyCount>
+					6
+				</enemyCount>
+				<timeToNextWave>
+					14
+				</timeToNextWave>
+			</Wave>
+			<Wave>
+				<enemyCount>
+					9
 				</enemyCount>
 				<timeToNextWave>
 					20
@@ -15,10 +31,18 @@
 			</Wave>
 			<Wave>
 				<enemyCount>
-					4
+					12
 				</enemyCount>
 				<timeToNextWave>
-					50
+					25
+				</timeToNextWave>
+			</Wave>
+			<Wave>
+				<enemyCount>
+					20
+				</enemyCount>
+				<timeToNextWave>
+					1
 				</timeToNextWave>
 			</Wave>
 		</waves>

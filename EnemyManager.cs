@@ -72,7 +72,8 @@ namespace Monsterfall_01
                 // This will make the chance of enemies generate at the corners of the map higher
                 int enemyX = Math.Min(random.Next(1, 2 * mapLimitX), mapLimitX);
                 int enemyY = Math.Min(random.Next(1, 2 * mapLimitY), mapLimitY);
-                enemy.Initialize(enemyAnimations["MonsterIce"], MapToScreen(enemyX, enemyY));
+                // the add new vector(i,i) is just to make the position different in case they had the same tile
+                enemy.Initialize(enemyAnimations["MonsterIce"], MapToScreen(enemyX, enemyY) + new Vector2(i,i));
                 enemy.EnemyDied += (object sender, int e) => { OnEnemyDied(this, e); };
                 enemy.EnemyHit += (object sender, Vector2 e) => { OnEnemyHit(this, e); };
                 enemyList.Add(enemy);

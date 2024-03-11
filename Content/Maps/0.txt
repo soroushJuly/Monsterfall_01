@@ -1,5 +1,5 @@
-Width: 10
-Height: 10
+Width: 13
+Height: 13
 Shop: 2,4
 Decorations
 Barrel_E1: 5,1
