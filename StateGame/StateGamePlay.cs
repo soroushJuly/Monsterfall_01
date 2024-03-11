@@ -159,7 +159,7 @@ namespace Monsterfall_01.StateGame
             animationLoader.LoadAnimations(Content, "Graphics\\MonsterIce\\Attack2\\Attack2 Body ", ENEMY_SCALE, monsterIceAnimations,
                 256, 20, 50, 16, 4);
             animationLoader.LoadAnimations(Content, "Graphics\\MonsterIce\\Death\\Death Body ", ENEMY_SCALE, monsterIceAnimations,
-                256, 20, 17, 16, 4);
+                256, 30, 25, 16, 6, false);
 
             // load effects textures
             Texture2D bloodTexture = Content.Load<Texture2D>("Graphics\\BloodSplash");

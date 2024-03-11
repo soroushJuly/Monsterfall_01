@@ -17,7 +17,7 @@ namespace Monsterfall_01.PowerUp
     internal class PowerUpBow : ShopItem
     {
         public event EventHandler<BowArgs> OnBowUpgrade;
-        private const int DURATION = 20;
+        private const int DURATION = 15;
         public PowerUpBow(Texture2D texture) : base(texture)
         {
             cost = 200;

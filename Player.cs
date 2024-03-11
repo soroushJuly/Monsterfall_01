@@ -251,7 +251,7 @@ namespace Monsterfall_01
                     StateGamePlay.arrowList.Add(new Arrow(this.position, currentDirectionIndex));
 
                 isAttacking = true;
-                attackTimer = .3f;
+                attackTimer = .5f;
             }
         }
         public void Interact(eButtonState buttonState, Vector2 amount)

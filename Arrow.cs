@@ -59,7 +59,7 @@ namespace Monsterfall_01
             Rectangle dest = new Rectangle((int)Position.X, (int)Position.Y, GetWidth(), GetHeight());
             Rectangle src = new Rectangle(0,0, StateGamePlay.arrowTexture.Width, StateGamePlay.arrowTexture.Height);
 
-            DrawBoundingBox(spriteBatch, graphicsDevice);
+            //DrawBoundingBox(spriteBatch, graphicsDevice);
             spriteBatch.Draw(StateGamePlay.arrowTexture, dest, src, Color.White, (float)angle, origin, SpriteEffects.None, 0f);
         }
         public override bool CollisionTest(Collidable obj)
