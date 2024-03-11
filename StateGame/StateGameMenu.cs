@@ -1,8 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 
-using Monsterfall_01.Engine.Input;
 using Monsterfall_01.Engine.StateManager;
 using Monsterfall_01.StatesMenu;
 
@@ -24,6 +25,16 @@ namespace Monsterfall_01.StateGame
 
         int contentStartingPositionX;
         int contentStartingPositionY;
+
+        //Our Laser Sound and Instance  
+        private SoundEffect buttonSwitchSound;
+        private SoundEffectInstance buttonSwitchSoundInstance;
+        
+        private SoundEffect buttonSelectSound;
+        private SoundEffectInstance buttonSelectSoundInstance;
+
+        // Menu Music 
+        private Song menuMusic;
 
         FSM fsm;
 
@@ -85,14 +96,23 @@ namespace Monsterfall_01.StateGame
             mainBackground = Content.Load<Texture2D>("Graphics\\bg_menu");
             gameName = Content.Load<Texture2D>("Graphics\\Name");
 
+            buttonSwitchSound = Content.Load<SoundEffect>("Sound\\buttonSwitch");
+            buttonSwitchSoundInstance = buttonSwitchSound.CreateInstance();
+            buttonSelectSound = Content.Load<SoundEffect>("Sound\\buttonSelect");
+            buttonSelectSoundInstance = buttonSelectSound.CreateInstance();
+
             panelWidth = Math.Clamp((int)(Game.GraphicsDevice.Viewport.Width * 0.4f), 400, 600);
             panelHeight = Math.Clamp((int)(Game.GraphicsDevice.Viewport.Height * 0.6f), 400, 650);
 
             fsm = new FSM(this);
 
-            StatesMenuMain statesMenuMain = new StatesMenuMain(contentStartingPositionX, contentStartingPositionY, font, buttonIndicator);
-            StateMenuHighScores statesMenuHighScores = new StateMenuHighScores(contentStartingPositionX, contentStartingPositionY, font, buttonIndicator);
-            StateMenuControls statesMenuControls = new StateMenuControls(contentStartingPositionX, contentStartingPositionY, font, buttonIndicator);
+            // TODO: using sound manager to pass the audio
+            StatesMenuMain statesMenuMain = new StatesMenuMain(contentStartingPositionX, contentStartingPositionY,
+                font, buttonIndicator, buttonSwitchSoundInstance, buttonSelectSoundInstance);
+            StateMenuHighScores statesMenuHighScores = new StateMenuHighScores(contentStartingPositionX, contentStartingPositionY,
+                font, buttonIndicator, buttonSelectSoundInstance);
+            StateMenuControls statesMenuControls = new StateMenuControls(contentStartingPositionX, contentStartingPositionY,
+                font, buttonIndicator, buttonSelectSoundInstance);
 
             statesMenuMain.GameStart += (object sender, EventArgs e) => GameStart(this, e);
             statesMenuMain.HighScores += (object sender, EventArgs e) => currentState = States.HIGHSCORES;
@@ -115,6 +135,12 @@ namespace Monsterfall_01.StateGame
 
             fsm.Initialise("Main");
             currentState = States.MAIN;
+
+            // Load the game music  
+            menuMusic = Content.Load<Song>("Sound\\menuMusic");
+            // Start playing the music
+            MediaPlayer.Play(menuMusic);
+            MediaPlayer.IsRepeating = true;
         }
 
         void Draw(GameTime gameTime)

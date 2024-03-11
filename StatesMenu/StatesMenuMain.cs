@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Monsterfall_01.Engine.StateManager;
 using Monsterfall_01.Engine.UI;
@@ -10,14 +11,21 @@ namespace Monsterfall_01.StatesMenu
     internal class StatesMenuMain : State
     {
         private ButtonList ButtonList;
+
+        //Our Laser Sound and Instance  
+        SoundEffectInstance switchSound;
+        SoundEffectInstance selectSound;
+
         public event EventHandler GameStart;
         public event EventHandler HighScores;
         public event EventHandler Controls;
         public event EventHandler ExitGame;
-        public StatesMenuMain(int offestX, int offsetY, SpriteFont font, Texture2D buttonIndicator)
+        public StatesMenuMain(int offestX, int offsetY, SpriteFont font, Texture2D buttonIndicator, SoundEffectInstance switchSound, SoundEffectInstance selectSound)
         {
             Name = "Main";
             ButtonList = new ButtonList(buttonIndicator, offestX, offsetY, font, 50);
+            this.switchSound = switchSound;
+            this.selectSound = selectSound;
         }
         public override void Enter(object owner)
         {
@@ -38,6 +46,7 @@ namespace Monsterfall_01.StatesMenu
             ButtonList.AddButton("Controls");
             ButtonList.AddButton("Exit");
             ButtonList.ButtonClicked += this.HandleButtonSelection;
+            ButtonList.ButtonSwitched += (object sender, EventArgs e) => { switchSound.Play(); };
         }
         public override void Draw(object owner, GameTime gameTime, SpriteBatch spriteBatch = null)
         {
@@ -62,6 +71,7 @@ namespace Monsterfall_01.StatesMenu
                 default:
                     break;
             }
+            selectSound.Play();
         }
     }
 }

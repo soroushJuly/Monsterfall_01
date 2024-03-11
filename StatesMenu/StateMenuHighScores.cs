@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Monsterfall_01.Engine.StateManager;
 using Monsterfall_01.Engine.UI;
@@ -24,14 +25,17 @@ namespace Monsterfall_01.StatesMenu
 
         private const int SCORES_COUNT = 5;
 
+        SoundEffectInstance selectSound;
+
         HighScores highScoresTable;
-        public StateMenuHighScores(int offestX, int offsetY, SpriteFont font, Texture2D buttonIndicator)
+        public StateMenuHighScores(int offestX, int offsetY, SpriteFont font, Texture2D buttonIndicator, SoundEffectInstance selectSound)
         {
             Name = "High Scores";
             this.offsetX = offestX;
             this.offsetY = offsetY;
             this.font = font;
             this.buttonIndicator = buttonIndicator;
+            this.selectSound = selectSound;
         }
         public override void Enter(object owner)
         {
@@ -85,6 +89,7 @@ namespace Monsterfall_01.StatesMenu
                 default:
                     break;
             }
+            selectSound.Play();
         }
     }
 }

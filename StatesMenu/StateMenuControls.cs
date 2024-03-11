@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Monsterfall_01.Engine.StateManager;
 using Monsterfall_01.Engine.UI;
@@ -17,13 +18,16 @@ namespace Monsterfall_01.StatesMenu
         private int offsetY;
         private SpriteFont font;
         private Texture2D buttonIndicator;
-        public StateMenuControls(int offestX, int offsetY, SpriteFont font, Texture2D buttonIndicator)
+
+        SoundEffectInstance selectSound;
+        public StateMenuControls(int offestX, int offsetY, SpriteFont font, Texture2D buttonIndicator, SoundEffectInstance selectSound)
         {
             Name = "Controls";
             this.offsetX = offestX;
             this.offsetY = offsetY;
             this.font = font;
             this.buttonIndicator = buttonIndicator;
+            this.selectSound = selectSound;
         }
         public override void Enter(object owner)
         {
@@ -81,6 +85,7 @@ namespace Monsterfall_01.StatesMenu
                 default:
                     break;
             }
+            selectSound.Play();
         }
     }
 }
