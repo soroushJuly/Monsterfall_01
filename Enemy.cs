@@ -169,8 +169,8 @@ namespace Monsterfall_01
             if (player != null)
             {
                 isInAttackRange = true;
-                //Vector2 depth = RectangleExtensions.GetIntersectionDepth(box, player.GetBox());
-                //CollisionOffset = depth;
+                Vector2 depth = RectangleExtensions.GetIntersectionDepth(box, player.GetBox());
+                CollisionOffset = Vector2.Multiply(depth, 0.3f);
             }
             Enemy enemy = obj as Enemy;
             if (enemy != null)

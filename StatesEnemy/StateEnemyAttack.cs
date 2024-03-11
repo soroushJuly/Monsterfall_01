@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 using Monsterfall_01.Engine.StateManager;
+using System.Threading.Tasks;
 
 namespace Monsterfall_01.StatesEnemy
 {
@@ -15,8 +16,8 @@ namespace Monsterfall_01.StatesEnemy
         {
             Enemy enemy = owner as Enemy;
             if (enemy == null) { return; }
-            enemy.currentState = Enemy.States.ATTACK;
-            attackTimer = 1.2f;
+            DelayBeforeAttacking(enemy);
+            attackTimer = 0.5f;
         }
         public override void Exit(object owner)
         {
@@ -32,6 +33,11 @@ namespace Monsterfall_01.StatesEnemy
             attackTimer -= (float)gameTime.ElapsedGameTime.TotalMilliseconds;
 
             if (enemy == null) { return; }
+        }
+        private async void DelayBeforeAttacking(Enemy enemy)
+        {
+            await Task.Delay(500);
+            enemy.currentState = Enemy.States.ATTACK;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Monsterfall_01.Engine;
@@ -282,9 +283,8 @@ namespace Monsterfall_01
             {
                 if (takeDamageTimer < 0 && (enemy.currentState == Enemy.States.ATTACK))
                 {
-                    OnPlayerHit(this, position);
-                    Health -= 10;
-                    takeDamageTimer = 1f;
+                    TakeDamage();
+                    takeDamageTimer = 1.0f;
                 }
             }
             //if (blockTimer > 0)
@@ -342,6 +342,12 @@ namespace Monsterfall_01
         public void UpdateScore(object sender, int e)
         {
             playerScore = e;
+        }
+        private async void TakeDamage()
+        {
+            await Task.Delay(TimeSpan.FromMilliseconds(400));
+            OnPlayerHit(this, position);
+            Health -= 10;
         }
     }
 }
