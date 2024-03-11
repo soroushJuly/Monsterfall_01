@@ -255,12 +255,12 @@ namespace Monsterfall_01
         {
             if (buttonState == eButtonState.PRESSED)
             {
-                if (itemInRange.GetCost() > playerScore)
-                {
-                    return;
-                }
                 if (itemInRange != null)
                 {
+                    if (itemInRange.GetCost() > playerScore)
+                    {
+                        return;
+                    }
                     OnPlayerPowerUp(this, position);
                     itemInRange.Picked();
                 }
