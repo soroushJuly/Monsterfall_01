@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
@@ -12,22 +12,27 @@ namespace Monsterfall_01.StatesMenu
     internal class StateMenuHighScores : State
     {
         private ButtonList ButtonList;
+        // List of the rankings
         private TextList IndexList;
         private TextList ScoreList;
-        // TODO: get player name before playing
+        // TODO: in future get player name before playing
         private TextList NameList;
+        // TODO: in future show time spent to finish the game
         private TextList TimeList;
-        public event EventHandler Back;
         private int offsetX;
         private int offsetY;
         private SpriteFont font;
         private Texture2D buttonIndicator;
 
+        // Number of the high scores to show
         private const int SCORES_COUNT = 5;
 
-        SoundEffectInstance selectSound;
+        private SoundEffectInstance selectSound;
 
-        HighScores highScoresTable;
+        // Table of the high score
+        private HighScores highScoresTable;
+        // Event fired when back button pressed
+        public event EventHandler Back;
         public StateMenuHighScores(int offestX, int offsetY, SpriteFont font, Texture2D buttonIndicator, SoundEffectInstance selectSound)
         {
             Name = "High Scores";
@@ -39,13 +44,17 @@ namespace Monsterfall_01.StatesMenu
         }
         public override void Enter(object owner)
         {
+            // Initialize the lists of the buttons and text lists
             ButtonList = new ButtonList(buttonIndicator, offsetX, offsetY, font, 50);
             IndexList = new TextList(offsetX, offsetY + 30, font, Color.DarkKhaki, 25);
             ScoreList = new TextList(offsetX + 50, offsetY + 30, font, Color.DarkOliveGreen, 25);
 
+            // Initialize indices
             for(int i = 0; i < SCORES_COUNT; i++)
-                IndexList.AddText(i.ToString() + '.');
+                IndexList.AddText((i+1).ToString() + '.');
+            // Load buttons
             LoadMainButtons();
+            // Load the high score list from the file
             highScoresTable = new HighScores();
             highScoresTable = HighScores.Load();
             LoadScores();
@@ -53,6 +62,7 @@ namespace Monsterfall_01.StatesMenu
 
         private void LoadScores()
         {
+            // Seperate the number of top players according to SCORES_COUNT
             for (int i = 0; i < SCORES_COUNT; i++)
             {
                 if (i < highScoresTable.Scores.Count)

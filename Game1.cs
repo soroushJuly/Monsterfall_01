@@ -10,6 +10,7 @@ namespace Monsterfall_01
     public class Game1 : Game
     {
         private GraphicsDeviceManager _graphics;
+        // TODO: I might need to delete this (sprite batch in states?)
         private SpriteBatch _spriteBatch;
 
         FSM fsm;
@@ -22,6 +23,7 @@ namespace Monsterfall_01
             SUCCESS
         }
         private States currentState;
+        // Stats of the game in progress. e.g. score, timespent, enemies killed ..
         static private GameStats gameStats;
         static public GameStats GetGameStats() { return gameStats; }
         public Game1()
@@ -39,12 +41,15 @@ namespace Monsterfall_01
             gameStats = new GameStats();
             fsm = new FSM(this);
 
+            // Initialize Four states of the game
             StateGameMenu stateGameMenu = new StateGameMenu(this);
             StateGamePlay stateGamePlay = new StateGamePlay(this);
             StateGameFinish stateGameFinish = new StateGameFinish(this);
             StateGameDied stateGameDied = new StateGameDied(this);
 
+            // Setting up listeners to change the state of the game
             stateGameMenu.GameStart += (object sender, EventArgs e) => currentState = States.PLAYING;
+            // Update Game stats after each time player played one game
             stateGamePlay.PlayerDied += (object sender, GameStats e) => { currentState = States.DIED; gameStats = e; };
             stateGamePlay.PlayerSuccess += (object sender, GameStats e) => { currentState = States.SUCCESS; gameStats = e; };
             // Transitions from died
@@ -67,6 +72,7 @@ namespace Monsterfall_01
             fsm.AddState(stateGameDied);
             fsm.AddState(stateGameFinish);
 
+            // First state that player enters is the Main Menu
             fsm.Initialise("Menu");
             currentState = States.MENU;
 

@@ -11,15 +11,19 @@ namespace Monsterfall_01.StatesMenu
     internal class StateMenuControls : State
     {
         private ButtonList ButtonList;
+        // List of Controls text
         private TextList ControlsList;
+        // List of texts of Actions related to controls
         private TextList ActionsList;
-        public event EventHandler Back;
         private int offsetX;
         private int offsetY;
         private SpriteFont font;
         private Texture2D buttonIndicator;
 
-        SoundEffectInstance selectSound;
+        private SoundEffectInstance selectSound;
+
+        // Event fired when back button pressed
+        public event EventHandler Back;
         public StateMenuControls(int offestX, int offsetY, SpriteFont font, Texture2D buttonIndicator, SoundEffectInstance selectSound)
         {
             Name = "Controls";
@@ -31,9 +35,11 @@ namespace Monsterfall_01.StatesMenu
         }
         public override void Enter(object owner)
         {
+            // Initialize the list of text and buttons
             ButtonList = new ButtonList(buttonIndicator, offsetX, offsetY, font, 50);
             ControlsList = new TextList(offsetX, offsetY + 30, font, Color.DarkOliveGreen, 25);
             ActionsList = new TextList(offsetX + 50, offsetY + 30, font, Color.DarkOliveGreen, 25);
+            // Load the contents of lists manually
             LoadMainButtons();
             LoadControlsText();
             LoadActionsText();
