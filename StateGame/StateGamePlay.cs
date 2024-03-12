@@ -340,24 +340,20 @@ namespace Monsterfall_01.StateGame
 
             // Draw the score  
             _spriteBatch.DrawString(font, "score: " + stats.score,
-                new Vector2(fixedXPosition, fixedYPosition), Color.White);
+                new Vector2(fixedXPosition, fixedYPosition), Color.Red);
             // Draw the player health  
             _spriteBatch.DrawString(font, "health: " + player.Health,
-                new Vector2(fixedXPosition, fixedYPosition + 30), Color.White);
-            _spriteBatch.DrawString(font, "health: " + (player.DeltaPosition()),
-                new Vector2(fixedXPosition, fixedYPosition + 150), Color.White);
-            _spriteBatch.DrawString(font, "currentAnimation: " + (player.currentAnimation),
-                new Vector2(fixedXPosition, fixedYPosition + 190), Color.White);
+                new Vector2(fixedXPosition, fixedYPosition + 30), Color.Red);
             // Shows the current wave and total waves
             _spriteBatch.DrawString(font, "Wave: " + (enemyManager.GetCurrentWave() + 1) + " / " + enemyManager.GetWaveCount(),
-                new Vector2(fixedXPosition, fixedYPosition + 220), Color.White);
+                new Vector2(fixedXPosition + (Game.GraphicsDevice.Viewport.Width / 2 - 80), fixedYPosition), Color.White);
             // Shows Time left to next wave
             if (!enemyManager.IsLastWave())
                 _spriteBatch.DrawString(font, "Next wave in: " + (int)enemyManager.GetTimeToNextWave(),
-                    new Vector2(fixedXPosition, fixedYPosition + 250), Color.White);
+                    new Vector2(fixedXPosition + (Game.GraphicsDevice.Viewport.Width / 2 - 80), fixedYPosition + 30), Color.White);
             // Shows how many enemies in map is left for killing
             _spriteBatch.DrawString(font, "Enemies Left: " + enemyManager.GetEnemies().Count,
-                new Vector2(fixedXPosition, fixedYPosition + 280), Color.White);
+                new Vector2(fixedXPosition, fixedYPosition + 60), Color.White);
 
             // Stop drawing  
             _spriteBatch.End();
