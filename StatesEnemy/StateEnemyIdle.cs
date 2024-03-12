@@ -23,7 +23,6 @@ namespace Monsterfall_01.StatesEnemy
         public override void Execute(object owner, GameTime gameTime)
         {
             Enemy enemy = owner as Enemy;
-
             if (enemy == null) { return; }
         }
     }

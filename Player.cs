@@ -283,9 +283,9 @@ namespace Monsterfall_01
             Enemy enemy = obj as Enemy;
             if (enemy != null)
             {
-                if (takeDamageTimer < 0 && (enemy.currentState == Enemy.States.ATTACK))
+                if (takeDamageTimer < 0 && (enemy.isAttacking))
                 {
-                    TakeDamage();
+                    TakeDamage(enemy);
                     takeDamageTimer = 1.0f;
                 }
             }
@@ -346,11 +346,11 @@ namespace Monsterfall_01
         {
             playerScore = e;
         }
-        private async void TakeDamage()
+        private async void TakeDamage(Enemy enemy)
         {
             await Task.Delay(TimeSpan.FromMilliseconds(400));
             OnPlayerHit(this, position);
-            Health -= 10;
+            Health -= enemy.Damage;
         }
     }
 }

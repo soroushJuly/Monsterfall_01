@@ -42,14 +42,6 @@ namespace Monsterfall_01.StateGame
         static public Texture2D arrowTexture;
         static public List<Arrow> arrowList;
 
-        //Our Laser Sound and Instance  
-        private SoundEffect laserSound;
-        private SoundEffectInstance laserSoundInstance;
-
-        //Our Explosion Sound.  
-        private SoundEffect explosionSound;
-        private SoundEffectInstance explosionSoundInstance;
-
         // Game Music.  
         private Song gameMusic;
 
@@ -160,7 +152,7 @@ namespace Monsterfall_01.StateGame
             animationLoader.LoadAnimations(Content, "Graphics\\MonsterIce\\Run\\Run Body ", ENEMY_SCALE, monsterIceAnimations,
                 256, 20, 17, 16, 4);
             animationLoader.LoadAnimations(Content, "Graphics\\MonsterIce\\Attack2\\Attack2 Body ", ENEMY_SCALE, monsterIceAnimations,
-                256, 20, 50, 16, 4);
+                256, 24, 50, 16, 6);
             animationLoader.LoadAnimations(Content, "Graphics\\MonsterIce\\Death\\Death Body ", ENEMY_SCALE, monsterIceAnimations,
                 256, 30, 25, 16, 6, false);
 
@@ -208,6 +200,7 @@ namespace Monsterfall_01.StateGame
             loader = new Loader();
             loader.ReadXML("Content\\XML\\GameInfo.xml");
             // Pass the waves details received from the xml file
+            // TODO: can use a factory pattern to create different types of enemies
             enemyManager.Initialize(GameInfo.Instance.GameWaves.waves, mapData.GetMapSize());
             enemyManager.AddAnimations("MonsterIce",monsterIceAnimations);
 
