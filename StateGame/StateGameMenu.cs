@@ -107,7 +107,7 @@ namespace Monsterfall_01.StateGame
             fsm = new FSM(this);
 
             // TODO: using sound manager to pass the audio
-            StatesMenuMain statesMenuMain = new StatesMenuMain(contentStartingPositionX, contentStartingPositionY,
+            StateMenuMain statesMenuMain = new StateMenuMain(contentStartingPositionX, contentStartingPositionY,
                 font, buttonIndicator, buttonSwitchSoundInstance, buttonSelectSoundInstance);
             StateMenuHighScores statesMenuHighScores = new StateMenuHighScores(contentStartingPositionX, contentStartingPositionY,
                 font, buttonIndicator, buttonSelectSoundInstance);

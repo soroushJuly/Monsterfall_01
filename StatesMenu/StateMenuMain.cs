@@ -8,7 +8,7 @@ using Monsterfall_01.Engine.UI;
 
 namespace Monsterfall_01.StatesMenu
 {
-    internal class StatesMenuMain : State
+    internal class StateMenuMain : State
     {
         private ButtonList ButtonList;
 
@@ -20,7 +20,7 @@ namespace Monsterfall_01.StatesMenu
         public event EventHandler HighScores;
         public event EventHandler Controls;
         public event EventHandler ExitGame;
-        public StatesMenuMain(int offestX, int offsetY, SpriteFont font, Texture2D buttonIndicator, SoundEffectInstance switchSound, SoundEffectInstance selectSound)
+        public StateMenuMain(int offestX, int offsetY, SpriteFont font, Texture2D buttonIndicator, SoundEffectInstance switchSound, SoundEffectInstance selectSound)
         {
             Name = "Main";
             ButtonList = new ButtonList(buttonIndicator, offestX, offsetY, font, 50);
