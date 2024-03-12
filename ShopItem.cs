@@ -7,30 +7,36 @@ namespace Monsterfall_01
 {
     internal abstract class ShopItem : Tile
     {
-        Texture2D texture;
-        Vector2 position;
+        // Texture of the power up
+        private Texture2D texture;
+        // Scale the size of the texture
         const float SCALE = 0.7f;
+        // Position of the power up in map
+        private Vector2 position;
 
+        // the cost to buy the power Up
         protected int cost;
-        bool isInRange;
+        // is the player in range to buy the power-up
+        private bool isInRange;
         public int GetCost() { return cost; }
         public ShopItem(Texture2D texture) 
         {
             this.texture = texture;
-            this.cost = 0;
+            cost = 0;
             isInRange = false;
         }
 
         public void Initialize(Vector2 position)
         {
             this.position = position;
+            // Collision box for the power-up
             this.box = new Rectangle((int)position.X, (int)position.Y, (int)(texture.Width * SCALE / 1.5f), (int)(texture.Height * SCALE));
         }
 
-        public void Draw(SpriteBatch spriteBatch, GraphicsDevice graphicsDevice, SpriteFont font)
+        public void Draw(SpriteBatch spriteBatch, SpriteFont font, GraphicsDevice graphicsDevice = null)
         {
-            //DrawBoundingBox(spriteBatch, graphicsDevice);
             Color color = Color.Gray;
+            // If it's active it's lighten up
             if (isInRange) { color = Color.White; }
             spriteBatch.Draw(texture, new Rectangle((int)position.X, (int)position.Y, (int)(texture.Width * SCALE), (int)(texture.Height * SCALE)), color);
             spriteBatch.DrawString(font, cost.ToString(), new Vector2((int)position.X + (int)(texture.Width * SCALE / 2) - 15, (int)position.Y + (int)(texture.Height * SCALE) - 15), color);
@@ -54,10 +60,9 @@ namespace Monsterfall_01
                 isInRange = true;
             }
         }
-
+        // This function determines what to do when item is picked
         public virtual void Picked()
         {
-            
         }
     }
 }

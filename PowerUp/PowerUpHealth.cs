@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Monsterfall_01.PowerUp
 {
+    // Arguments sent with the bow upgrade event
     public class HealthArgs : EventArgs
     {
         public HealthArgs(int health, int cost)
@@ -16,8 +17,10 @@ namespace Monsterfall_01.PowerUp
     }
     internal class PowerUpHealth : ShopItem
     {
+        // Amount of health added to player after buying the item
+        private const int HEALTH = 10;
+        
         public event EventHandler<HealthArgs> AddHealth;
-        private const int HEALTH = 10; 
         public PowerUpHealth(Texture2D texture) : base(texture)
         {
             cost = 100;

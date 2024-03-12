@@ -109,7 +109,7 @@ namespace Monsterfall_01
             }
             foreach (ShopItem shopItem in shopItems)
             {
-                shopItem.Draw(spriteBatch, GraphicsDevices, font);
+                shopItem.Draw(spriteBatch, font);
             }
         }
 
