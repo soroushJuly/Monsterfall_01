@@ -25,6 +25,7 @@ namespace Monsterfall_01
         // Creating texture path string based on number of directions
         private String createTexturePath(String basePath, int i, int directionCount)
         {
+            // Divide 360 degrees to number of each direction that we have animation for 
             float degree = i * (360 / (float)directionCount);
             String degreePath;
             if (degree / 10 < 1) { degreePath = "000"; }

@@ -6,6 +6,7 @@ namespace Monsterfall_01
 {
     internal class Decoration
     {
+        // Set location and texture of the decoration
         public readonly Vector2 location;
         public readonly Texture2D texture;
 

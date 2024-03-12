@@ -31,15 +31,17 @@ namespace Monsterfall_01
 
         public Arrow(Vector2 position, int directionIndex)
         {
+            // angle that arrow should go is direction index of player * 45 degree since we have 8 directions
             this.angle = (directionIndex * (Math.PI / 4));
-            this.arrowMoveSpeed = 8.5f;
+            this.arrowMoveSpeed = 9.0f;
 
             // Set the first position a little further than center of the player
+            // To make it more realistic
             this.Position.X = position.X + (float)(4 * arrowMoveSpeed * Math.Sin(angle));
             this.Position.Y = position.Y - (float)(4 * arrowMoveSpeed * Math.Cos(angle));
             this.firstPosition = this.Position;
 
-            origin = Vector2.Zero;
+            // set the origin of the arrow to its bottom
             origin = new Vector2(GetWidth() / 2, GetHeight());
         }
         public void Update(GameTime gameTime)
@@ -56,6 +58,7 @@ namespace Monsterfall_01
         }
         public void Draw(SpriteBatch spriteBatch, GraphicsDevice graphicsDevice)
         {
+            // Draw Arrow
             Rectangle dest = new Rectangle((int)Position.X, (int)Position.Y, GetWidth(), GetHeight());
             Rectangle src = new Rectangle(0,0, StateGamePlay.arrowTexture.Width, StateGamePlay.arrowTexture.Height);
 
@@ -74,6 +77,7 @@ namespace Monsterfall_01
             Enemy enemy = obj as Enemy;
             if (enemy != null)
             {
+                // remove it if it collided with enemy
                 flagForRemoval = true;
             }
         }
