@@ -19,8 +19,8 @@ namespace Monsterfall_01
             IDLE,
             RUN,
             ATTACK_BOW,
-            HIT,
-            DEATH
+            //HIT,
+            //DEATH
         }
         const float MOVEMENT_RESET_TIME = 0.05F;
 

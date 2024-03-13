@@ -140,8 +140,6 @@ namespace Monsterfall_01.StateGame
                 320, 20, 17, 8, 5);
             animationLoader.LoadAnimations(Content, "Graphics\\HeroFemale\\Attack_Bow\\Attack_Bow_Body_", PLAYER_SCALE, playerAnimations,
                 320, 20, 15, 8, 6, false);
-            animationLoader.LoadAnimations(Content, "Graphics\\HeroFemale\\Hit_Bow\\Hit_Bow_Body_", PLAYER_SCALE, playerAnimations,
-                320, 20, 17, 8, 5, false);
             animationLoader.LoadAnimations(Content, "Graphics\\HeroFemale\\Death_Bow\\Death_Bow_Body_", PLAYER_SCALE, playerAnimations,
                 320, 20, 17, 8, 6, false);
             // get enemy textures

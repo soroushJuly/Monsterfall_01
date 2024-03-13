@@ -15,7 +15,7 @@ namespace Monsterfall_01.StatesPlayer
             Player player = owner as Player;
             if (player == null) { return; }
 
-            player.currentState = Player.States.HIT;
+            //player.currentState = Player.States.HIT;
         }
         public override void Exit(object owner)
         {
