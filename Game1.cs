@@ -33,7 +33,7 @@ namespace Monsterfall_01
             _graphics.PreferredBackBufferHeight = 900;
             //_graphics.IsFullScreen = true;
             Content.RootDirectory = "Content";
-            IsMouseVisible = true;
+            IsMouseVisible = false;
         }
 
         protected override void Initialize()
