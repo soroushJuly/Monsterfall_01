@@ -60,40 +60,5 @@ namespace Monsterfall_01.Engine
                 Console.WriteLine("Exception Message: " + e.Message);
             }
         }
-        //public void Save(string filename, object dataObj)
-        //{
-
-        //        System.IO.MemoryStream tempMemStream = new System.IO.MemoryStream();
-        //        System.Xml.XmlWriterSettings settings = new System.Xml.XmlWriterSettings();
-        //        string tempString;
-
-        //        settings.Indent = true;
-        //        settings.Encoding = System.Text.Encoding.UTF8;
-        //        settings.NewLineChars = System.Environment.NewLine;
-        //        settings.NewLineHandling = System.Xml.NewLineHandling.Replace;
-
-        //        using (System.IO.StringWriter stringWriter = new System.IO.StringWriter())
-        //        {
-        //            using (System.Xml.XmlWriter xmlWriter = System.Xml.XmlWriter.Create(stringWriter, settings))
-        //            {
-        //                System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(p_object.GetType());
-        //                serializer.Serialize(xmlWriter, p_object);
-
-        //                tempString = stringWriter.ToString();
-        //                xmlWriter.Close();
-        //            }
-
-        //            stringWriter.Close();
-        //        }
-
-        //    using (Stream stream = storageContainer.CreateFile(filename))
-        //    {
-        //        XmlSerializer serializer = new XmlSerializer(typeof(SaveGameData));
-        //        serializer.Serialize(stream, saveGameData);
-        //    }
-
-        //    return tempString;
-
-        //}
     }
 }

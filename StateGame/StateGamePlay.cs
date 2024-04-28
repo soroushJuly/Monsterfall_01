@@ -187,9 +187,9 @@ namespace Monsterfall_01.StateGame
 
 
             // Load level\Enviroment details (Position of elements in the map and the map it self)
-            List<string> lines = new List<string>();
+            // A helper class to get data for map
             MapData mapData = new MapData();
-            mapData.ReadMapData(lines, Content, 0);
+            mapData.ReadMapData(Content, 0);
 
             // Initialize map
             map01 = new Map();
@@ -204,7 +204,6 @@ namespace Monsterfall_01.StateGame
             enemyManager.AddAnimations("MonsterIce",monsterIceAnimations);
 
             highScoresTable = new HighScores();
-            highScoresTable = HighScores.Load();
             highScoresTable = HighScores.Load();
 
             Vector2 playerPosition = new Vector2(Game.GraphicsDevice.Viewport.TitleSafeArea.X - 100,

@@ -12,47 +12,56 @@ namespace Monsterfall_01
 {
     internal class MapData
     {
-        private List<Decoration> decorations;
-        private Vector2 mapSize;
-        private Point shopLocation;
-        public MapData() 
-        { 
+        // List of decorations extracted from text file
+        List<Decoration> decorations;
+        // Map size extracted from txt file
+        Vector2 mapSize;
+        // Shop (upgrades) size extracted from txt file
+        Point shopLocation;
+
+        public List<Decoration> GetDecorations() { return decorations; }
+        public Vector2 GetMapSize() { return mapSize; }
+        public Point GetShopLocation() { return shopLocation; }
+        public MapData()
+        {
             decorations = new List<Decoration>();
             mapSize = Vector2.Zero;
             shopLocation = Point.Zero;
         }
-        // TODO: clean this method
-        public void ReadMapData(List<string> lines, ContentManager Content, int levelIndex)
+        public void ReadMapData(ContentManager Content, int levelIndex)
         {
-            //List<Decoration> decorations = new List<Decoration>();
+            // List of lines read from text file
+            List<string> lines = new List<string>();
             string levelPath = string.Format("Content\\Maps\\{0}.txt", levelIndex);
-            int width = 0;
-            int height = 0;
             using (Stream fileStream = TitleContainer.OpenStream(levelPath))
             {
                 bool isDecoraitons = false;
+                // loader helper class to read files
                 Loader loader = new Loader(fileStream);
                 lines = loader.ReadLinesFromTextFile();
                 foreach (string line in lines)
                 {
                     if (isDecoraitons)
                     {
+                        // break after seeing the second "Decorations"
                         if (line == "Decorations")
                         {
                             break;
                         }
                         string[] widthLine = line.Split(":");
-                        String title = widthLine[0];
+                        // name of the decoration tile in the image file
+                        String name = widthLine[0];
                         String point = widthLine[1];
                         string[] coords = point.Split(",");
                         Vector2 location = new Vector2(int.Parse(coords[0]), int.Parse(coords[1]));
-                        string path = string.Format("Graphics\\Env\\Dungeon\\{0}", title);
+                        string path = string.Format("Graphics\\Env\\Dungeon\\{0}", name);
                         Texture2D decorTexture = Content.Load<Texture2D>(path);
                         decorations.Add(new Decoration(location, decorTexture));
                         continue;
                     }
                     if (line.Contains("Shop:"))
                     {
+                        // Seperate the name and coordinates
                         string[] widthLine = line.Split(":");
                         string point = widthLine[1];
                         string[] coords = point.Split(",");
@@ -60,25 +69,23 @@ namespace Monsterfall_01
                     }
                     if (line.Contains("Width:"))
                     {
+                        // Seperate the name and value
                         string[] widthLine = line.Split(":");
-                        width = int.Parse(widthLine[1]);
+                        mapSize.X = int.Parse(widthLine[1]);
                     }
                     if (line.Contains("Height:"))
                     {
+                        // Seperate the name and value
                         string[] heightLine = line.Split(":");
-                        height = int.Parse(heightLine[1]);
+                        mapSize.Y = int.Parse(heightLine[1]);
                     }
                     if (line.Contains("Decorations"))
                     {
+                        // if decoration read the next line
                         isDecoraitons = true;
                     }
                 }
             }
-            mapSize = new Vector2(width, height);
-
         }
-        public List<Decoration> GetDecorations() { return decorations; }
-        public Vector2 GetMapSize() { return mapSize; }
-        public Point GetShopLocation() { return shopLocation; }
     }
 }

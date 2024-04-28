@@ -16,14 +16,14 @@ namespace Monsterfall_01
     }
     internal class EnemyManager
     {
-        private List<Enemy> enemyList;
-        private List<Wave> waves;
-        private int currentWave;
-        private float waveTimeLeft;
+        List<Enemy> enemyList;
+        List<Wave> waves;
+        int currentWave;
+        float waveTimeLeft;
         private Dictionary<string, List<Animation>> enemyAnimations;
 
-        private int mapLimitX;
-        private int mapLimitY;
+        int mapLimitX;
+        int mapLimitY;
         // A random number generator  
         Random random;
         

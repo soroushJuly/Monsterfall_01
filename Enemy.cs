@@ -46,7 +46,7 @@ namespace Monsterfall_01
         // The direction at which enemy is looking at. range: [0,15]
         public int directionIndex = 0;
         // time between each take damage
-        private TimeSpan hitTimer;
+        TimeSpan hitTimer;
         // direction of the player from enemy position
         public Vector2 playerDirection;
 

@@ -11,26 +11,26 @@ namespace Monsterfall_01.StatesMenu
 {
     internal class StateMenuHighScores : State
     {
-        private ButtonList ButtonList;
+        ButtonList ButtonList;
         // List of the rankings
-        private TextList IndexList;
-        private TextList ScoreList;
+        TextList IndexList;
+        TextList ScoreList;
         // TODO: in future get player name before playing
-        private TextList NameList;
+        TextList NameList;
         // TODO: in future show time spent to finish the game
-        private TextList TimeList;
-        private int offsetX;
-        private int offsetY;
-        private SpriteFont font;
-        private Texture2D buttonIndicator;
+        TextList TimeList;
+        int offsetX;
+        int offsetY;
+        SpriteFont font;
+        Texture2D buttonIndicator;
 
         // Number of the high scores to show
-        private const int SCORES_COUNT = 5;
+        const int SCORES_COUNT = 5;
 
-        private SoundEffectInstance selectSound;
+        SoundEffectInstance selectSound;
 
         // Table of the high score
-        private HighScores highScoresTable;
+        HighScores highScoresTable;
         // Event fired when back button pressed
         public event EventHandler Back;
         public StateMenuHighScores(int offestX, int offsetY, SpriteFont font, Texture2D buttonIndicator, SoundEffectInstance selectSound)
@@ -50,8 +50,8 @@ namespace Monsterfall_01.StatesMenu
             ScoreList = new TextList(offsetX + 50, offsetY + 30, font, Color.DarkOliveGreen, 25);
 
             // Initialize indices
-            for(int i = 0; i < SCORES_COUNT; i++)
-                IndexList.AddText((i+1).ToString() + '.');
+            for (int i = 0; i < SCORES_COUNT; i++)
+                IndexList.AddText((i + 1).ToString() + '.');
             // Load buttons
             LoadMainButtons();
             // Load the high score list from the file

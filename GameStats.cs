@@ -6,6 +6,7 @@ namespace Monsterfall_01
 {
     public class GameStats
     {
+        // Player score
         public int score;
         public int timeSpent;
         public string name;
@@ -35,6 +36,7 @@ namespace Monsterfall_01
         {
             ChangeScore(-1 * e.cost);
         }
+        // Changes the player score by passed value
         private void ChangeScore(int change)
         {
             score += change;
