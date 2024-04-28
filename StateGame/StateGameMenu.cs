@@ -14,31 +14,35 @@ namespace Monsterfall_01.StateGame
     internal class StateGameMenu : State
     {
         Game Game;
-        private SpriteBatch _spriteBatch;
-        private ContentManager Content;
+        SpriteBatch _spriteBatch;
+        ContentManager Content;
 
-        private Texture2D mainBackground;
+        Texture2D mainBackground;
         // Panel to put buttons inside
-        private Texture2D panel;
-        private int panelWidth;
-        private int panelHeight;
+        Texture2D panel;
+        int panelWidth;
+        int panelHeight;
 
         // Title that goes on the top part of the panel
-        private Texture2D gameName;
+        Texture2D gameName;
 
         // Position where we start putting UI elements
         int contentStartingPositionX;
         int contentStartingPositionY;
 
+        // Window sizes
+        int windowWidth;
+        int windowHeight;
+
         // Buttons sound effects  
-        private SoundEffect buttonSwitchSound;
-        private SoundEffectInstance buttonSwitchSoundInstance;
+        SoundEffect buttonSwitchSound;
+        SoundEffectInstance buttonSwitchSoundInstance;
         
-        private SoundEffect buttonSelectSound;
-        private SoundEffectInstance buttonSelectSoundInstance;
+        SoundEffect buttonSelectSound;
+        SoundEffectInstance buttonSelectSoundInstance;
 
         // Menu Music 
-        private Song menuMusic;
+        Song menuMusic;
 
         FSM fsm;
         // States (Pages) of the game menu
@@ -48,7 +52,7 @@ namespace Monsterfall_01.StateGame
             HIGHSCORES,
             CONTROLS
         }
-        private States currentState;
+        States currentState;
 
 
         public event EventHandler GameStart;
@@ -78,6 +82,8 @@ namespace Monsterfall_01.StateGame
         private void Initialize()
         {
             _spriteBatch = new SpriteBatch(Game.GraphicsDevice);
+            windowWidth = Game.GraphicsDevice.Viewport.Width;
+            windowHeight = Game.GraphicsDevice.Viewport.Height;
         }
         private void Update(GameTime gameTime)
         {
@@ -90,13 +96,13 @@ namespace Monsterfall_01.StateGame
 
         void LoadContent()
         {
-            // Load panel texture
-            panel = Content.Load<Texture2D>("Graphics\\UI\\panel_stone");
             // Little arrow in buttons
             Texture2D buttonIndicator = Content.Load<Texture2D>("Graphics\\UI\\arrowBeige_right");
+            // Load font
             SpriteFont font = Content.Load<SpriteFont>("Graphics\\gameFont");
+            // Load state textures
+            panel = Content.Load<Texture2D>("Graphics\\UI\\panel_stone");
             mainBackground = Content.Load<Texture2D>("Graphics\\bg_menu");
-            // Load title texture
             gameName = Content.Load<Texture2D>("Graphics\\Name");
 
             // Load button sound effects
@@ -106,12 +112,12 @@ namespace Monsterfall_01.StateGame
             buttonSelectSoundInstance = buttonSelectSound.CreateInstance();
 
             // Panel size responsive to the user screen it's bigger for bigger screens
-            panelWidth = Math.Clamp((int)(Game.GraphicsDevice.Viewport.Width * 0.4f), 400, 600);
-            panelHeight = Math.Clamp((int)(Game.GraphicsDevice.Viewport.Height * 0.6f), 400, 650);
+            panelWidth = Math.Clamp((int)(windowWidth * 0.4f), 400, 600);
+            panelHeight = Math.Clamp((int)(windowHeight * 0.6f), 400, 650);
 
             // Staring position of content of pages is related to the panel
-            contentStartingPositionX = (Game.GraphicsDevice.Viewport.Width) / 2 - (panelWidth / 2) + 80;
-            contentStartingPositionY = (Game.GraphicsDevice.Viewport.Height) / 2 - 50;
+            contentStartingPositionX = (windowWidth) / 2 - (panelWidth / 2) + 80;
+            contentStartingPositionY = (windowHeight) / 2 - 50;
 
             fsm = new FSM(this);
 
@@ -144,6 +150,7 @@ namespace Monsterfall_01.StateGame
             fsm.AddState(statesMenuHighScores);
             fsm.AddState(statesMenuControls);
 
+            // Game starts from the main menu which has 4 buttons inside
             fsm.Initialise("Main");
             currentState = States.MAIN;
 
@@ -158,15 +165,15 @@ namespace Monsterfall_01.StateGame
         {
             _spriteBatch.Begin(SpriteSortMode.Deferred);
             // Draw Background
-            _spriteBatch.Draw(mainBackground, new Rectangle(0, 0, Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height),
+            _spriteBatch.Draw(mainBackground, new Rectangle(0, 0, windowWidth, windowHeight),
                 new Rectangle(0, 0, mainBackground.Width, mainBackground.Height), Color.White);
             // Draw Panel
             _spriteBatch.Draw(panel, new Rectangle(
-                (Game.GraphicsDevice.Viewport.Width - panelWidth) / 2, (Game.GraphicsDevice.Viewport.Height - panelHeight) / 2,
+                (windowWidth - panelWidth) / 2, (windowHeight - panelHeight) / 2,
                 panelWidth, panelHeight), Color.White);
             // Draw Game title
             _spriteBatch.Draw(gameName, new Rectangle(
-                (Game.GraphicsDevice.Viewport.Width - panelWidth) / 2, (Game.GraphicsDevice.Viewport.Height - panelHeight) / 2,
+                (windowWidth - panelWidth) / 2, (windowHeight - panelHeight) / 2,
                 panelWidth, 100), Color.White);
 
             fsm.Draw(gameTime, _spriteBatch);

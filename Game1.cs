@@ -10,8 +10,6 @@ namespace Monsterfall_01
     public class Game1 : Game
     {
         private GraphicsDeviceManager _graphics;
-        // TODO: I might need to delete this (sprite batch in states?)
-        private SpriteBatch _spriteBatch;
 
         FSM fsm;
         // States that user can be in the game
@@ -72,7 +70,7 @@ namespace Monsterfall_01
             fsm.AddState(stateGameDied);
             fsm.AddState(stateGameFinish);
 
-            // First state that player enters is the Main Menu
+            // First state in which player enters is the Main Menu
             fsm.Initialise("Menu");
             currentState = States.MENU;
 

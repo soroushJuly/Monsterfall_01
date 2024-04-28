@@ -18,7 +18,7 @@ namespace Monsterfall_01.StateGame
 {
     public class StateGamePlay : State
     {
-        private SpriteBatch _spriteBatch;
+        SpriteBatch _spriteBatch;
 
         // Represents the player  
         static public Player player;
@@ -43,7 +43,7 @@ namespace Monsterfall_01.StateGame
         static public List<Arrow> arrowList;
 
         // Game Music.  
-        private Song gameMusic;
+        Song gameMusic;
 
         // The font used to display UI elements  
         SpriteFont font;
@@ -57,8 +57,10 @@ namespace Monsterfall_01.StateGame
         // Input manager
         InputCommandManager inputCommandManager;
 
+        // Helper class to load character's animation
         AnimationLoader animationLoader;
 
+        // Sound played when arrow hits the enemy
         SoundEffect arrowHitSound;
         SoundEffectInstance arrowHitSoundInstance;
 
@@ -81,7 +83,6 @@ namespace Monsterfall_01.StateGame
             Name = "Play";
             Game = game;
             Content = game.Content;
-            //GraphicsDevice = game.GraphicsDevice;
         }
         public override void Enter(object owner)
         {
