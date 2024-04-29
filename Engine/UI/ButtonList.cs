@@ -7,15 +7,16 @@ using Monsterfall_01.Engine.Input;
 
 namespace Monsterfall_01.Engine.UI
 {
+    // A component for selection of a button in a list
     internal class ButtonList
     {
-        private List<Button> buttonList;
-        private Texture2D buttonIndicator;
-        private SpriteFont font;
-        private int offsetX;
-        private int offsetY;
-        private int count;
-        private int paddings;
+        List<Button> buttonList;
+        Texture2D buttonIndicator;
+        SpriteFont font;
+        int offsetX;
+        int offsetY;
+        int count;
+        int paddings;
 
         int currentButtonIndex;
 

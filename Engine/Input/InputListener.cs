@@ -11,9 +11,9 @@ namespace Monsterfall_01.Engine.Input
     // This listens to Inputs BUT actualy fires events
     internal class InputListener
     {
-        public event EventHandler<KeyboardEventArgs> OnKeyDown = delegate { };
-        public event EventHandler<KeyboardEventArgs> OnKeyUp = delegate { };
-        public event EventHandler<KeyboardEventArgs> OnKeyPressed = delegate { };
+        public event EventHandler<KeyboardEventArgs> OnKeyDown;
+        public event EventHandler<KeyboardEventArgs> OnKeyUp;
+        public event EventHandler<KeyboardEventArgs> OnKeyPressed;
 
         KeyboardState currentKeyboardState;
         KeyboardState previousKeyboardState;

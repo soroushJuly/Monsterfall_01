@@ -7,19 +7,18 @@ using Monsterfall_01.Engine.Input;
 
 namespace Monsterfall_01.Engine.UI
 {
+    // A component for selection of a button in a list
     internal class TextList
     {
-        private List<Text> textList;
-        private SpriteFont font;
-        private Color color;
-        private int offsetX;
-        private int offsetY;
-        private int count;
-        private int paddings;
+        List<Text> textList;
+        SpriteFont font;
+        Color color;
+        int offsetX;
+        int offsetY;
+        int count;
+        int paddings;
 
-        int currentButtonIndex;
-
-        private InputCommandManager inputCommandManager;
+        InputCommandManager inputCommandManager;
         public event EventHandler<Button> ButtonClicked;
         public TextList(int offsetX, int offsetY, SpriteFont font, Color color, int paddings)
         {

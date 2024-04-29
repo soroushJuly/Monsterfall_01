@@ -2,7 +2,6 @@
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-//using static System.Net.Mime.MediaTypeNames;
 
 namespace Monsterfall_01.Engine
 {

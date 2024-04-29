@@ -2,12 +2,9 @@
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SharpDX.MediaFoundation;
 
 namespace Monsterfall_01.Engine.UI
 {
-    // TODO: this will go to the UI Folder in Engine Folder
-    // TODO: a component for selection of a button in a list
     internal class Text
     {
         private string text;

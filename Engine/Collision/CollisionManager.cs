@@ -5,8 +5,8 @@ namespace Monsterfall_01.Engine.Collision
 {
     internal class CollisionManager
     {
-        private HashSet<Collision> m_collisions;
-        private List<Collidable> m_collidables;
+        HashSet<Collision> m_collisions;
+        List<Collidable> m_collidables;
 
         public CollisionManager()
         {

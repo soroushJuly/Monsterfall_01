@@ -12,10 +12,10 @@ namespace Monsterfall_01.Engine.Input
     // Here we have toolset to bind actual keys to actual jobs (game actions)
     internal class InputCommandManager
     {
-        private InputListener m_Input;
+        InputListener m_Input;
 
         // Just to map every key to an action
-        private Dictionary<Keys, GameAction> m_KeyBindings = new Dictionary<Keys, GameAction>();
+        Dictionary<Keys, GameAction> m_KeyBindings = new Dictionary<Keys, GameAction>();
 
         public InputCommandManager()
         {
