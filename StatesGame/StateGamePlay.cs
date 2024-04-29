@@ -13,6 +13,7 @@ using Monsterfall_01.Engine.Collision;
 using Monsterfall_01.Engine;
 using Monsterfall_01.Engine.Input;
 using Monsterfall_01.PowerUp;
+using System.Threading;
 
 namespace Monsterfall_01.StateGame
 {
@@ -53,6 +54,9 @@ namespace Monsterfall_01.StateGame
 
         // Items to buy in the map
         List<ShopItem> shopItems;
+
+        // Data for the map extracted from data
+        MapData mapData;
 
         // Input manager
         InputCommandManager inputCommandManager;
@@ -108,6 +112,9 @@ namespace Monsterfall_01.StateGame
             enemyManager = new EnemyManager();
             effectManager = new EffectManager();
 
+            // Initilize map Data
+            mapData = new MapData();
+
             shopItems = new List<ShopItem>();
 
             collisionManager = new CollisionManager();
@@ -131,29 +138,7 @@ namespace Monsterfall_01.StateGame
 
             stats = new GameStats();
 
-            // Load the player resources
-            // Create a list of player's animations
-            List<Animation> playerAnimations = new List<Animation>();
-            const float PLAYER_SCALE = 0.6f;
-            animationLoader.LoadAnimations(Content, "Graphics\\HeroFemale\\Idle_Bow\\Idle_Bow_Body_", PLAYER_SCALE, playerAnimations,
-                320, 16, 45, 8, 4);
-            animationLoader.LoadAnimations(Content, "Graphics\\HeroFemale\\Run_Bow\\Run_Bow_Body_", PLAYER_SCALE, playerAnimations,
-                320, 20, 17, 8, 5);
-            animationLoader.LoadAnimations(Content, "Graphics\\HeroFemale\\Attack_Bow\\Attack_Bow_Body_", PLAYER_SCALE, playerAnimations,
-                320, 20, 15, 8, 6, false);
-            animationLoader.LoadAnimations(Content, "Graphics\\HeroFemale\\Death_Bow\\Death_Bow_Body_", PLAYER_SCALE, playerAnimations,
-                320, 20, 17, 8, 6, false);
-            // get enemy textures
-            const float ENEMY_SCALE = 1.2f;
-            List<Animation> monsterIceAnimations = new List<Animation>();
-            animationLoader.LoadAnimations(Content, "Graphics\\MonsterIce\\WalkForward\\WalkForward Body ", ENEMY_SCALE, monsterIceAnimations,
-                256, 20, 17, 16, 4);
-            animationLoader.LoadAnimations(Content, "Graphics\\MonsterIce\\Run\\Run Body ", ENEMY_SCALE, monsterIceAnimations,
-                256, 20, 17, 16, 4);
-            animationLoader.LoadAnimations(Content, "Graphics\\MonsterIce\\Attack2\\Attack2 Body ", ENEMY_SCALE, monsterIceAnimations,
-                256, 24, 50, 16, 6);
-            animationLoader.LoadAnimations(Content, "Graphics\\MonsterIce\\Death\\Death Body ", ENEMY_SCALE, monsterIceAnimations,
-                256, 30, 25, 16, 6, false);
+            Thread thread1 = new Thread(new ThreadStart(LoadEnemies));
 
             // load effects textures
             Texture2D bloodTexture = Content.Load<Texture2D>("Graphics\\BloodSplash");
@@ -188,23 +173,34 @@ namespace Monsterfall_01.StateGame
 
             // Load level\Enviroment details (Position of elements in the map and the map it self)
             // A helper class to get data for map
-            MapData mapData = new MapData();
             mapData.ReadMapData(Content, 0);
 
             // Initialize map
             map01 = new Map();
             map01.Initialize(mapData.GetMapSize(), Content, mapData.GetDecorations(), shopItems, mapData.GetShopLocation());
-            
+
             // Load data related to the gameplay
             loader = new Loader();
             loader.ReadXML("Content\\XML\\GameInfo.xml");
-            // Pass the waves details received from the xml file
-            // TODO: can use a factory pattern to create different types of enemies
-            enemyManager.Initialize(GameInfo.Instance.GameWaves.waves, mapData.GetMapSize());
-            enemyManager.AddAnimations("MonsterIce",monsterIceAnimations);
 
             highScoresTable = new HighScores();
             highScoresTable = HighScores.Load();
+
+            thread1.Start();
+
+            // Load the player resources
+            // Create a list of player's animations
+            List<Animation> playerAnimations = new List<Animation>();
+            const float PLAYER_SCALE = 0.6f;
+            animationLoader.LoadAnimations(Content, "Graphics\\HeroFemale\\Idle_Bow\\Idle_Bow_Body_", PLAYER_SCALE, playerAnimations,
+                320, 16, 45, 8, 4);
+            animationLoader.LoadAnimations(Content, "Graphics\\HeroFemale\\Run_Bow\\Run_Bow_Body_", PLAYER_SCALE, playerAnimations,
+                320, 20, 17, 8, 5);
+            animationLoader.LoadAnimations(Content, "Graphics\\HeroFemale\\Attack_Bow\\Attack_Bow_Body_", PLAYER_SCALE, playerAnimations,
+                320, 20, 15, 8, 6, false);
+            animationLoader.LoadAnimations(Content, "Graphics\\HeroFemale\\Death_Bow\\Death_Bow_Body_", PLAYER_SCALE, playerAnimations,
+                320, 20, 17, 8, 6, false);
+
 
             Vector2 playerPosition = new Vector2(Game.GraphicsDevice.Viewport.TitleSafeArea.X - 100,
                 Game.GraphicsDevice.Viewport.TitleSafeArea.Y + 400);
@@ -213,15 +209,7 @@ namespace Monsterfall_01.StateGame
 
             player.OnPlayerHit += effectManager.AddBloodEffect;
             player.OnPlayerPowerUp += effectManager.AddPowerUpEffect;
-
-            enemyManager.OnEnemyDied += stats.OnEnemyDied;
-            enemyManager.OnEnemyHit += effectManager.AddBloodEffect;
-            enemyManager.OnEnemyHit += (object sender, Vector2 e) => { arrowHitSoundInstance.Play(); };
-            enemyManager.OnLoadWave += (object sender, WaveArgs e) =>
-            {
-                foreach (Enemy enemy in enemyManager.GetEnemies())
-                    collisionManager.AddCollidable(enemy);
-            };
+            //Thread thread2 = new Thread(new ThreadStart(MyThreadMethod));
 
             collisionManager.AddCollidable(player);
             foreach (ShopItem shopItem in map01.ShopItems)
@@ -247,6 +235,36 @@ namespace Monsterfall_01.StateGame
 
             // Load the score font   
             font = Content.Load<SpriteFont>("Graphics\\gameFont");
+
+            thread1.Join();
+        }
+        private void LoadEnemies()
+        {
+            // get enemy textures
+            const float ENEMY_SCALE = 1.2f;
+            List<Animation> monsterIceAnimations = new List<Animation>();
+            animationLoader.LoadAnimations(Content, "Graphics\\MonsterIce\\WalkForward\\WalkForward Body ", ENEMY_SCALE, monsterIceAnimations,
+                256, 20, 17, 16, 4);
+            animationLoader.LoadAnimations(Content, "Graphics\\MonsterIce\\Run\\Run Body ", ENEMY_SCALE, monsterIceAnimations,
+                256, 20, 17, 16, 4);
+            animationLoader.LoadAnimations(Content, "Graphics\\MonsterIce\\Attack2\\Attack2 Body ", ENEMY_SCALE, monsterIceAnimations,
+                256, 24, 50, 16, 6);
+            animationLoader.LoadAnimations(Content, "Graphics\\MonsterIce\\Death\\Death Body ", ENEMY_SCALE, monsterIceAnimations,
+                256, 30, 25, 16, 6, false);
+
+            // Pass the waves details received from the xml file
+            // TODO: can use a factory pattern to create different types of enemies
+            enemyManager.Initialize(GameInfo.Instance.GameWaves.waves, mapData.GetMapSize());
+            enemyManager.AddAnimations("MonsterIce", monsterIceAnimations);
+
+            enemyManager.OnEnemyDied += stats.OnEnemyDied;
+            enemyManager.OnEnemyHit += effectManager.AddBloodEffect;
+            enemyManager.OnEnemyHit += (object sender, Vector2 e) => { arrowHitSoundInstance.Play(); };
+            enemyManager.OnLoadWave += (object sender, WaveArgs e) =>
+            {
+                foreach (Enemy enemy in enemyManager.GetEnemies())
+                    collisionManager.AddCollidable(enemy);
+            };
         }
         private void InitializeKeyBindings()
         {
@@ -297,7 +315,7 @@ namespace Monsterfall_01.StateGame
         {
             viewTranslate = new Vector3(Game.GraphicsDevice.Viewport.Width / 2 - player.position.X,
                 Game.GraphicsDevice.Viewport.Height / 2 - player.position.Y, 0);
- 
+
             if (player.Health <= 0)
             {
                 PlayerDied(this, stats);
