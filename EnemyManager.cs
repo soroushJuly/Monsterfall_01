@@ -16,10 +16,15 @@ namespace Monsterfall_01
     }
     internal class EnemyManager
     {
+        // List of enemies in the map
         List<Enemy> enemyList;
+        // List of expected waves
         List<Wave> waves;
+        // Index of current wave
         int currentWave;
+        // Time remaining to next wave
         float waveTimeLeft;
+        // Animations of the enemies
         private Dictionary<string, List<Animation>> enemyAnimations;
 
         int mapLimitX;
@@ -61,6 +66,7 @@ namespace Monsterfall_01
         {
             enemyList.Remove(enemy);
         }
+        // Load wave detail to the map (called after waveTimeLeft reaches zero)
         private void LoadWave(int waveIndex)
         {
             waveTimeLeft = waves[waveIndex].timeToNextWave;
@@ -100,7 +106,7 @@ namespace Monsterfall_01
                 enemy.Draw(_spriteBatch, graphicsDevice);
             }
         }
-        // TODO: this better be a helper class
+        // TODO: this better be a helper class (Command class?)
         private Vector2 MapToScreen(int x, int y)
         {
             // To map the tile toghether in ISOMETRIC way

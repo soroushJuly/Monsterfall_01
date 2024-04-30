@@ -8,6 +8,7 @@ namespace Monsterfall_01
     {
         // Player score
         public int score;
+        // Time spent in game
         public int timeSpent;
         public string name;
 

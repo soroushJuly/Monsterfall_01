@@ -9,14 +9,16 @@ namespace Monsterfall_01
 {
     internal class Map
     {
-        private Vector2 mapSize;
-        private Point mapOffset;
-        private Point tileSize;
-        private Tile[,] tiles;
-        private List<Tile> decorTiles;
+        Vector2 mapSize;
+        Point mapOffset;
+        // Size of each floor tile
+        Point tileSize;
+        Tile[,] tiles;
+        // List of decoration tiles e.g. barrels
+        List<Tile> decorTiles;
         public List<Tile> DecorTiles { get { return decorTiles; } }
 
-        private List<ShopItem> shopItems;
+        List<ShopItem> shopItems;
         public List<ShopItem> ShopItems { get { return shopItems; } }
 
         public void Initialize(Vector2 mapSize, ContentManager content, List<Decoration> decorations,
@@ -33,6 +35,7 @@ namespace Monsterfall_01
             tileSize.X = tileTexture.Width;
             tileSize.Y = tileTexture.Height;
 
+            // Add the walls around the map
             AddMapWalls(content);
            
             for (int j = 1; j < mapSize.Y; j++)

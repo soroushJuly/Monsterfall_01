@@ -14,6 +14,7 @@ namespace Monsterfall_01
 {
     public class Player : Collidable
     {
+        // Animation States of the player
         public enum States
         {
             IDLE,
@@ -22,47 +23,49 @@ namespace Monsterfall_01
             //HIT,
             //DEATH
         }
+        // Time it takes to reset movement on each direction (X,Y) to zero
         const float MOVEMENT_RESET_TIME = 0.05F;
 
+        // FSM to change between player animations
         FSM animationManager;
 
-        public Animation playerAnimation;
-        private Dictionary<String, int> mapDirections;
         public List<Animation> playerAnimations;
+        protected Animation playerAnimation;
+        Dictionary<String, int> mapDirections;
         public float movementSpeed;
-        private const float RUN_SPEED = 4.0f;
-        private float speedUpgrade;
+        const float RUN_SPEED = 4.0f;
+        // Speed upgrade is 1 by default and increases when player picks the speed booster
+        float speedUpgrade;
         public float scale;
 
         public Vector2 position;
-        public Vector2 prevPosition;
+        Vector2 prevPosition;
         public bool isActive;
         public int Health;
 
-        public int currentDirectionIndex;
+        int currentDirectionIndex;
         public States currentState;
 
+        // Player timers
+        float xtimer;
+        float ytimer;
+        float takeDamageTimer;
+        float attackTimer;
+        float speedUpTimer;
+        float bowUpgradeTimer;
 
-        private float xtimer;
-        private float ytimer;
-        private float blockTimer;
-        private float takeDamageTimer;
-        private float attackTimer;
-        private float speedUpTimer;
-        private float bowUpgradeTimer;
-
-        private List<String> directions;
+        List<String> directions;
 
         public int currentAnimation;
 
         public bool isAttacking;
 
-        private int playerScore;
+        int playerScore;
 
         float deltaTime;
 
         // Item that is in the pickup range of player
-        private ShopItem itemInRange;
+        ShopItem itemInRange;
 
         Vector2 windowSize;
 
@@ -117,6 +120,7 @@ namespace Monsterfall_01
 
             animationManager.Initialise("Idle");
 
+            // Directions in which player can move
             mapDirections.Add("NORTH", 0);
             mapDirections.Add("NORTHEAST", 1);
             mapDirections.Add("EAST", 2);
@@ -129,7 +133,6 @@ namespace Monsterfall_01
             currentAnimation = 0;
             // TODO: add Timer manager
             this.xtimer = 0;
-            this.blockTimer = 0;
             this.takeDamageTimer = 0;
             this.ytimer = 0;
             this.attackTimer = 0;
@@ -150,10 +153,10 @@ namespace Monsterfall_01
             animationManager.Update(gameTime);
             this.box = new Rectangle((int)(position.X - Width / 6), (int)position.Y - 90 / 2, Width / 3, 90);
             
+            // Update timers
             xtimer -= deltaTime;
             ytimer -= deltaTime;
             speedUpTimer -= deltaTime;
-            blockTimer -= deltaTime;
             takeDamageTimer -= deltaTime;
             attackTimer -= deltaTime;
             bowUpgradeTimer -= deltaTime;
@@ -162,9 +165,11 @@ namespace Monsterfall_01
         }
         private void UpdateAnimation(GameTime gameTime)
         {
+            // If we have direction change the direction Index
             if (getDirection() != "")
                 currentDirectionIndex = mapDirections[getDirection()];
 
+            // current animation is sum of direction index and animation state index
             currentAnimation = currentDirectionIndex + 8 * (int)currentState;
             playerAnimations[currentAnimation].Position = position;
             playerAnimations[currentAnimation].Update(gameTime);
@@ -172,7 +177,6 @@ namespace Monsterfall_01
         public void Draw(SpriteBatch spriteBatch, GraphicsDevice GraphicsDevices)
         {
             checkTimers();
-            //DrawBoundingBox(spriteBatch, GraphicsDevices);
             playerAnimations[currentAnimation].Draw(spriteBatch);
         }
 
@@ -214,6 +218,7 @@ namespace Monsterfall_01
         }
         private void checkTimers()
         {
+            // Reset the movement if player hasn't pressed move keys
             if (xtimer < 0)
             {
                 prevPosition.X = position.X;
@@ -225,11 +230,13 @@ namespace Monsterfall_01
                 directions[0] = "";
             }
         }
+        // Set Direction and timer in Y Axis
         private void setXTimer(String direction)
         {
             directions[1] = direction;
             xtimer = MOVEMENT_RESET_TIME;
         }
+        // Set Direction and timer in X Axis
         private void setYTimer(String direction)
         {
             directions[0] = direction;
@@ -275,8 +282,10 @@ namespace Monsterfall_01
         {
             if (buttonState == eButtonState.PRESSED)
             {
+                // Check if Item is in pickup range
                 if (itemInRange != null)
                 {
+                    // Check if player has enough score
                     if (itemInRange.GetCost() > playerScore)
                     {
                         return;
@@ -298,6 +307,7 @@ namespace Monsterfall_01
         public override void OnCollision(Collidable obj)
         {
             Enemy enemy = obj as Enemy;
+            // If enemy is attacking and is colliding, player takes damage
             if (enemy != null)
             {
                 if (takeDamageTimer < 0 && (enemy.isAttacking))
@@ -314,6 +324,7 @@ namespace Monsterfall_01
                 itemInRange = shopItem;
                 return;
             }
+            // Colllision and block with decorations
             Tile decoration = obj as Tile;
             if (decoration != null)
             {

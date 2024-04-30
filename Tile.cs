@@ -31,12 +31,6 @@ namespace Monsterfall_01
         }
         public virtual void Draw(SpriteBatch spriteBatch, GraphicsDevice GraphicsDevices)
         {
-            //if (isCollidable)
-            //{
-            //    Texture2D pixel = new Texture2D(GraphicsDevices, 1, 1);
-            //    pixel.SetData<Color>(new Color[] { Color.Red });
-            //    spriteBatch.Draw(pixel, this.box, Color.White);
-            //}
             spriteBatch.Draw(tileTexture, position, Color.White);
         }
     }
