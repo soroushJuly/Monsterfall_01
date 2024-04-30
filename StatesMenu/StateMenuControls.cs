@@ -37,8 +37,8 @@ namespace Monsterfall_01.StatesMenu
         {
             // Initialize the list of text and buttons
             ButtonList = new ButtonList(buttonIndicator, offsetX, offsetY, font, 50);
-            ControlsList = new TextList(offsetX, offsetY + 30, font, Color.DarkOliveGreen, 25);
-            ActionsList = new TextList(offsetX + 50, offsetY + 30, font, Color.DarkOliveGreen, 25);
+            ControlsList = new TextList(offsetX, offsetY + 30, font, Color.DarkOliveGreen, 30);
+            ActionsList = new TextList(offsetX + 100, offsetY + 30, font, Color.DarkOliveGreen, 30);
             // Load the contents of lists manually
             LoadMainButtons();
             LoadControlsText();
@@ -59,15 +59,17 @@ namespace Monsterfall_01.StatesMenu
         }
         private void LoadControlsText()
         {
+            ControlsList.AddText("Survive enemy waves!!");
             ControlsList.AddText("W:");
             ControlsList.AddText("S:");
             ControlsList.AddText("A:");
             ControlsList.AddText("D:");
-            ControlsList.AddText("J:");
+            ControlsList.AddText("LClick:");
             ControlsList.AddText("E:");
         }
         private void LoadActionsText()
         {
+            ActionsList.AddText("");
             ActionsList.AddText("Move North");
             ActionsList.AddText("Move South");
             ActionsList.AddText("Move West");
