@@ -15,10 +15,6 @@ namespace Monsterfall_01.Engine.UI
         // Text Color
         Color color;
 
-        // TODO: use these variables later to have fixed size buttons
-        int width;
-        int height;
-
         public Text(string text, Vector2 position, SpriteFont font, Color color)
         {
             this.position = position;

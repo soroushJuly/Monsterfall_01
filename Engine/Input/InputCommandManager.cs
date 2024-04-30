@@ -16,6 +16,7 @@ namespace Monsterfall_01.Engine.Input
 
         // Just to map every key to an action
         Dictionary<Keys, GameAction> m_KeyBindings = new Dictionary<Keys, GameAction>();
+        Dictionary<String, GameAction> m_mouseBindings = new Dictionary<String, GameAction>();
 
         public InputCommandManager()
         {
@@ -25,6 +26,8 @@ namespace Monsterfall_01.Engine.Input
             m_Input.OnKeyDown += OnKeyDown;
             m_Input.OnKeyPressed += OnKeyPressed;
             m_Input.OnKeyUp += OnKeyUp;
+
+            m_Input.OnLeftClick += OnLeftClick;
         }
 
         // Add new keys to listen for
@@ -35,6 +38,12 @@ namespace Monsterfall_01.Engine.Input
 
             // Add the binding to the command map 
             m_KeyBindings.Add(key, action);
+        }
+        // Add new mouse keys to listen for
+        public void AddMouseBinding(String key, GameAction action)
+        {
+            // Add the binding to the command map 
+            m_mouseBindings.Add(key, action);
         }
 
         public void Update()
@@ -69,6 +78,14 @@ namespace Monsterfall_01.Engine.Input
             if (action != null)
                 action(eButtonState.PRESSED, new Vector2(1.0f));
 
+        }
+
+        public void OnLeftClick(object sender, MouseState e)
+        {
+            GameAction action = m_mouseBindings["Left"];
+
+            if (action != null)
+                action(eButtonState.UP, new Vector2(e.X, e.Y));
         }
     }
 }

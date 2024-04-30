@@ -145,7 +145,7 @@ namespace Monsterfall_01
             double degree = Math.Acos(Vector2.Dot(-1 * direction, new Vector2(0, 1)));
             if (direction.X < 0) { degree += 2 * (Math.PI - degree); }
             // convert dergree to index in range of [0,15]
-            directionIndex = (int)((int)(degree * 180 / Math.PI) / (360.0f /16));
+            directionIndex = (int)((int)((degree - .1f) * 180 / Math.PI) / (360.0f /16));
 
             // Sensing distance of the player
             Vector2 playerDistance = StateGamePlay.player.position - Position;

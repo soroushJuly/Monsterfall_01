@@ -15,8 +15,13 @@ namespace Monsterfall_01.Engine.Input
         public event EventHandler<KeyboardEventArgs> OnKeyUp;
         public event EventHandler<KeyboardEventArgs> OnKeyPressed;
 
+        public event EventHandler<MouseState> OnLeftClick;
+
         KeyboardState currentKeyboardState;
         KeyboardState previousKeyboardState;
+
+        MouseState currentMouseState;
+        MouseState previousMouseState;
 
         public HashSet<Keys> keyList;
 
@@ -26,6 +31,9 @@ namespace Monsterfall_01.Engine.Input
 
             currentKeyboardState = Keyboard.GetState();
             previousKeyboardState = currentKeyboardState;
+
+            currentMouseState = Mouse.GetState();
+            previousMouseState = currentMouseState;
         }
 
         // Add new key to the list of keys we check in each polling
@@ -39,9 +47,19 @@ namespace Monsterfall_01.Engine.Input
             previousKeyboardState = currentKeyboardState;
             currentKeyboardState = Keyboard.GetState();
 
-            FireKeyboardEvents();
-        }
+            previousMouseState = currentMouseState;
+            currentMouseState = Mouse.GetState();
 
+            FireKeyboardEvents();
+            FireMouseEvents();
+        }
+        void FireMouseEvents()
+        {
+
+            // Left Click Pressed
+            if (currentMouseState.LeftButton != ButtonState.Pressed && previousMouseState.LeftButton == ButtonState.Pressed)
+                OnLeftClick(this, previousMouseState);
+        }
         public void FireKeyboardEvents()
         {
             // based on the state of the key fire proper event
