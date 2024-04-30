@@ -158,6 +158,7 @@ namespace Monsterfall_01.StateGame
             menuMusic = Content.Load<Song>("Sound\\menuMusic");
             // Start playing the music
             MediaPlayer.Play(menuMusic);
+            MediaPlayer.Volume = 0.5f;
             MediaPlayer.IsRepeating = true;
         }
 

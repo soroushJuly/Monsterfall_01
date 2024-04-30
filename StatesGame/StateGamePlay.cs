@@ -236,6 +236,7 @@ namespace Monsterfall_01.StateGame
             gameMusic = Content.Load<Song>("Sound\\gameMusic");
             // Start playing the music.  
             MediaPlayer.Play(gameMusic);
+            MediaPlayer.Volume = 0.5f;
             MediaPlayer.IsRepeating = true;
 
             // Load the score font   
