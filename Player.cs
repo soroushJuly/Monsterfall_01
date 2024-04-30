@@ -59,12 +59,14 @@ namespace Monsterfall_01
 
         private int playerScore;
 
+        float deltaTime;
+
         // Item that is in the pickup range of player
         private ShopItem itemInRange;
 
         Vector2 windowSize;
 
-        public float GetMovementSpeed() { return speedUpgrade * movementSpeed; }
+        public float GetMovementSpeed() { return (float)(speedUpgrade * movementSpeed * 60 * deltaTime); }
         public int Width
         { get { return (int)((float)playerAnimation.frameWidth * scale); } }
         public int Height
@@ -76,6 +78,8 @@ namespace Monsterfall_01
         {
             speedUpgrade = 1.0f;
             movementSpeed = RUN_SPEED;
+
+            deltaTime = 0;
 
             this.position = position;
             this.prevPosition = this.position;
@@ -104,7 +108,6 @@ namespace Monsterfall_01
             statePlayerRun.AddTransition(new Transition(statePlayerAttack, () => isAttacking));
             statePlayerAttack.AddTransition(new Transition(statePlayerIdle, () => DeltaPosition() == Vector2.Zero && !this.playerAnimations[currentAnimation].Active));
             statePlayerAttack.AddTransition(new Transition(statePlayerRun, () => DeltaPosition() != Vector2.Zero && !this.playerAnimations[currentAnimation].Active));
-            //statePlayerAttack.AddTransition(new Transition(statePlayerRun, () => DeltaPosition() != Vector2.Zero && !this.playerAnimations[currentAnimation].Active));
 
             animationManager.AddState(statePlayerIdle);
             animationManager.AddState(statePlayerRun);
@@ -142,17 +145,18 @@ namespace Monsterfall_01
 
         public void Update(GameTime gameTime)
         {
-            // Draw the box to screen for debugging purposes
+            this.deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
             animationManager.Update(gameTime);
             this.box = new Rectangle((int)(position.X - Width / 6), (int)position.Y - 90 / 2, Width / 3, 90);
-            //this.box = new Rectangle((int)position.X , (int)position.Y, 10, 10);
-            xtimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            ytimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            speedUpTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            blockTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            takeDamageTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            attackTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            bowUpgradeTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            
+            xtimer -= deltaTime;
+            ytimer -= deltaTime;
+            speedUpTimer -= deltaTime;
+            blockTimer -= deltaTime;
+            takeDamageTimer -= deltaTime;
+            attackTimer -= deltaTime;
+            bowUpgradeTimer -= deltaTime;
             if (speedUpTimer < 0) { speedUpgrade = 1.0f; }
             UpdateAnimation(gameTime);
         }
@@ -302,10 +306,7 @@ namespace Monsterfall_01
                     takeDamageTimer = 1.0f;
                 }
             }
-            //if (blockTimer > 0)
-            //{
-            //    return;
-            //}
+
             // Only the first decoration collision is working
             ShopItem shopItem = obj as ShopItem;
             if (shopItem != null)

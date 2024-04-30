@@ -359,13 +359,15 @@ namespace Monsterfall_01.StateGame
             // Draw effects
             effectManager.Draw(_spriteBatch);
 
-            foreach (Arrow arrow in arrowList) { arrow.Draw(_spriteBatch, Game.GraphicsDevice); }
+            // Draw Arrows
+            foreach (Arrow arrow in arrowList) arrow.Draw(_spriteBatch, Game.GraphicsDevice);
 
+            // Getting the top left of screen
             int fixedYPosition = Game.GraphicsDevice.Viewport.TitleSafeArea.Y - (int)viewTranslate.Y;
             int fixedXPosition = Game.GraphicsDevice.Viewport.TitleSafeArea.X - (int)viewTranslate.X;
 
             // Draw the score  
-            _spriteBatch.DrawString(font, "score: " + player.currentDirectionIndex,
+            _spriteBatch.DrawString(font, "score: " + stats.score,
                 new Vector2(fixedXPosition, fixedYPosition), Color.Red);
             // Draw the player health  
             _spriteBatch.DrawString(font, "health: " + player.Health,

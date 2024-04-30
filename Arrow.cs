@@ -49,8 +49,8 @@ namespace Monsterfall_01
             // Bounding box is a small box on tip of the arrow
             this.box = new Rectangle((int)(Position.X), 
                 (int)(Position.Y ), 10, 10);
-            Position.X += (float)(arrowMoveSpeed * Math.Sin(angle));
-            Position.Y -= (float)(arrowMoveSpeed * Math.Cos(angle));
+            Position.X += (float)(arrowMoveSpeed * 60 * gameTime.ElapsedGameTime.TotalSeconds * Math.Sin(angle));
+            Position.Y -= (float)(arrowMoveSpeed * 60 * gameTime.ElapsedGameTime.TotalSeconds * Math.Cos(angle));
 
             // Delete if it goes out of range
             if (Vector2.Distance(firstPosition, Position) > range)

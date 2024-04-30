@@ -75,7 +75,7 @@ namespace Monsterfall_01
             // Set the amount of damage the enemy can do  
             Damage = 10;
             // Set how fast the enemy moves  
-            enemyMoveSpeed = 1.7f;
+            enemyMoveSpeed = 1.3f;
             // Set the score value of the enemy  
             Value = 20;
             // Initialize animation of the enemy with current position
@@ -115,7 +115,8 @@ namespace Monsterfall_01
             // Update enemy position
             // Stand still when attacking
             if (currentState != States.ATTACK)
-                Position += playerDirection + Vector2.Multiply(CollisionOffset, 0.02f);
+                Position += playerDirection * (float)(enemyMoveSpeed * 60 * gameTime.ElapsedGameTime.TotalSeconds)
+                    + Vector2.Multiply(CollisionOffset, 0.02f);
 
             // collision box the enemy
             this.box = new Rectangle((int)(Position.X - Width / 5), (int)(Position.Y - Height / 5), (int)(Width / 2.5f), (int)(Height / 2.5f));
@@ -129,7 +130,6 @@ namespace Monsterfall_01
         }
         public void Draw(SpriteBatch spriteBatch, GraphicsDevice GraphicsDevices)
         {
-            //DrawBoundingBox(spriteBatch, GraphicsDevices);
             // Draw the animation
             enemyAnimations[currentAnimation].Draw(spriteBatch);
         }
