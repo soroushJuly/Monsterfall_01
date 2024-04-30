@@ -100,7 +100,7 @@ namespace Monsterfall_01
                 enemy.Draw(_spriteBatch, graphicsDevice);
             }
         }
-        // TODO: this should be a helper class
+        // TODO: this better be a helper class
         private Vector2 MapToScreen(int x, int y)
         {
             // To map the tile toghether in ISOMETRIC way

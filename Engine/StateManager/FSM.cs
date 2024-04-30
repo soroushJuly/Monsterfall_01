@@ -51,7 +51,6 @@ namespace Monsterfall_01.Engine.StateManager
             currentState.Execute(m_owner, gameTime);
         }
         // For the states with draw
-        // TODO: good idea to always pass sprite batch instead of sometimes?
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch = null)
         {
             if (currentState == null) return;
