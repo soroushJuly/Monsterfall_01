@@ -29,10 +29,10 @@ namespace Monsterfall_01
         private int GetWidth() { return (int)(SCALE * StateGamePlay.arrowTexture.Width); }
         private int GetHeight() { return (int)(SCALE * StateGamePlay.arrowTexture.Height); }
 
-        public Arrow(Vector2 position, int directionIndex)
+        public Arrow(Vector2 position, double angle)
         {
-            // angle that arrow should go is direction index of player * 45 degree since we have 8 directions
-            this.angle = (directionIndex * (Math.PI / 4));
+            // angle that arrow should go 
+            this.angle = angle;
             this.arrowMoveSpeed = 9.0f;
 
             // Set the first position a little further than center of the player

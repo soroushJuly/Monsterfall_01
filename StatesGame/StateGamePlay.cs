@@ -43,6 +43,8 @@ namespace Monsterfall_01.StateGame
         static public Texture2D arrowTexture;
         static public List<Arrow> arrowList;
 
+        // Aim texture
+        Texture2D targetTexture;
         // Game Music.  
         Song gameMusic;
 
@@ -148,6 +150,8 @@ namespace Monsterfall_01.StateGame
 
             // load the texture to serve as the laser
             arrowTexture = Content.Load<Texture2D>("Graphics\\Arrow");
+            // Load aim texture
+            targetTexture = Content.Load<Texture2D>("Graphics\\Target");
 
             // Load the laserSound Effect and create the effect Instance  
             arrowHitSound = Content.Load<SoundEffect>("Sound\\arrowHit");
@@ -204,7 +208,8 @@ namespace Monsterfall_01.StateGame
 
             Vector2 playerPosition = new Vector2(Game.GraphicsDevice.Viewport.TitleSafeArea.X - 100,
                 Game.GraphicsDevice.Viewport.TitleSafeArea.Y + 400);
-            player.Initialize(ref playerAnimations, playerPosition, PLAYER_SCALE);
+            player.Initialize(ref playerAnimations, playerPosition,
+                new Vector2(Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height), PLAYER_SCALE);
             stats.OnScoreChanged += player.UpdateScore;
 
             player.OnPlayerHit += effectManager.AddBloodEffect;
@@ -274,7 +279,7 @@ namespace Monsterfall_01.StateGame
             inputCommandManager.AddKeyboardBinding(Keys.A, player.moveWest);
             inputCommandManager.AddKeyboardBinding(Keys.S, player.moveSouth);
             // Shoot arrow
-            inputCommandManager.AddKeyboardBinding(Keys.J, player.ShootArrow);
+            inputCommandManager.AddMouseBinding("Left", player.ShootArrow);
             // Interact/Buy Items in the shop
             inputCommandManager.AddKeyboardBinding(Keys.E, player.Interact);
         }
@@ -346,6 +351,11 @@ namespace Monsterfall_01.StateGame
             // Draw enemies
             enemyManager.Draw(_spriteBatch, Game.GraphicsDevice);
 
+            // Draw aim target
+            MouseState mouseState = Mouse.GetState();
+            _spriteBatch.Draw(targetTexture, new Rectangle((int)-viewTranslate.X + mouseState.X - 25,
+                (int)-viewTranslate.Y + mouseState.Y - 25, 50, 50), Color.White);
+
             // Draw effects
             effectManager.Draw(_spriteBatch);
 
@@ -355,7 +365,7 @@ namespace Monsterfall_01.StateGame
             int fixedXPosition = Game.GraphicsDevice.Viewport.TitleSafeArea.X - (int)viewTranslate.X;
 
             // Draw the score  
-            _spriteBatch.DrawString(font, "score: " + stats.score,
+            _spriteBatch.DrawString(font, "score: " + player.currentDirectionIndex,
                 new Vector2(fixedXPosition, fixedYPosition), Color.Red);
             // Draw the player health  
             _spriteBatch.DrawString(font, "health: " + player.Health,

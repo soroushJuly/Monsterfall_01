@@ -33,7 +33,7 @@ namespace Monsterfall_01
         private const float RUN_SPEED = 4.0f;
         private float speedUpgrade;
         public float scale;
-       
+
         public Vector2 position;
         public Vector2 prevPosition;
         public bool isActive;
@@ -62,6 +62,8 @@ namespace Monsterfall_01
         // Item that is in the pickup range of player
         private ShopItem itemInRange;
 
+        Vector2 windowSize;
+
         public float GetMovementSpeed() { return speedUpgrade * movementSpeed; }
         public int Width
         { get { return (int)((float)playerAnimation.frameWidth * scale); } }
@@ -70,7 +72,7 @@ namespace Monsterfall_01
 
         public event EventHandler<Vector2> OnPlayerHit;
         public event EventHandler<Vector2> OnPlayerPowerUp;
-        public void Initialize(ref List<Animation> playerAnimations, Vector2 position, float scale = 1.0f)
+        public void Initialize(ref List<Animation> playerAnimations, Vector2 position, Vector2 windowSize, float scale = 1.0f)
         {
             speedUpgrade = 1.0f;
             movementSpeed = RUN_SPEED;
@@ -79,6 +81,7 @@ namespace Monsterfall_01
             this.prevPosition = this.position;
             this.playerAnimations = playerAnimations;
             this.directions = new List<String>();
+            this.windowSize = windowSize;
             mapDirections = new Dictionary<String, int>();
             String direction = "";
             directions.Add(direction);
@@ -136,7 +139,7 @@ namespace Monsterfall_01
 
             isActive = true;
         }
-        
+
         public void Update(GameTime gameTime)
         {
             // Draw the box to screen for debugging purposes
@@ -230,7 +233,7 @@ namespace Monsterfall_01
         }
         public String getDirection()
         {
-            return directions[0] + directions[1]; 
+            return directions[0] + directions[1];
         }
 
         public void ShootArrow(eButtonState buttonState, Vector2 amount)
@@ -241,14 +244,24 @@ namespace Monsterfall_01
                 {
                     return;
                 }
+                // TODO: make this a helper function
+                Vector2 direction = Vector2.Normalize(new Vector2(windowSize.X / 2, windowSize.Y / 2) - amount);
+                double degree = Math.Acos(Vector2.Dot(direction, new Vector2(0, 1)));
+                currentDirectionIndex = (int)((degree * 180 / Math.PI) / (360.0f / 8));
+                if (direction.X > 0)
+                {
+                    currentDirectionIndex = (int)(((2 * Math.PI - degree) * 180 / Math.PI) / (360.0f / 8));
+                    degree += 2 * (Math.PI - degree);
+                }
+
                 if (bowUpgradeTimer > 0)
                 {
-                    StateGamePlay.arrowList.Add(new Arrow(this.position, currentDirectionIndex));
-                    StateGamePlay.arrowList.Add(new Arrow(this.position, currentDirectionIndex + 1));
-                    StateGamePlay.arrowList.Add(new Arrow(this.position, currentDirectionIndex - 1));
+                    StateGamePlay.arrowList.Add(new Arrow(this.position, degree));
+                    StateGamePlay.arrowList.Add(new Arrow(this.position, degree + 0.25));
+                    StateGamePlay.arrowList.Add(new Arrow(this.position, degree - 0.25));
                 }
                 else
-                    StateGamePlay.arrowList.Add(new Arrow(this.position, currentDirectionIndex));
+                    StateGamePlay.arrowList.Add(new Arrow(this.position, degree));
 
                 isAttacking = true;
                 attackTimer = .5f;
@@ -277,7 +290,7 @@ namespace Monsterfall_01
             }
             return false;
         }
-        
+
         public override void OnCollision(Collidable obj)
         {
             Enemy enemy = obj as Enemy;
@@ -295,7 +308,7 @@ namespace Monsterfall_01
             //}
             // Only the first decoration collision is working
             ShopItem shopItem = obj as ShopItem;
-            if (shopItem != null) 
+            if (shopItem != null)
             {
                 itemInRange = shopItem;
                 return;
